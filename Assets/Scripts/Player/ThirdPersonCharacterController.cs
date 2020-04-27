@@ -8,6 +8,9 @@ public class ThirdPersonCharacterController : MonoBehaviour
 
     public CharacterAnimator characterAnimator;
     public CharacterController controller;
+    [Range(0,1)]
+    public float airControl = 0.5f;
+    
     public float Speed = 10f;
     public float sprint = 1.5f;
     public float gravity = -20f;
@@ -36,18 +39,32 @@ public class ThirdPersonCharacterController : MonoBehaviour
     
     if (isGrounded) { //SOLO NOS MOVEMOS SI ESTAMOS EN EL SUELO
         if (Input.GetKey(KeyCode.LeftShift)){ //Shft pos sprint
-            controller.Move(playerMovement * Speed * Time.deltaTime * sprint);
+        
+        
+          controller.Move(playerMovement * Speed * Time.deltaTime * sprint);
+          
 
         } else {
-            controller.Move(playerMovement * Speed * Time.deltaTime);
+            
+          controller.Move(playerMovement * Speed * Time.deltaTime);
+
+
+            
 
         }
-    }
-       
-        if(Input.GetButtonDown("Jump") && isGrounded){  //Is grounded true cando tamos no suelo
+
+         if(Input.GetButtonDown("Jump")){
             velocity.y = Mathf.Sqrt(jumpHeight*-2*gravity); //ecuacion do tiro vertical para o salto
+            
             characterAnimator.setTriggerJump();
-        }
+
+         }
+    } else {
+     //MOVIMIENTO EN EL AIRE
+            
+          controller.Move(playerMovement * Speed * Time.deltaTime * airControl);
+    }
+
 
 
        
@@ -80,6 +97,7 @@ public class ThirdPersonCharacterController : MonoBehaviour
         characterAnimator.setVerticalSpeed(velocity.y); //para animacions
 
         // multiplicamos dos veces por deltatime por la ecuacion de la velocidad (1/2g * t^2)
+        
         controller.Move(velocity * Time.deltaTime);
         
     }
