@@ -535,7 +535,7 @@ ModelImporter:
     - name: mixamorig2:LeftUpLeg
       parentName: mixamorig2:Hips
       position: {x: -0.08899668, y: -0.049697265, z: -0.00781577}
-      rotation: {x: 0.00052188704, y: 0.004187254, z: 0.99998707, w: 0.0028330362}
+      rotation: {x: 0.00052188704, y: 0.0041872542, z: 0.99998707, w: 0.0028330365}
       scale: {x: 1, y: 1, z: 1}
     - name: mixamorig2:LeftLeg
       parentName: mixamorig2:LeftUpLeg
@@ -700,7 +700,7 @@ ModelImporter:
     - name: mixamorig2:LeftHandThumb1
       parentName: mixamorig2:LeftHand
       position: {x: 0.029266912, y: 0.030195653, z: 0.012418492}
-      rotation: {x: 0.20676868, y: -0.087190896, z: -0.20258833, w: 0.9532064}
+      rotation: {x: 0.069093846, y: -0.0030794728, z: -0.3024959, w: 0.95063806}
       scale: {x: 1, y: 1, z: 1}
     - name: mixamorig2:LeftHandThumb2
       parentName: mixamorig2:LeftHandThumb1
@@ -835,7 +835,7 @@ ModelImporter:
     - name: mixamorig2:RightHandThumb1
       parentName: mixamorig2:RightHand
       position: {x: -0.027198395, y: 0.027236158, z: 0.011863802}
-      rotation: {x: 0.21047713, y: 0.091185406, z: 0.22184402, w: 0.9477182}
+      rotation: {x: 0.06944485, y: 0.007123599, z: 0.31701335, w: 0.9458484}
       scale: {x: 1, y: 1, z: 1}
     - name: mixamorig2:RightHandThumb2
       parentName: mixamorig2:RightHandThumb1
@@ -865,7 +865,7 @@ ModelImporter:
     hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  autoGenerateAvatarMappingIfUnspecified: 1
+  autoGenerateAvatarMappingIfUnspecified: 0
   animationType: 3
   humanoidOversampling: 1
   avatarSetup: 1
