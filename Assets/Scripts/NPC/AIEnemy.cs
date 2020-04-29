@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿
 using UnityEngine;
 using Characters.ThirdPersonCharacter;
 using UnityEngine.AI;
@@ -15,12 +14,12 @@ namespace Characters.Enemy {
 		private bool isAware = false;
 		private NavMeshAgent agent;
 		// Temporary attribute, just for debugging
-		private Renderer renderer;
+		private Renderer zombieRenderer;
 
 		public void Start() {
 			agent = GetComponent<NavMeshAgent>();
 			// Just for debugging
-			renderer = GetComponent<Renderer>();
+			zombieRenderer = GetComponent<Renderer>();
 		}
 
 		public void Update() {
@@ -28,11 +27,11 @@ namespace Characters.Enemy {
 				// This function makes the zombie chases the player
 				agent.SetDestination(tpcc.transform.position);
 				// Just for debugging
-				renderer.material.color = Color.red;
+				zombieRenderer.material.color = Color.red;
 			} else {
 				SearchForPlayer();
 				// Just for debugging
-				renderer.material.color = Color.blue;
+				zombieRenderer.material.color = Color.blue;
 			}
 		}
 		
