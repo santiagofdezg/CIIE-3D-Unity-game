@@ -11,7 +11,7 @@ namespace Characters.ThirdPersonCharacter {
         [Range(0,1)]
         public float airControl = 0.5f;
         
-        private bool isWalking; // true=> walking; false=>running
+        private bool isWalking = true; // true=> walking; false=>running
         public float Speed = 10f;
         public float sprint = 1.5f;
         public float gravity = -20f;

@@ -39,7 +39,18 @@ namespace Characters.Enemy {
 			// Check if the player is within the zombie viewing angle
 			if (Vector3.Angle(Vector3.forward, transform.InverseTransformPoint(tpcc.transform.position)) < (fieldOfView/2)){
 				if (Vector3.Distance(tpcc.transform.position, transform.position) < viewDistance) {
-					OnAware();
+					// Variable to save all the info about the raycast
+					RaycastHit hit;
+					if (Physics.Linecast(transform.position, tpcc.transform.position, out hit, -1)){
+						Debug.Log(hit.transform.tag);
+						if (hit.transform.CompareTag("Player")){
+							// The detection is done through the model of the 
+							// player because if we use the whole Player object
+							// the linecast is calculated with the outer sphere
+							// collider
+							OnAware();
+						}
+					}
 				}
 			}
 		}

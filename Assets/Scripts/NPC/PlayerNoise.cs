@@ -9,7 +9,7 @@ public class PlayerNoise : MonoBehaviour {
     // Distance unit. If the player is closer that this distance, the zombie
     // will hear the sound
     public float ShootSoundIntensity = 20f;
-    public float walkEnemyPerceptionRadius = 1.5f;
+    public float walkEnemyPerceptionRadius = 2f;
     public float sprintEnemyPerceptionRadius = 4f;
     // For optimization
     public LayerMask zombieLayer;
