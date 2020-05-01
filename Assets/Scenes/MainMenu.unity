@@ -5529,12 +5529,12 @@ PrefabInstance:
     - target: {fileID: 3863681376847702208, guid: ce76465ff06ad04439a6b649c2bb7798,
         type: 3}
       propertyPath: sounds.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3863681376847702208, guid: ce76465ff06ad04439a6b649c2bb7798,
         type: 3}
       propertyPath: sounds.Array.data[0].pitch
-      value: 0.3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3863681376847702208, guid: ce76465ff06ad04439a6b649c2bb7798,
         type: 3}
@@ -5554,6 +5554,41 @@ PrefabInstance:
     - target: {fileID: 3863681376847702208, guid: ce76465ff06ad04439a6b649c2bb7798,
         type: 3}
       propertyPath: sounds.Array.data[0].loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3863681376847702208, guid: ce76465ff06ad04439a6b649c2bb7798,
+        type: 3}
+      propertyPath: sounds.Array.data[0].parent
+      value: 
+      objectReference: {fileID: 2103191800}
+    - target: {fileID: 3863681376847702208, guid: ce76465ff06ad04439a6b649c2bb7798,
+        type: 3}
+      propertyPath: sounds.Array.data[1].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: ca6017cdbaacd8149a81c234b3e29200, type: 3}
+    - target: {fileID: 3863681376847702208, guid: ce76465ff06ad04439a6b649c2bb7798,
+        type: 3}
+      propertyPath: sounds.Array.data[1].parent
+      value: 
+      objectReference: {fileID: 2103191800}
+    - target: {fileID: 3863681376847702208, guid: ce76465ff06ad04439a6b649c2bb7798,
+        type: 3}
+      propertyPath: sounds.Array.data[1].name
+      value: Test
+      objectReference: {fileID: 0}
+    - target: {fileID: 3863681376847702208, guid: ce76465ff06ad04439a6b649c2bb7798,
+        type: 3}
+      propertyPath: sounds.Array.data[1].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3863681376847702208, guid: ce76465ff06ad04439a6b649c2bb7798,
+        type: 3}
+      propertyPath: sounds.Array.data[1].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3863681376847702208, guid: ce76465ff06ad04439a6b649c2bb7798,
+        type: 3}
+      propertyPath: sounds.Array.data[1].loop
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6734316984358284494, guid: ce76465ff06ad04439a6b649c2bb7798,
