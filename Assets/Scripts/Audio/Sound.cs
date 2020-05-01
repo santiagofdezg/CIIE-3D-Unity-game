@@ -26,6 +26,8 @@ public class Sound
    [Range(0f,1f)]
     public float spatialBlend = 0f;
 
+    public AudioMixerGroup outputMixer;
+
     public bool loop;
     //parent object of the sound
     
@@ -35,17 +37,26 @@ public class Sound
     public AudioSource source;
 
 //esta funcion actualiza os parametros de objeto e crea un audio source
-    public void updateVariables(GameObject g){
+    public void updateVariables(AudioManager audioMng){
 
          if (parent == null){
-            parent = g;
+            parent = audioMng.gameObject;
         }
+        
+        if (outputMixer == null){
+            outputMixer = audioMng.MainMixer;
+
+        }
+
+    
         
         source = parent.AddComponent<AudioSource>();
         source.spatialBlend = this.spatialBlend;
         source.clip = this.clip;
         source.volume = this.volume;
         source.pitch = this.pitch;
+        source.outputAudioMixerGroup = outputMixer;
+
        
 
     }

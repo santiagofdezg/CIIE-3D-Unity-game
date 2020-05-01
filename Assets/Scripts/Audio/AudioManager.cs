@@ -12,6 +12,8 @@ public class AudioManager : MonoBehaviour
 
 //Audios que vai xestionar o manager
 
+//Si o audio non ten un audio mixer, metemos por defecto o main
+    public AudioMixerGroup MainMixer;
     
     public Sound[] sounds;
 
@@ -25,7 +27,7 @@ void createAudioSource(){
         //añadimoslle ao audiosource os parametros para poder modificalos dende o inspector
 
     //si o son ten obxecto parent añadimolo como child ali, si non como child do propio audiomanager
-       s.updateVariables(gameObject);
+       s.updateVariables(this);
 
         
     }

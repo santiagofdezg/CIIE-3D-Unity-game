@@ -5579,7 +5579,7 @@ PrefabInstance:
     - target: {fileID: 3863681376847702208, guid: ce76465ff06ad04439a6b649c2bb7798,
         type: 3}
       propertyPath: sounds.Array.data[1].volume
-      value: 1
+      value: 0.269
       objectReference: {fileID: 0}
     - target: {fileID: 3863681376847702208, guid: ce76465ff06ad04439a6b649c2bb7798,
         type: 3}
@@ -5590,6 +5590,17 @@ PrefabInstance:
         type: 3}
       propertyPath: sounds.Array.data[1].loop
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3863681376847702208, guid: ce76465ff06ad04439a6b649c2bb7798,
+        type: 3}
+      propertyPath: MainMixer
+      value: 
+      objectReference: {fileID: 24300002, guid: a9635048612700d41aaa0e43d68c30d2,
+        type: 2}
+    - target: {fileID: 3863681376847702208, guid: ce76465ff06ad04439a6b649c2bb7798,
+        type: 3}
+      propertyPath: sounds.Array.data[1].outputMixer
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6734316984358284494, guid: ce76465ff06ad04439a6b649c2bb7798,
         type: 3}
