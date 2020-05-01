@@ -12,7 +12,7 @@ Os enemigos poden estar en dous estados: aware (consciente), que indica que o en
 
 - "Deambulación": mestres o enemigo non detecta ao xogador, este deambula pola escena de xeito aleatorio.
 
-- 
+- Recorrido basado en puntos de referencia: algúns enemigos en lugar de deambular, terán un recorrido fixo marcado por varios puntos de referencia. Hai unha variable que establece se deambulan aleatoriamente ou se seguen un recorrido marcado.
 
 ### Modificación dalgúns parámetros
 
