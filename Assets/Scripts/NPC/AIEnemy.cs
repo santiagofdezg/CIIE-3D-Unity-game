@@ -11,13 +11,20 @@ namespace Characters.Enemy {
 		// Field of view for the zombie
 		public float fieldOfView = 120f;
 		public float viewDistance = 10f;
+		
 		private bool isAware = false;
 		private NavMeshAgent agent;
-		// Temporary attribute, just for debugging
+		// Temporary attribute, just for debugging. It helps to know when the zombie is aware.
 		private Renderer zombieRenderer;
+
+		// For zombie wandering
+		public float wanderRadius = 10f;
+		// The point where the enemy is currently wandering to
+		private Vector3 wanderPoint ; 
 
 		public void Start() {
 			agent = GetComponent<NavMeshAgent>();
+			wanderPoint = RandomWanderPoint();
 			// Just for debugging
 			zombieRenderer = GetComponent<Renderer>();
 		}
@@ -30,6 +37,7 @@ namespace Characters.Enemy {
 				zombieRenderer.material.color = Color.red;
 			} else {
 				SearchForPlayer();
+				Wander();
 				// Just for debugging
 				zombieRenderer.material.color = Color.blue;
 			}
@@ -57,6 +65,28 @@ namespace Characters.Enemy {
 
 		public void OnAware() {
 			isAware = true;
+		}
+
+		public Vector3 RandomWanderPoint() {
+			// It calculates a random position within a sphere
+			Vector3 randomPoint = (Random.insideUnitSphere * wanderRadius) + transform.position;
+			NavMeshHit navHit;
+			NavMesh.SamplePosition(randomPoint, out navHit, wanderRadius, -1);
+			// We only need the x and z position whitin the sphere. For the y 
+			// position we take the value from the enemy.
+			return new Vector3(navHit.position.x, transform.position.y, navHit.position.z);
+		}
+
+		private void Wander() {
+
+			if (Vector3.Distance(transform.position, wanderPoint) < 0.5f) {
+				// If the enemy got to its wander point then we have to calculate 
+				// another wander point so the enemy keeps going from one wander
+				// point to another and so on.
+				wanderPoint = RandomWanderPoint();
+			} else {
+				agent.SetDestination(wanderPoint);
+			}
 		}
 
 	}
