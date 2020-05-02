@@ -14,8 +14,8 @@ namespace Characters.Enemy {
 		
 		private bool isAware = false;
 		private NavMeshAgent agent;
-		// Temporary attribute, just for debugging. It helps to know when the zombie is aware.
-		private Renderer zombieRenderer;
+		// Temporary attribute, just for debugging with Enemy object. It helps to know when the zombie is aware.
+		// private Renderer zombieRenderer;
 
 		// For zombie wandering
 		public float wanderRadius = 10f;
@@ -24,7 +24,6 @@ namespace Characters.Enemy {
 
 		// Choose between different types of IA
 		public enum WanderType { Random, Waypoint };
-
 		public WanderType wanderType = WanderType.Random;
 		public Transform[] waypoints; // Array of waypoints, only used when waypoint wandering is selected
 		private int waypointIndex = 0;
@@ -35,21 +34,21 @@ namespace Characters.Enemy {
 		public void Start() {
 			agent = GetComponent<NavMeshAgent>();
 			wanderPoint = RandomWanderPoint();
-			// Just for debugging
-			zombieRenderer = GetComponent<Renderer>();
+			// Just for debugging with Enemy object
+			// zombieRenderer = GetComponent<Renderer>();
 		}
 
 		public void Update() {
 			if (isAware) {
 				// This function makes the zombie chases the player
 				agent.SetDestination(tpcc.transform.position);
-				// Just for debugging
-				zombieRenderer.material.color = Color.red;
+				// Just for debugging with Enemy object
+				// zombieRenderer.material.color = Color.red;
 			} else {
 				SearchForPlayer();
 				Wander();
-				// Just for debugging
-				zombieRenderer.material.color = Color.blue;
+				// Just for debugging with Enemy object
+				// zombieRenderer.material.color = Color.blue;
 			}
 		}
 		
@@ -86,6 +85,7 @@ namespace Characters.Enemy {
 			// position we take the value from the enemy.
 			return new Vector3(navHit.position.x, transform.position.y, navHit.position.z);
 		}
+
 
 		public void Wander() {
 			if (wanderType == WanderType.Random) {
