@@ -7,53 +7,72 @@ namespace Characters.Enemy {
 
 	public class AIEnemy : MonoBehaviour {
 		
-		public ThirdPersonCharacterController tpcc;
-		// Field of view for the zombie
-		public float fieldOfView = 120f;
+		public ThirdPersonCharacterController tpcc; // The Player controller
+
+		public float fieldOfView = 120f; // Field of view for the enemy
 		public float viewDistance = 10f;
-		
+
+		//-- ENEMY MOVEMENT
 		private bool isAware = false;
 		private NavMeshAgent agent;
 		// Temporary attribute, just for debugging with Enemy object. It helps to know when the zombie is aware.
 		// private Renderer zombieRenderer;
 
-		// For zombie wandering
+		//-- TYPES OF MOVEMENT
 		public float wanderRadius = 10f;
-		// The point where the enemy is currently wandering to
-		private Vector3 wanderPoint;
+		private Vector3 wanderPoint; // The point where the enemy is currently wandering to
+		public float wanderSpeed = 0.5f;
+		public float wanderAngularSpeed = 50f;
+		public float chaseSpeed = 4f;
+		public float chaseAngularSpeed = 140f;
 
-		// Choose between different types of IA
+		//-- TYPES OF AI / WANDERING MODES
 		public enum WanderType { Random, Waypoint };
 		public WanderType wanderType = WanderType.Random;
 		public Transform[] waypoints; // Array of waypoints, only used when waypoint wandering is selected
-		private int waypointIndex = 0;
-		// The warnings when there are less than 2 waypoints will be thrown once
-		private bool warningThrown = false;
+		private int waypointIndex = 0;		
+		private bool warningThrown = false; // The warnings when there are less than 2 waypoints will be thrown once
 
+		//-- ANIMATIONS
+		private Animator animator;
+
+
+		//-- METHODS
 
 		public void Start() {
 			agent = GetComponent<NavMeshAgent>();
 			wanderPoint = RandomWanderPoint();
+			animator = GetComponentInChildren<Animator>(); // The animator is in the enemy model which is a child of the enemy object
+			
 			// Just for debugging with Enemy object
 			// zombieRenderer = GetComponent<Renderer>();
 		}
 
 		public void Update() {
 			if (isAware) {
-				// This function makes the zombie chases the player
+				// This function makes the enemy chases the player
 				agent.SetDestination(tpcc.transform.position);
+				// The variable Aware of the animator can provoke changes in the animations
+				animator.SetBool("Aware", true);
+				agent.speed = chaseSpeed;
+				agent.angularSpeed = chaseAngularSpeed;
+
 				// Just for debugging with Enemy object
 				// zombieRenderer.material.color = Color.red;
 			} else {
 				SearchForPlayer();
 				Wander();
+				animator.SetBool("Aware", false);
+				agent.speed = wanderSpeed;
+				agent.angularSpeed = wanderAngularSpeed;
+				
 				// Just for debugging with Enemy object
 				// zombieRenderer.material.color = Color.blue;
 			}
 		}
 		
 		public void SearchForPlayer() {
-			// Check if the player is within the zombie viewing angle
+			// Check if the player is within the enemy viewing angle
 			if (Vector3.Angle(Vector3.forward, transform.InverseTransformPoint(tpcc.transform.position)) < (fieldOfView/2)){
 				if (Vector3.Distance(tpcc.transform.position, transform.position) < viewDistance) {
 					// Variable to save all the info about the raycast
@@ -128,7 +147,6 @@ namespace Characters.Enemy {
 							Debug.LogWarning("There is no waypoints assigned to '"+gameObject.name+"'. Setting wandering type to 'Random'.");
 						}
 					}
-
 				}				
 			}	
 		}

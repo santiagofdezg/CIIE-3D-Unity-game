@@ -45,15 +45,26 @@ Partimos do prefab "Enemy" que está formado por unha cápsula. Na carpeta do no
 	- Bake Into Pose: On (En todos os apartados). Esta opción non está moi clara pero noutras animacións do asset store para zombies veñen todas activadas.
 
 ### Importar modelo e animacións
+
+#### Modelo
 - Arrastrar o prefab Enemy á escena
 - Desactivar o obxecto cubo pero non eliminalo para saber cal é a parte dianteira do zombie
 - Desactivar a compoñente "Mesh Renderer" do zombie para que non se renderize a cápsula.
 - Arrastrar o modelo do novo zombie dentro do obxecto Enemy que xa tiñamos
 - Mover o modelo e escalalo se é necesario ata que coincida coa altura do obxecto Zombie (cilindro do NavMeshAgent e cápsula do collider). Tamén se pode axustar a altura da compoñente "Capsule collider" e o cilindro da compoñente NavMeshAgent. Todo isto poderase volver a modificar máis tarde.
+
+#### Animacións
 - Crear unha carpeta "animations" e crear dentro un "Animator controller"
 - Arrastrar o ZombieController ao "Controller" da compoñente "Animator" de modelo
 - Doble click en ZombieController para ir á ventana de Animator.
 - Arrastrar a animación á ventana do Animator
+- Se queremos engadir máis animacións hai que arrastralas ao Animator e establecer as transicións entre elas.
+- Unha vez están establecidas as transicións con todas as flechas, hai que indican que provoca o cambio de unha a outra.
+- Por exemplo, para o cambio de "Walk" a "Running" hai que crear un novo parámetro de tipo bool dentro do Animator que se chamará "Aware" e indica se o enemigo está en estado de consciencia ou non. O valor desta variable cambiarase dentro do script.
+- Facemos click na flecha que vai de "Walk" a "Running" e desactivamos "Has Exit Time" no inspector.
+- Na lista de condicións engadimos a variable Aware con valor true.
+- Coa flecha que vai de "Running" a "Walk" facemos o mesmo pero poñendo Aware a false.
+- 
 
 
 
