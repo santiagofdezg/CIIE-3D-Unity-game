@@ -44,7 +44,7 @@ void createAudioSource(){
             Destroy(gameObject);
         }
 
-        //evitar a volver crear o obxecto nos cambios de escena
+        //evitar a volver crear o obxecto nos cambios de escena para que os sons se sigan reproducindo
         DontDestroyOnLoad(gameObject);
 
         createAudioSource();
