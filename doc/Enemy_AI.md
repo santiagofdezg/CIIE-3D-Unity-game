@@ -14,6 +14,8 @@ Os enemigos poden estar en dous estados: aware (consciente), que indica que o en
 
 - Recorrido basado en puntos de referencia: algúns enemigos en lugar de deambular, terán un recorrido fixo marcado por varios puntos de referencia. Hai unha variable que establece se deambulan aleatoriamente ou se seguen un recorrido marcado.
 
+- Pérdida do xogador: se o enemigo está perseguindo ao xogador e o perde de vista durante x segundo, o enemigo volve ao estado de "deambulación".
+
 ### Modificación dalgúns parámetros
 
 - Nav Mesh Agent

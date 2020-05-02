@@ -13,18 +13,24 @@ namespace Characters.Enemy {
 		public float viewDistance = 10f;
 
 		//-- ENEMY MOVEMENT
-		private bool isAware = false;
 		private NavMeshAgent agent;
-		// Temporary attribute, just for debugging with Enemy object. It helps to know when the zombie is aware.
+
+		// Just for debugging with Enemy object. It helps to know when the zombie is aware.
 		// private Renderer zombieRenderer;
 
 		//-- TYPES OF MOVEMENT
 		public float wanderRadius = 10f;
 		private Vector3 wanderPoint; // The point where the enemy is currently wandering to
-		public float wanderSpeed = 0.5f;
+		public float wanderSpeed = 0.5f; // For walking animation
 		public float wanderAngularSpeed = 50f;
-		public float chaseSpeed = 4f;
+		public float chaseSpeed = 4f; // For running animation
 		public float chaseAngularSpeed = 140f;
+
+		//-- DETECT/LOSE THE PLAYER
+		private bool isAware = false; // Two states: aware or unaware
+		private bool isDetecting = false; // If the enemy is currently perceiving the player
+		public float loseThreshold = 5f; // Time (in seconds) until the enemy lose the player after he stop detecting him
+		private float loseTimer = 0;
 
 		//-- TYPES OF AI / WANDERING MODES
 		public enum WanderType { Random, Waypoint };
@@ -57,10 +63,17 @@ namespace Characters.Enemy {
 				agent.speed = chaseSpeed;
 				agent.angularSpeed = chaseAngularSpeed;
 
+				if (!isDetecting) {
+					loseTimer += Time.deltaTime;
+					if (loseTimer >= loseThreshold) {
+						isAware = false;
+						loseTimer = 0;
+					}
+				}
+
 				// Just for debugging with Enemy object
 				// zombieRenderer.material.color = Color.red;
 			} else {
-				SearchForPlayer();
 				Wander();
 				animator.SetBool("Aware", false);
 				agent.speed = wanderSpeed;
@@ -69,6 +82,10 @@ namespace Characters.Enemy {
 				// Just for debugging with Enemy object
 				// zombieRenderer.material.color = Color.blue;
 			}
+			// This function is executed out of the if-else because it always
+			// has to be executed due to the enemy can lose the player when it
+			// is chasing him
+			SearchForPlayer();
 		}
 		
 		public void SearchForPlayer() {
@@ -78,21 +95,30 @@ namespace Characters.Enemy {
 					// Variable to save all the info about the raycast
 					RaycastHit hit;
 					if (Physics.Linecast(transform.position, tpcc.transform.position, out hit, -1)){
-						Debug.Log(hit.transform.tag);
 						if (hit.transform.CompareTag("Player")){
-							// The detection is done through the model of the 
-							// player because if we use the whole Player object
-							// the linecast is calculated with the outer sphere
-							// collider
+							// The detection is done through the outer sphere
+							// collider of the player
 							OnAware();
+						} else {
+							isDetecting = false;
 						}
+					} else {
+						isDetecting = false;
 					}
+				} else {
+					isDetecting = false;
 				}
+			} else {
+				isDetecting = false;
 			}
 		}
 
+		// Enable the "Aware" state of the enemy
 		public void OnAware() {
 			isAware = true;
+			// Restart the player detection parameters
+			isDetecting = true;
+			loseTimer = 0;
 		}
 
 		public Vector3 RandomWanderPoint() {
