@@ -6,7 +6,7 @@ Os enemigos poden estar en dous estados: aware (consciente), que indica que o en
 
 - Campo de visión: se o xogador está dentro do campo de visión e a menor distancia que a distancia de visión do zombie, este pasa a estado aware (conciente).
 
-- Capacidade auditiva: os enemigos poden escoitar ao xogador ou ás accións que realiza, é dicir, o xogador dependendo da acción que realiza fai unha cantidade de ruido que abarca un radio determinado. Por exemplo, cando o xogador fai un disparo xérase unha "esfera de ruido" e se hai algún enemigo dentro, este pasa a estado aware.
+- Capacidade auditiva: os enemigos poden escoitar ao xogador ou ás accións que realiza, é dicir, o xogador dependendo da acción que realiza fai unha cantidade de ruido que abarca un radio determinado. Por exemplo, cando o xogador fai un disparo xérase unha "esfera de ruido" e se hai algún enemigo dentro, este pasa a estado aware. Cada acción pode xerar unha esfera de ruido de diferente tamaño.
 
 - Detección de presencia: un enemigo pode detectar a presencia do xogador cando está cerca aínda que non o vexa. Cando o xogador está andando pode achegarse máis aos enemigos sen que o detecten, pero se está correndo os enemigos detéctano dende máis lonxe.
 
