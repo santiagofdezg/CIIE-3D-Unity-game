@@ -32,7 +32,7 @@ Os enemigos poden estar en dous estados: aware (consciente), que indica que o en
 
 - Zombies que estean en estado "biting" (animación en mixamo) e que desperten ao detectar ao xogador
 
-## Animacións e modelo de zombie
+# Animacións e modelo de zombie
 Se utilizamos Mixamo, a carpeta de texturas conséguese descargando o modelo en formato Collada (.dae), dentro trae unha carpeta coas texturas que imos a utilizar. O modelo en si descárgase en formato "FBX for Unity". Para as animacións asegurarse de marcar a opción "In Place" dentro da configuración da animación en Mixamo e descárganse en formato "FBX for Unity" coa opción "Without skin".
 
 Partimos do prefab "Enemy" que está formado por unha cápsula. Na carpeta do novo zombie hai que pegar o modelo descargado e unha carpeta coas texturas.
@@ -66,10 +66,4 @@ Partimos do prefab "Enemy" que está formado por unha cápsula. Na carpeta do no
 - Facemos click na flecha que vai de "Walk" a "Running" e desactivamos "Has Exit Time" no inspector.
 - Na lista de condicións engadimos a variable Aware con valor true.
 - Coa flecha que vai de "Running" a "Walk" facemos o mesmo pero poñendo Aware a false.
-- 
-
-
-
-
-
 
