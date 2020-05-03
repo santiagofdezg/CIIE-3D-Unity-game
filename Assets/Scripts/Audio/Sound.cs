@@ -15,7 +15,7 @@ public class Sound
 //Fonte de audio de cada clase Sound
     public AudioClip clip;
 
-    public GameObject parent;
+    
 
 //Si fora necesario podense añadir mais parametros
     public string name;
@@ -36,30 +36,7 @@ public class Sound
     //pero e publico para que se poida modificar via script
     public AudioSource source;
 
-//esta funcion actualiza os parametros de objeto e crea un audio source
-    public void updateVariables(AudioManager audioMng){
 
-         if (parent == null){
-            parent = audioMng.gameObject;
-        }
-        
-        if (outputMixer == null){
-            outputMixer = audioMng.MainMixer;
-
-        }
-
-    
-        
-        source = parent.AddComponent<AudioSource>();
-        source.spatialBlend = this.spatialBlend;
-        source.clip = this.clip;
-        source.volume = this.volume;
-        source.pitch = this.pitch;
-        source.outputAudioMixerGroup = outputMixer;
-
-       
-
-    }
 
 
 }

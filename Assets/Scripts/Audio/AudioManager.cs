@@ -20,19 +20,41 @@ public class AudioManager : MonoBehaviour
     //Singleton para limitar el numero de AudioManagers a 1
     public static AudioManager instance;
 
-void createAudioSource(){
+
+
+void createAudioSource(Sound s, GameObject parent){
     //A todos os audios no manager, añadimoslle un audio source no propio obxecto
     //A cada sound añadimoslle unha referencia a ese audio source
-    foreach (Sound s in sounds){
-        //añadimoslle ao audiosource os parametros para poder modificalos dende o inspector
-
+    
+    //añadimoslle ao audiosource os parametros para poder modificalos dende o inspector
     //si o son ten obxecto parent añadimolo como child ali, si non como child do propio audiomanager
-       s.updateVariables(this);
+        
+            if (parent == null){
+                parent = gameObject;
+            }
+            
+            if (s.outputMixer == null){
+                s.outputMixer = MainMixer;
+
+            }
 
         
-    }
+            
+            s.source = parent.AddComponent<AudioSource>();
+            s.source.spatialBlend = s.spatialBlend;
+            s.source.clip = s.clip;
+            s.source.volume = s.volume;
+            s.source.pitch = s.pitch;
+            s.source.outputAudioMixerGroup = s.outputMixer;
 
-}
+        
+
+    
+
+}      
+         
+
+
 
 //chamase antes do Start(), asegura que os Audios esten preparados
     void Awake() 
@@ -47,14 +69,14 @@ void createAudioSource(){
         //evitar a volver crear o obxecto nos cambios de escena para que os sons se sigan reproducindo
         DontDestroyOnLoad(gameObject);
 
-        createAudioSource();
-
+        //createAudioSource();
+         
         
     }
 
     void Start(){
 
-        Play("Test");
+        
 
     }
 
@@ -74,6 +96,35 @@ void createAudioSource(){
             return;
         }
 
+        createAudioSource(s, gameObject);
+        //reproducimolo
+        s.source.Play();
+    }
+
+    public void Play(string name, GameObject gObj){
+        Sound s = searchSound(name);
+
+        if (s==null){
+            Debug.LogWarning("Audio: "+name+" non existe!");
+            return;
+        }
+
+        createAudioSource(s, gObj);
+        //reproducimolo
+        s.source.Play();
+    }
+
+    public void Play(string name, Vector3 position){
+        GameObject soundObject = new GameObject("Sound");
+        Sound s = searchSound(name);
+
+        if (s==null){
+            Debug.LogWarning("Audio: "+name+" non existe!");
+            return;
+        }
+
+        soundObject.transform.position = position;
+        createAudioSource(s,soundObject);
         //reproducimolo
         s.source.Play();
     }
