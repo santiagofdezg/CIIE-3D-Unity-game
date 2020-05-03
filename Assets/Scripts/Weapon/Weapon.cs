@@ -4,7 +4,7 @@ public class Weapon : MonoBehaviour
 {
 
     public Transform Salidabala;
-    public float range = 100f;
+    public float range;
     public Camera cam;
     public ParticleSystem flash;
 
@@ -25,23 +25,10 @@ public class Weapon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
-        {
-            Shoot();
-        }
+     
     }
+ 
 
-    void Shoot(){
-        RaycastHit hit;
-        flash.Play();
-        audioManager.Play("Shot", gameObject);
-        playerNoiseManager.isEnemyHearingShoot(shotSoundIntensity); 
-        if (Physics.Raycast(cam.transform.position , cam.transform.forward, out hit, range))
-        {
-            Debug.Log(hit.transform.name);
-            
-            //PROGRAMAR OS DMGS
-            //GameObject target = hit.transform.GetComponent<GameObject>();
-        }
-    }
+    void Shoot(){}
+    
 }
