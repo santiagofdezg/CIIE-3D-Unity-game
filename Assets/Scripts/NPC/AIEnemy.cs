@@ -7,74 +7,118 @@ namespace Characters.Enemy {
 
 	public class AIEnemy : MonoBehaviour {
 		
-		public ThirdPersonCharacterController tpcc;
-		// Field of view for the zombie
-		public float fieldOfView = 120f;
+		public ThirdPersonCharacterController tpcc; // The Player controller
+
+		public float fieldOfView = 120f; // Field of view for the enemy
 		public float viewDistance = 10f;
-		
-		private bool isAware = false;
+
+		//-- ENEMY MOVEMENT
 		private NavMeshAgent agent;
-		// Temporary attribute, just for debugging. It helps to know when the zombie is aware.
-		private Renderer zombieRenderer;
 
-		// For zombie wandering
+		// Just for debugging with Enemy object. It helps to know when the zombie is aware.
+		// private Renderer zombieRenderer;
+
+		//-- TYPES OF MOVEMENT
 		public float wanderRadius = 10f;
-		// The point where the enemy is currently wandering to
-		private Vector3 wanderPoint;
+		private Vector3 wanderPoint; // The point where the enemy is currently wandering to
+		public float wanderSpeed = 0.5f; // For walking animation
+		public float wanderAngularSpeed = 50f;
+		public float chaseSpeed = 4f; // For running animation
+		public float chaseAngularSpeed = 140f;
 
-		// Choose between different types of IA
+		//-- DETECT/LOSE THE PLAYER
+		private bool isAware = false; // Two states: aware or unaware
+		private bool isDetecting = false; // If the enemy is currently perceiving the player
+		public float loseThreshold = 5f; // Time (in seconds) until the enemy lose the player after he stop detecting him
+		private float loseTimer = 0;
+
+		//-- TYPES OF AI / WANDERING MODES
 		public enum WanderType { Random, Waypoint };
-
 		public WanderType wanderType = WanderType.Random;
 		public Transform[] waypoints; // Array of waypoints, only used when waypoint wandering is selected
-		private int waypointIndex = 0;
-		// The warnings when there are less than 2 waypoints will be thrown once
-		private bool warningThrown = false;
+		private int waypointIndex = 0;		
+		private bool warningThrown = false; // The warnings when there are less than 2 waypoints will be thrown once
 
+		//-- ANIMATIONS
+		private Animator animator;
+
+
+		//-- METHODS
 
 		public void Start() {
 			agent = GetComponent<NavMeshAgent>();
 			wanderPoint = RandomWanderPoint();
-			// Just for debugging
-			zombieRenderer = GetComponent<Renderer>();
+			animator = GetComponentInChildren<Animator>(); // The animator is in the enemy model which is a child of the enemy object
+			
+			// Just for debugging with Enemy object
+			// zombieRenderer = GetComponent<Renderer>();
 		}
 
 		public void Update() {
 			if (isAware) {
-				// This function makes the zombie chases the player
+				// This function makes the enemy chases the player
 				agent.SetDestination(tpcc.transform.position);
-				// Just for debugging
-				zombieRenderer.material.color = Color.red;
+				// The variable Aware of the animator can provoke changes in the animations
+				animator.SetBool("Aware", true);
+				agent.speed = chaseSpeed;
+				agent.angularSpeed = chaseAngularSpeed;
+
+				if (!isDetecting) {
+					loseTimer += Time.deltaTime;
+					if (loseTimer >= loseThreshold) {
+						isAware = false;
+						loseTimer = 0;
+					}
+				}
+
+				// Just for debugging with Enemy object
+				// zombieRenderer.material.color = Color.red;
 			} else {
-				SearchForPlayer();
 				Wander();
-				// Just for debugging
-				zombieRenderer.material.color = Color.blue;
+				animator.SetBool("Aware", false);
+				agent.speed = wanderSpeed;
+				agent.angularSpeed = wanderAngularSpeed;
+				
+				// Just for debugging with Enemy object
+				// zombieRenderer.material.color = Color.blue;
 			}
+			// This function is executed out of the if-else because it always
+			// has to be executed due to the enemy can lose the player when it
+			// is chasing him
+			SearchForPlayer();
 		}
 		
 		public void SearchForPlayer() {
-			// Check if the player is within the zombie viewing angle
+			// Check if the player is within the enemy viewing angle
 			if (Vector3.Angle(Vector3.forward, transform.InverseTransformPoint(tpcc.transform.position)) < (fieldOfView/2)){
 				if (Vector3.Distance(tpcc.transform.position, transform.position) < viewDistance) {
 					// Variable to save all the info about the raycast
 					RaycastHit hit;
 					if (Physics.Linecast(transform.position, tpcc.transform.position, out hit, -1)){
-						Debug.Log(hit.transform.tag);
 						if (hit.transform.CompareTag("Player")){
-							// The detection is done through the model of the 
-							// player because if we use the whole Player object
-							// the linecast is calculated with the outer sphere
-							// collider
+							// The detection is done through the outer sphere
+							// collider of the player
 							OnAware();
+						} else {
+							isDetecting = false;
 						}
+					} else {
+						isDetecting = false;
 					}
+				} else {
+					isDetecting = false;
 				}
+			} else {
+				isDetecting = false;
 			}
 		}
 
+		// Enable the "Aware" state of the enemy
 		public void OnAware() {
 			isAware = true;
+			// Restart the player detection parameters
+			isDetecting = true;
+			loseTimer = 0;
 		}
 
 		public Vector3 RandomWanderPoint() {
@@ -86,6 +130,7 @@ namespace Characters.Enemy {
 			// position we take the value from the enemy.
 			return new Vector3(navHit.position.x, transform.position.y, navHit.position.z);
 		}
+
 
 		public void Wander() {
 			if (wanderType == WanderType.Random) {
@@ -128,7 +173,6 @@ namespace Characters.Enemy {
 							Debug.LogWarning("There is no waypoints assigned to '"+gameObject.name+"'. Setting wandering type to 'Random'.");
 						}
 					}
-
 				}				
 			}	
 		}
