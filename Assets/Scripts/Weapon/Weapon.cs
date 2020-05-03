@@ -21,7 +21,7 @@ public class Weapon : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerNoiseManager = GetComponentInParent<PlayerNoise>();
+        playerNoiseManager = GetComponent<PlayerNoise>();
     }
 
     // Update is called once per frame
