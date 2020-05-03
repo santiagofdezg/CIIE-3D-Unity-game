@@ -6,14 +6,9 @@ public class Fusil : Weapon
     private float FireRate = 10f;
     private float lastfired;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
-    void Update()
+    public override void Update()
     {
         //if (Input.GetButtonDown("Fire1"))
         if (Input.GetButton("Fire1"))
@@ -24,12 +19,13 @@ public class Fusil : Weapon
                 Shoot();
             }
         }
-
     }
 
-    void Shoot(){
+    public override void Shoot(){
         RaycastHit hit;
         flash.Play();
+        audioManager.Play("Shot", gameObject);
+        playerNoiseManager.isEnemyHearingShoot(shotSoundIntensity); 
         if (Physics.Raycast(cam.transform.position , cam.transform.forward, out hit, range))
         {
             Debug.Log(hit.transform.name);

@@ -3,27 +3,11 @@ using UnityEngine;
 public class Pistol : Weapon 
 {
 
-
-      void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-       if (Input.GetButtonDown("Fire1")){
-       
-       
-                Shoot();
-            }
-        
-
-    }
-
-    void Shoot(){
+    public override void Shoot(){
         RaycastHit hit;
         flash.Play();
+        audioManager.Play("Shot", gameObject);
+        playerNoiseManager.isEnemyHearingShoot(shotSoundIntensity); 
         if (Physics.Raycast(cam.transform.position , cam.transform.forward, out hit, range))
         {
             Debug.Log(hit.transform.name);
@@ -32,26 +16,6 @@ public class Pistol : Weapon
             //GameObject target = hit.transform.GetComponent<GameObject>();
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }

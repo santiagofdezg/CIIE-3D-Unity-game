@@ -4,13 +4,15 @@ public class Weapon : MonoBehaviour
 {
 
     public Transform Salidabala;
-    public float range;
+    public float range = 100f;
     public Camera cam;
     public ParticleSystem flash;
 
     // Manage sounds
     public AudioManager audioManager;
-    private PlayerNoise playerNoiseManager;
+
+    [HideInInspector]
+    public PlayerNoise playerNoiseManager;
     // ShotSoundIntensity is a distance unit. If the player is closer that this 
     // distance, the zombie will hear the sound. It can be different for each
     // type of weapon.
@@ -23,12 +25,15 @@ public class Weapon : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public virtual void Update()
     {
-     
+        if (Input.GetButtonDown("Fire1")){
+            Shoot();
+        }
     }
- 
 
-    void Shoot(){}
+
+    public virtual void Shoot(){}
+
     
 }
