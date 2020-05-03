@@ -22,36 +22,55 @@ public class AudioManager : MonoBehaviour
 
 
 
-void createAudioSource(Sound s, GameObject parent){
-    //A todos os audios no manager, añadimoslle un audio source no propio obxecto
-    //A cada sound añadimoslle unha referencia a ese audio source
+    void createAudioSource(Sound s, GameObject parent){
+        //A todos os audios no manager, añadimoslle un audio source no propio obxecto
+        //A cada sound añadimoslle unha referencia a ese audio source
+        
+        //añadimoslle ao audiosource os parametros para poder modificalos dende o inspector
+        //si o son ten obxecto parent añadimolo como child ali, si non como child do propio audiomanager
+            
+        if (parent == null){
+            parent = gameObject;
+        }
+        
+        if (s.outputMixer == null){
+            s.outputMixer = MainMixer;
+
+        }
+
     
-    //añadimoslle ao audiosource os parametros para poder modificalos dende o inspector
-    //si o son ten obxecto parent añadimolo como child ali, si non como child do propio audiomanager
         
-            if (parent == null){
-                parent = gameObject;
-            }
-            
-            if (s.outputMixer == null){
-                s.outputMixer = MainMixer;
+        s.source = parent.AddComponent<AudioSource>();
+        s.source.spatialBlend = s.spatialBlend;
+        s.source.clip = s.clip;
+        s.source.volume = s.volume;
+        s.source.pitch = s.pitch;
+        s.source.outputAudioMixerGroup = s.outputMixer;
+    }      
 
-            }
 
+    void configCurrentAudioSource(Sound s, GameObject parent) {
+        if (parent == null){
+            parent = gameObject;
+        }
         
-            
+        if (s.outputMixer == null){
+            s.outputMixer = MainMixer;
+        }
+
+        AudioSource audioSource = parent.GetComponent<AudioSource>();
+        // Se parent xa ten un AudioSource, non crear outro novo 
+        if (audioSource == null) {
             s.source = parent.AddComponent<AudioSource>();
-            s.source.spatialBlend = s.spatialBlend;
-            s.source.clip = s.clip;
-            s.source.volume = s.volume;
-            s.source.pitch = s.pitch;
-            s.source.outputAudioMixerGroup = s.outputMixer;
-
-        
-
-    
-
-}      
+        } else {
+            s.source = audioSource;
+        }
+        s.source.spatialBlend = s.spatialBlend;
+        s.source.clip = s.clip;
+        s.source.volume = s.volume;
+        s.source.pitch = s.pitch;
+        s.source.outputAudioMixerGroup = s.outputMixer;
+    }
          
 
 
@@ -102,14 +121,21 @@ void createAudioSource(Sound s, GameObject parent){
     }
 
     public void Play(string name, GameObject gObj){
+        Play(name, gObj, false);
+    }
+
+    public void Play(string name, GameObject gObj, bool onSameAudioSource){
         Sound s = searchSound(name);
 
         if (s==null){
             Debug.LogWarning("Audio: "+name+" non existe!");
             return;
         }
-
-        createAudioSource(s, gObj);
+        if (onSameAudioSource) {
+            configCurrentAudioSource(s, gObj);
+        } else {
+            createAudioSource(s, gObj);
+        }
         //reproducimolo
         s.source.Play();
     }
