@@ -6,7 +6,7 @@ using Characters.Enemy;
 public class EnemyHealth : MonoBehaviour {
     
     public float health = 100f;
-    // private bool isDead = false;
+    private bool isDead = false;
     private AIEnemy aiEnemy;
     private NavMeshAgent navMeshAgent;
 
@@ -17,13 +17,13 @@ public class EnemyHealth : MonoBehaviour {
 
     public void TakeDamage(float amount) {
         health -= amount;
-        if (health <= 0) {
+        if (health <= 0 && !isDead) {
             Die();
+            isDead = true;
         }
     }
 
     void Die() {
-        // isDead = true;
         aiEnemy.Kill();
         aiEnemy.enabled = false;
         navMeshAgent.enabled = false;
