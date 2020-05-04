@@ -1,5 +1,24 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1893674594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1169146177537823814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cbab83b8c4e72144b3f4ae015873e77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Salidabala: {fileID: 1169146178063383285}
+  range: 100
+  damage: 10
+  FirstPersonCam: {fileID: 1169146177969835548}
+  flash: {fileID: 1169146178236201056}
+  playerNoiseManager: {fileID: 0}
+  shotSoundIntensity: 20
 --- !u!1 &1169146177969835545
 GameObject:
   m_ObjectHideFlags: 0
@@ -5166,7 +5185,6 @@ GameObject:
   - component: {fileID: 2427427814799736871}
   - component: {fileID: 1474906849}
   - component: {fileID: 1474906847}
-  - component: {fileID: 1314708368294296341}
   m_Layer: 10
   m_Name: PlayerWithModelAndWeapon
   m_TagString: Player
@@ -5301,25 +5319,6 @@ MonoBehaviour:
   zombieLayer:
     serializedVersion: 2
     m_Bits: 512
---- !u!114 &1314708368294296341
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5948720378052231938}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4cbab83b8c4e72144b3f4ae015873e77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Salidabala: {fileID: 1169146178063383285}
-  range: 100
-  damage: 10
-  FirstPersonCam: {fileID: 1169146177969835548}
-  flash: {fileID: 1169146178236201056}
-  playerNoiseManager: {fileID: 0}
-  shotSoundIntensity: 20
 --- !u!1001 &1169146177497674215
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5801,6 +5800,12 @@ PrefabInstance:
 --- !u!4 &1169146177537591398 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: b3248db90896a6f46a0cdb09d671a88f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1169146177537725158}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1169146177537823814 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: b3248db90896a6f46a0cdb09d671a88f,
     type: 3}
   m_PrefabInstance: {fileID: 1169146177537725158}
   m_PrefabAsset: {fileID: 0}
