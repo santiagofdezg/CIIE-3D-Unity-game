@@ -25,7 +25,7 @@ namespace Characters.ThirdPersonCharacter {
         public float maxCameraFOV = 95.0f;
         public Camera thirdPersonCamera;
         public Camera firstPersonCamera;
-        private Camera camera;
+        private Camera currentCamera;
         private bool thirdPersonCamFlag;
 
         //estas variables son pa ver si o personaje ahora mismo esta no suelo
@@ -91,9 +91,9 @@ namespace Characters.ThirdPersonCharacter {
             }
 
             if (isWalking) {
-                camera.fieldOfView = Mathf.Lerp(camera.fieldOfView, minCameraFOV, tCam);
+                currentCamera.fieldOfView = Mathf.Lerp(currentCamera.fieldOfView, minCameraFOV, tCam);
             } else {
-                camera.fieldOfView = Mathf.Lerp(camera.fieldOfView, maxCameraFOV, tCam);
+                currentCamera.fieldOfView = Mathf.Lerp(currentCamera.fieldOfView, maxCameraFOV, tCam);
             }
 
         }  
@@ -110,11 +110,11 @@ namespace Characters.ThirdPersonCharacter {
 
             // cambios entre cámara
             if (thirdPersonCamFlag) {
-                camera = thirdPersonCamera;
+                currentCamera = thirdPersonCamera;
                 thirdPersonCamera.enabled = true;
                 firstPersonCamera.enabled = false;
             } else {
-                camera = firstPersonCamera;
+                currentCamera = firstPersonCamera;
                 thirdPersonCamera.enabled = false;
                 firstPersonCamera.enabled = true;
             }
