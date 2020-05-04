@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 70314163}
   - component: {fileID: 70314162}
   - component: {fileID: 70314161}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Step (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -226,7 +226,7 @@ GameObject:
   - component: {fileID: 103823868}
   - component: {fileID: 103823867}
   - component: {fileID: 103823866}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Step (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -505,7 +505,7 @@ GameObject:
   - component: {fileID: 505336689}
   - component: {fileID: 505336688}
   - component: {fileID: 505336687}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Step (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -580,7 +580,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 505336686}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 20.37, y: 2.15, z: 5.43}
+  m_LocalPosition: {x: 20.46, y: 2.15, z: 5.43}
   m_LocalScale: {x: 4.5199122, y: 0.35787, z: 6.723479}
   m_Children: []
   m_Father: {fileID: 0}
@@ -598,7 +598,7 @@ GameObject:
   - component: {fileID: 898007492}
   - component: {fileID: 898007491}
   - component: {fileID: 898007490}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Step (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1077,7 +1077,7 @@ GameObject:
   - component: {fileID: 1287183055}
   - component: {fileID: 1287183054}
   - component: {fileID: 1287183053}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Step (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1170,7 +1170,7 @@ GameObject:
   - component: {fileID: 1304424723}
   - component: {fileID: 1304424722}
   - component: {fileID: 1304424721}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Step
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1457,7 +1457,7 @@ GameObject:
   - component: {fileID: 1875637338}
   - component: {fileID: 1875637337}
   - component: {fileID: 1875637336}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Step (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1798,7 +1798,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MainMixer: {fileID: 24300002, guid: a9635048612700d41aaa0e43d68c30d2, type: 2}
   sounds:
-  - clip: {fileID: 8300000, guid: 654bf74995f80aee9854353073a7df63, type: 3}
+  - clip: {fileID: 8300000, guid: 0630e5b25d32d6b43b4e51d98c967368, type: 3}
     name: Shot
     volume: 1
     pitch: 1.09

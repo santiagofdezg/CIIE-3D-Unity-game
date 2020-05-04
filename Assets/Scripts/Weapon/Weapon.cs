@@ -9,7 +9,6 @@ public class Weapon : MonoBehaviour
     public ParticleSystem flash;
 
     // Manage sounds
-    public AudioManager audioManager;
 
     [HideInInspector]
     public PlayerNoise playerNoiseManager;
