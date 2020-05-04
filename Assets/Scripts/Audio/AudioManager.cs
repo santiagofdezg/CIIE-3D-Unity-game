@@ -120,6 +120,8 @@ void createAudioSource(Sound s, GameObject parent){
 
 //Recomendase usar oneshot para sons que se van reproducir varias veces como pasos ou disparos
 //Si hai outra chamada a oneshot o audio previo non se acaba de golpe, sin oneshot si
+
+
     public void Play (string name, bool oneShot){
         //buscamos o audio no array
         Sound s = searchSound(name);
@@ -165,6 +167,8 @@ void createAudioSource(Sound s, GameObject parent){
         }
     }
 
+
+//Os audios de OneShot non se poden parar
     public void Stop (string name){
         Sound s = searchSound(name);
 
