@@ -36,9 +36,10 @@ public class Fusil : Weapon
         if (Physics.Raycast(FirstPersonCam.transform.position , FirstPersonCam.transform.forward, out hit, range))
         {
             Debug.Log(hit.transform.name);
-            
-            //PROGRAMAR OS DMGS
-            //GameObject target = hit.transform.GetComponent<GameObject>();
+            if (hit.transform.tag == "Enemy") {
+                EnemyHealth target = hit.transform.GetComponent<EnemyHealth>();
+                target.TakeDamage(damage);
+            }
         }
     }
 }
