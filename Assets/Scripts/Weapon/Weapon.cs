@@ -8,6 +8,8 @@ public class Weapon : MonoBehaviour
     public float damage = 10f;
     public Camera FirstPersonCam;
     public ParticleSystem flash;
+    public GameObject impactEffectEnemy;
+    public GameObject impactEffectSurface;
 
     // Manage sounds
     [HideInInspector]
