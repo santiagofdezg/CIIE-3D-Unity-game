@@ -11,9 +11,12 @@ public class Pistol : Weapon
         if (Physics.Raycast(cam.transform.position , cam.transform.forward, out hit, range))
         {
             Debug.Log(hit.transform.name);
+            Debug.DrawLine(cam.transform.position, hit.point, Color.red);
             
             //PROGRAMAR OS DMGS
-            //GameObject target = hit.transform.GetComponent<GameObject>();
+            
+            if (hit.transform.tag == "Enemy")
+                hit.transform.GetComponent<HealthSystem>().TakeDamage(20);
         }
     }
 
