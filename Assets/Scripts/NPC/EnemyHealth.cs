@@ -27,5 +27,6 @@ public class EnemyHealth : MonoBehaviour {
         aiEnemy.Kill();
         aiEnemy.enabled = false;
         navMeshAgent.enabled = false;
+        enabled = false;
     }
 }
