@@ -7,6 +7,13 @@ public class Fusil : Weapon
     private float lastfired;
 
 
+    public override void Start(){
+        base.Start();
+        damage = 25f;
+        shotSoundIntensity = 25f;
+    }
+
+
     // Update is called once per frame
     public override void Update()
     {
@@ -26,12 +33,13 @@ public class Fusil : Weapon
         flash.Play();
         AudioManager.instance.Play("Shot", gameObject, true);
         playerNoiseManager.isEnemyHearingShoot(shotSoundIntensity); 
-        if (Physics.Raycast(cam.transform.position , cam.transform.forward, out hit, range))
+        if (Physics.Raycast(FirstPersonCam.transform.position , FirstPersonCam.transform.forward, out hit, range))
         {
             Debug.Log(hit.transform.name);
-            
-            //PROGRAMAR OS DMGS
-            //GameObject target = hit.transform.GetComponent<GameObject>();
+            if (hit.transform.tag == "Enemy") {
+                EnemyHealth target = hit.transform.GetComponent<EnemyHealth>();
+                target.TakeDamage(damage);
+            }
         }
     }
 }

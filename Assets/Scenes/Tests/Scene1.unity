@@ -221,18 +221,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce76465ff06ad04439a6b649c2bb7798, type: 3}
---- !u!20 &841422274 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 2427427815855948666, guid: d1f1da56f97dbf14ea4817777ffcf0bd,
+--- !u!1 &445473325 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5836831765569040026, guid: d1f1da56f97dbf14ea4817777ffcf0bd,
     type: 3}
   m_PrefabInstance: {fileID: 1169146178217844824}
   m_PrefabAsset: {fileID: 0}
---- !u!20 &1122488781 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 1169146177969835548, guid: d1f1da56f97dbf14ea4817777ffcf0bd,
-    type: 3}
-  m_PrefabInstance: {fileID: 1169146178217844824}
+--- !u!114 &445473327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 445473325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c5f90f5cf8c50502a6e145a5b340563, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedWeapon: 0
 --- !u!1 &1172343989
 GameObject:
   m_ObjectHideFlags: 0
@@ -394,7 +401,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Salidabala: {fileID: 1543076499}
   range: 100
-  cam: {fileID: 1122488781}
+  damage: 10
+  FirstPersonCam: {fileID: 0}
   flash: {fileID: 86536093}
   playerNoiseManager: {fileID: 0}
   shotSoundIntensity: 20
@@ -1121,20 +1129,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2427427814799736869, guid: d1f1da56f97dbf14ea4817777ffcf0bd,
+    - target: {fileID: 4288024131792332416, guid: d1f1da56f97dbf14ea4817777ffcf0bd,
         type: 3}
-      propertyPath: thirdPersonCamera
-      value: 
-      objectReference: {fileID: 841422274}
-    - target: {fileID: 2427427814799736869, guid: d1f1da56f97dbf14ea4817777ffcf0bd,
+      propertyPath: m_LocalPosition.x
+      value: -0.139
+      objectReference: {fileID: 0}
+    - target: {fileID: 4288024131792332416, guid: d1f1da56f97dbf14ea4817777ffcf0bd,
         type: 3}
-      propertyPath: firstPersonCamera
-      value: 
-      objectReference: {fileID: 1122488781}
-    - target: {fileID: 2427427814799736869, guid: d1f1da56f97dbf14ea4817777ffcf0bd,
+      propertyPath: m_LocalPosition.y
+      value: 0.255
+      objectReference: {fileID: 0}
+    - target: {fileID: 4288024131792332416, guid: d1f1da56f97dbf14ea4817777ffcf0bd,
         type: 3}
-      propertyPath: backwardsMod
-      value: 0.3
+      propertyPath: m_LocalPosition.z
+      value: 0.027
       objectReference: {fileID: 0}
     - target: {fileID: 5948720378052231938, guid: d1f1da56f97dbf14ea4817777ffcf0bd,
         type: 3}

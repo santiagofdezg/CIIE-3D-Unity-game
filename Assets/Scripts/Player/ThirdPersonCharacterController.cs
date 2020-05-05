@@ -25,7 +25,7 @@ namespace Characters.ThirdPersonCharacter {
         public float maxCameraFOV = 95.0f;
         public Camera thirdPersonCamera;
         public Camera firstPersonCamera;
-        private Camera actualCamera;
+        private Camera currentCamera;
         private bool thirdPersonCamFlag;
 
         //estas variables son pa ver si o personaje ahora mismo esta no suelo
@@ -86,9 +86,9 @@ namespace Characters.ThirdPersonCharacter {
             }
 
             if (isWalking) {
-                actualCamera.fieldOfView = Mathf.Lerp(actualCamera.fieldOfView, minCameraFOV, tCam);
+                currentCamera.fieldOfView = Mathf.Lerp(currentCamera.fieldOfView, minCameraFOV, tCam);
             } else {
-                actualCamera.fieldOfView = Mathf.Lerp(actualCamera.fieldOfView, maxCameraFOV, tCam);
+                currentCamera.fieldOfView = Mathf.Lerp(currentCamera.fieldOfView, maxCameraFOV, tCam);
             }
 
         }  
@@ -99,12 +99,12 @@ namespace Characters.ThirdPersonCharacter {
            
          // cambios entre cámara
 
-                if (actualCamera == firstPersonCamera) {
-                    actualCamera = thirdPersonCamera;
+                if (currentCamera == firstPersonCamera) {
+                    currentCamera = thirdPersonCamera;
                     thirdPersonCamera.enabled = true;
                     firstPersonCamera.enabled = false;
                 } else {
-                    actualCamera = firstPersonCamera;
+                    currentCamera = firstPersonCamera;
                     thirdPersonCamera.enabled = false;
                     firstPersonCamera.enabled = true;
                 }
@@ -122,7 +122,16 @@ namespace Characters.ThirdPersonCharacter {
             //poeñmos a variable global ao que estemos nete frame
             characterAnimator.setGrounded(isGrounded);
 
-            
+            // cambios entre cámara
+            if (thirdPersonCamFlag) {
+                currentCamera = thirdPersonCamera;
+                thirdPersonCamera.enabled = true;
+                firstPersonCamera.enabled = false;
+            } else {
+                currentCamera = firstPersonCamera;
+                thirdPersonCamera.enabled = false;
+                firstPersonCamera.enabled = true;
+            }
             
             if (isGrounded && velocity.y < 0) { //mira si esta no suelo
                 velocity.y = -2f; //si esta no suelo aplicamos unha forza pa mantelo pegado
@@ -144,7 +153,7 @@ namespace Characters.ThirdPersonCharacter {
         }
 
         void Start() {
-            actualCamera = thirdPersonCamera;
+            currentCamera = thirdPersonCamera;
             characterAnimator = GetComponent<CharacterAnimator>(); //componente para animacions
             //thirdPersonCamera = GetComponent<ThirdPersonCamera>();
             //firstPersonCamera = GetComponent<FirstPersonCamera>();

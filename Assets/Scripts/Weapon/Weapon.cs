@@ -5,11 +5,11 @@ public class Weapon : MonoBehaviour
 
     public Transform Salidabala;
     public float range = 100f;
-    public Camera cam;
+    public float damage = 10f;
+    public Camera FirstPersonCam;
     public ParticleSystem flash;
 
     // Manage sounds
-
     [HideInInspector]
     public PlayerNoise playerNoiseManager;
     // ShotSoundIntensity is a distance unit. If the player is closer that this 
@@ -18,9 +18,9 @@ public class Weapon : MonoBehaviour
     public float shotSoundIntensity = 20f;
 
     // Start is called before the first frame update
-    void Start()
+    public virtual void Start()
     {
-        playerNoiseManager = GetComponent<PlayerNoise>();
+        playerNoiseManager = GetComponentInParent<PlayerNoise>();
     }
 
     // Update is called once per frame
@@ -32,7 +32,20 @@ public class Weapon : MonoBehaviour
     }
 
 
-    public virtual void Shoot(){}
+    public virtual void Shoot(){
+        RaycastHit hit;
+        flash.Play();
+        AudioManager.instance.Play("Shot", gameObject, true);
+        playerNoiseManager.isEnemyHearingShoot(shotSoundIntensity); 
+        if (Physics.Raycast(FirstPersonCam.transform.position , FirstPersonCam.transform.forward, out hit, range))
+        {
+            Debug.Log(hit.transform.name);
+            if (hit.transform.tag == "Enemy") {
+                EnemyHealth target = hit.transform.GetComponent<EnemyHealth>();
+                target.TakeDamage(damage);
+            }
+        }
+    }
 
     
 }

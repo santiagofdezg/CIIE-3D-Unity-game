@@ -50,6 +50,7 @@ namespace Characters.Enemy {
 			wanderPoint = RandomWanderPoint();
 			animator = GetComponentInChildren<Animator>(); // The animator is in the enemy model which is a child of the enemy object
 			
+			animator.SetBool("isDead", false);
 			// Just for debugging with Enemy object
 			// zombieRenderer = GetComponent<Renderer>();
 		}
@@ -119,6 +120,10 @@ namespace Characters.Enemy {
 			// Restart the player detection parameters
 			isDetecting = true;
 			loseTimer = 0;
+		}
+
+		public void Kill() {
+			animator.SetBool("isDead", true);
 		}
 
 		public Vector3 RandomWanderPoint() {
