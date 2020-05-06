@@ -7,10 +7,6 @@ public class HealthSystem : MonoBehaviour
     public int maxHealth = 100;
     public int currentHealth;
 
-    // Start is called before the first frame update
- 
-
-  
 
     public virtual void TakeDamage(int damage){
         if (currentHealth > 0){

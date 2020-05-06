@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.AI;
+using Characters.Enemy;
 
 public class EnemyHealthSystem : HealthSystem
 {
@@ -13,9 +15,18 @@ public class EnemyHealthSystem : HealthSystem
             currentHealth -= damage;
             Debug.Log("New enemy health: " + currentHealth);
         } else {
-            //Aqui matamos ao enemigo basico
-            Debug.Log("Enemigo morto");
+            Die();
         }
+    }
+
+
+    void Die() {
+        AIEnemy aiEnemy = GetComponent<AIEnemy>();
+        aiEnemy.Kill();
+        aiEnemy.enabled = false;
+        GetComponent<NavMeshAgent>().enabled = false;
+        GetComponent<CapsuleCollider>().enabled = false;
+        enabled = false;
     }
 
 }

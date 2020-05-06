@@ -4,7 +4,7 @@ public class Pistol : Weapon
 {
     public override void Start(){
         base.Start();
-        damage = 20f;
+        damage = 20;
         shotSoundIntensity = 20f;
     }
 
@@ -17,7 +17,7 @@ public class Pistol : Weapon
         {
             Debug.Log(hit.transform.name);
             if (hit.transform.tag == "Enemy") {
-                EnemyHealth target = hit.transform.GetComponent<EnemyHealth>();
+                EnemyHealthSystem target = hit.transform.GetComponent<EnemyHealthSystem>();
                 target.TakeDamage(damage);
             }
         }

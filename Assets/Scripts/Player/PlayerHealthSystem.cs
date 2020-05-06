@@ -11,29 +11,25 @@ public class PlayerHealthSystem : HealthSystem
 
 
     void Start(){
-
-      currentHealth = maxHealth;  
-      healthBar.SetMaxHealth(maxHealth);
-
+        currentHealth = maxHealth;  
+        healthBar.SetMaxHealth(maxHealth);
     }
-void Update() {
 
-    if (Input.GetKeyDown(KeyCode.Space))
-        TakeDamage(20);
 
-    if(currentHealth != maxHealth && !isRegenHealth) 
-         StartCoroutine(RegenHealthOverTime());
-   
-}
+    void Update() {
+        if (Input.GetKeyDown(KeyCode.Space))
+            TakeDamage(20);
+
+        if(currentHealth != maxHealth && !isRegenHealth) 
+            StartCoroutine(RegenHealthOverTime());
+    }
 
     
     public override void TakeDamage(int damage){
-        
         if (currentHealth > 0){
             currentHealth -= damage;
             if (currentHealth<=0) //nunca baixamos a vida de 0
                 currentHealth = 0;
-
 
             healthBar.SetHealth(currentHealth);
             Debug.Log("New health: " + currentHealth);
@@ -43,15 +39,15 @@ void Update() {
         }
     }
 
-    //corutina para regenerar vida
-     private IEnumerator RegenHealthOverTime() {
-     isRegenHealth = true;
-     while (currentHealth < maxHealth) {
-         Heal(healPerTime);
-         healthBar.SetHealth(currentHealth);
-         yield return new WaitForSeconds (regenerationDelay);
-             }
-     isRegenHealth = false;
- }
+    // Corrutina para regenerar vida
+    private IEnumerator RegenHealthOverTime() {
+        isRegenHealth = true;
+        while (currentHealth < maxHealth) {
+            Heal(healPerTime);
+            healthBar.SetHealth(currentHealth);
+            yield return new WaitForSeconds (regenerationDelay);
+        }
+        isRegenHealth = false;
+    }
   
 }

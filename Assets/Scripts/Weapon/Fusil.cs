@@ -9,7 +9,7 @@ public class Fusil : Weapon
 
     public override void Start(){
         base.Start();
-        damage = 25f;
+        damage = 25;
         shotSoundIntensity = 25f;
     }
 
@@ -37,7 +37,7 @@ public class Fusil : Weapon
         {
             Debug.Log(hit.transform.name);
             if (hit.transform.tag == "Enemy") {
-                EnemyHealth target = hit.transform.GetComponent<EnemyHealth>();
+                EnemyHealthSystem target = hit.transform.GetComponent<EnemyHealthSystem>();
                 target.TakeDamage(damage);
             }
         }

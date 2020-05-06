@@ -5,7 +5,7 @@ public class Weapon : MonoBehaviour
 
     public Transform Salidabala;
     public float range = 100f;
-    public float damage = 10f;
+    public int damage = 10;
     public Camera FirstPersonCam;
     public ParticleSystem flash;
 
@@ -41,7 +41,7 @@ public class Weapon : MonoBehaviour
         {
             Debug.Log(hit.transform.name);
             if (hit.transform.tag == "Enemy") {
-                EnemyHealth target = hit.transform.GetComponent<EnemyHealth>();
+                EnemyHealthSystem target = hit.transform.GetComponent<EnemyHealthSystem>();
                 target.TakeDamage(damage);
             }
         }
