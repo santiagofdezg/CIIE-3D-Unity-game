@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Characters.ThirdPersonCharacter;
 
 public class Weapon : MonoBehaviour
 {
@@ -6,7 +7,11 @@ public class Weapon : MonoBehaviour
     public Transform Salidabala;
     public float range = 100f;
     public int damage = 10;
-    public Camera FirstPersonCam;
+    private ThirdPersonCharacterController tpcc;
+    [HideInInspector]
+    public Camera currentCamera;
+    [HideInInspector]
+    public bool thirdPersonCamFlag;
     public ParticleSystem flash;
     public GameObject impactEffectEnemy;
     public GameObject impactEffectSurface;
@@ -23,11 +28,22 @@ public class Weapon : MonoBehaviour
     public virtual void Start()
     {
         playerNoiseManager = GetComponentInParent<PlayerNoise>();
+        tpcc = GetComponentInParent<ThirdPersonCharacterController>();
+        currentCamera = tpcc.currentCamera;
+        thirdPersonCamFlag = tpcc.IsThirdPersonCameraActive();
+    }
+
+    public void updateCamera() {
+        // Depending on the camera, the crosshair may change
+        currentCamera = tpcc.currentCamera;
+        thirdPersonCamFlag = tpcc.IsThirdPersonCameraActive();
     }
 
     // Update is called once per frame
     public virtual void Update()
     {
+        updateCamera();
+
         if (Input.GetButtonDown("Fire1")){
             Shoot();
         }
@@ -39,8 +55,10 @@ public class Weapon : MonoBehaviour
         flash.Play();
         AudioManager.instance.Play("Shot", gameObject, true);
         playerNoiseManager.isEnemyHearingShoot(shotSoundIntensity); 
-        if (Physics.Raycast(FirstPersonCam.transform.position , FirstPersonCam.transform.forward, out hit, range))
-        {
+
+        // Ignore the Player layer, so we get the mask and then it is inverted
+        int playerLayerMask = ~LayerMask.GetMask("Player");
+        if (Physics.Raycast(currentCamera.transform.position , currentCamera.transform.forward, out hit, range, playerLayerMask)) {
             Debug.Log(hit.transform.name);
             GameObject impact;
             if (hit.transform.tag == "Enemy") {
@@ -52,6 +70,8 @@ public class Weapon : MonoBehaviour
             }
             Destroy(impact, 2.5f);
         }
+
+        
     }
 
     

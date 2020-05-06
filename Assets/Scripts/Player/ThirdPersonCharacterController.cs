@@ -25,8 +25,9 @@ namespace Characters.ThirdPersonCharacter {
         public float maxCameraFOV = 95.0f;
         public Camera thirdPersonCamera;
         public Camera firstPersonCamera;
-        private Camera currentCamera;
-        private bool thirdPersonCamFlag;
+        [HideInInspector]
+        public Camera currentCamera;
+        private bool thirdPersonCamFlag = true;
 
         //estas variables son pa ver si o personaje ahora mismo esta no suelo
         public Transform groundCheck;
@@ -36,11 +37,18 @@ namespace Characters.ThirdPersonCharacter {
 
 
         void Start() {
-            // Activar cámara en primeira persoa por defecto
-            currentCamera = firstPersonCamera;
-            thirdPersonCamFlag = false;
-            thirdPersonCamera.enabled = false;
-            firstPersonCamera.enabled = true;
+            // Activar a cámara inicial
+            if (thirdPersonCamFlag) {
+                currentCamera = thirdPersonCamera;
+                thirdPersonCamFlag = true;
+                thirdPersonCamera.enabled = true;
+                firstPersonCamera.enabled = false;
+            } else {
+                currentCamera = firstPersonCamera;
+                thirdPersonCamFlag = false;
+                thirdPersonCamera.enabled = false;
+                firstPersonCamera.enabled = true;
+            }
             characterAnimator = GetComponent<CharacterAnimator>(); //componente para animacions
             //thirdPersonCamera = GetComponent<ThirdPersonCamera>();
             //firstPersonCamera = GetComponent<FirstPersonCamera>();
@@ -113,6 +121,10 @@ namespace Characters.ThirdPersonCharacter {
                     firstPersonCamera.enabled = true;
                 }
             }
+        }
+
+        public bool IsThirdPersonCameraActive() {
+            return thirdPersonCamFlag;
         }
 
         // Update is called once per frame

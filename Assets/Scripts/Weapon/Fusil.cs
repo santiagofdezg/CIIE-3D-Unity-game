@@ -17,7 +17,8 @@ public class Fusil : Weapon
     // Update is called once per frame
     public override void Update()
     {
-        //if (Input.GetButtonDown("Fire1"))
+        updateCamera();
+
         if (Input.GetButton("Fire1"))
         {
             if (Time.time - lastfired > 1 / FireRate)
