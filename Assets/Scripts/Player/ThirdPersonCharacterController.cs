@@ -36,8 +36,11 @@ namespace Characters.ThirdPersonCharacter {
 
 
         void Start() {
-            currentCamera = thirdPersonCamera;
-            thirdPersonCamFlag = true;
+            // Activar cámara en primeira persoa por defecto
+            currentCamera = firstPersonCamera;
+            thirdPersonCamFlag = false;
+            thirdPersonCamera.enabled = false;
+            firstPersonCamera.enabled = true;
             characterAnimator = GetComponent<CharacterAnimator>(); //componente para animacions
             //thirdPersonCamera = GetComponent<ThirdPersonCamera>();
             //firstPersonCamera = GetComponent<FirstPersonCamera>();

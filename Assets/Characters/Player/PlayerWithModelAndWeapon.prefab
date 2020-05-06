@@ -17,6 +17,8 @@ MonoBehaviour:
   damage: 10
   FirstPersonCam: {fileID: 1169146177969835548}
   flash: {fileID: 1169146178236201056}
+  impactEffectEnemy: {fileID: 100002, guid: 5d0dd38fe971179d4afb0910fe485801, type: 3}
+  impactEffectSurface: {fileID: 100002, guid: b81fecd5603b0fb859e47f7d6523793d, type: 3}
   playerNoiseManager: {fileID: 0}
   shotSoundIntensity: 20
 --- !u!1 &1169146177969835545
@@ -9991,6 +9993,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4844992977512310241}
+  - component: {fileID: 827794610}
   m_Layer: 10
   m_Name: WeaponHolder
   m_TagString: Untagged
@@ -10014,6 +10017,19 @@ Transform:
   m_Father: {fileID: 1169146177969835546}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &827794610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5836831765569040026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c5f90f5cf8c50502a6e145a5b340563, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedWeapon: 0
 --- !u!1 &5948720378052231938
 GameObject:
   m_ObjectHideFlags: 0
@@ -10029,6 +10045,7 @@ GameObject:
   - component: {fileID: 2427427814799736871}
   - component: {fileID: 1474906849}
   - component: {fileID: 1474906847}
+  - component: {fileID: 280731779}
   m_Layer: 10
   m_Name: PlayerWithModelAndWeapon
   m_TagString: Player
@@ -10163,6 +10180,23 @@ MonoBehaviour:
   zombieLayer:
     serializedVersion: 2
     m_Bits: 512
+--- !u!114 &280731779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5948720378052231938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d9c99c86c7c0a14d83b77eec3717dfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 0
+  healthBar: {fileID: 0}
+  healPerTime: 2
+  regenerationDelay: 0.5
 --- !u!1 &6091238730892710783
 GameObject:
   m_ObjectHideFlags: 0
@@ -10269,11 +10303,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a126a7abb71b00147bd5228b3cd279a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Salidabala: {fileID: 0}
+  Salidabala: {fileID: 1984574835739307764}
   range: 100
   damage: 10
   FirstPersonCam: {fileID: 1169146177969835548}
-  flash: {fileID: 0}
+  flash: {fileID: 3470623394978619828}
+  impactEffectEnemy: {fileID: 100002, guid: 5d0dd38fe971179d4afb0910fe485801, type: 3}
+  impactEffectSurface: {fileID: 100002, guid: b81fecd5603b0fb859e47f7d6523793d, type: 3}
   playerNoiseManager: {fileID: 0}
   shotSoundIntensity: 20
 --- !u!1001 &1169146177497674215
