@@ -26,6 +26,7 @@ public class EnemyHealthSystem : HealthSystem
         aiEnemy.enabled = false;
         GetComponent<NavMeshAgent>().enabled = false;
         GetComponent<CapsuleCollider>().enabled = false;
+        GetComponent<DamageSystem>().enabled = false;
         enabled = false;
     }
 
