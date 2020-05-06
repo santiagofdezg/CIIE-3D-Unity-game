@@ -17,8 +17,7 @@ namespace Characters.ThirdPersonCharacter {
         }
 
 
-        void CamControl(){
-            
+        void CamControl(){          
             mouseX += Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
             mouseY -= Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 
@@ -26,22 +25,14 @@ namespace Characters.ThirdPersonCharacter {
 
             transform.LookAt(Target); //Hace que la camara siempre enfoque el objeto Target
 
-            if (Input.GetKey(KeyCode.LeftAlt)){ //pulsando o shift solo rotamos a camara
-            
+            if (Input.GetKey(KeyCode.LeftAlt)){ //pulsando o shift solo rotamos a camara     
                 Target.rotation = Quaternion.Euler(mouseY, mouseX, 0); 
-
-            } else {
-            
+            } else {           
                 Target.rotation = Quaternion.Euler(mouseY, mouseX, 0); 
                 Player.rotation = Quaternion.Euler(0, mouseX, 0);  //el jugador tambien rota con la camara
-        
-
             }
-
-
-        
-
         }
+
 
         // Start is called before the first frame update
         void Start()

@@ -35,6 +35,15 @@ namespace Characters.ThirdPersonCharacter {
         bool isGrounded;
 
 
+        void Start() {
+            currentCamera = thirdPersonCamera;
+            thirdPersonCamFlag = true;
+            characterAnimator = GetComponent<CharacterAnimator>(); //componente para animacions
+            //thirdPersonCamera = GetComponent<ThirdPersonCamera>();
+            //firstPersonCamera = GetComponent<FirstPersonCamera>();
+        }
+
+
         // Method to know how much noise is making the player
         public int GetPlayerStealthProfile() {
             if (isWalking) {
@@ -49,7 +58,6 @@ namespace Characters.ThirdPersonCharacter {
 
             //Collemos o movimiento
             float hor = Input.GetAxis("Horizontal");
-            
             //a velocidad de moverse de lado e mais lenta para que sexa coherente
             float ver = Input.GetAxis("Vertical") * 0.8f;
 
@@ -62,21 +70,15 @@ namespace Characters.ThirdPersonCharacter {
             if (isGrounded) { 
                 //SOLO NOS MOVEMOS SI ESTAMOS EN EL SUELO
                 if (Input.GetKey(KeyCode.LeftShift)){ //Shft pos sprint
-              
-                        isWalking = false;
-                        controller.Move(playerMovement * Speed * Time.deltaTime * sprint);
-                        
-                    
+                    isWalking = false;
+                    controller.Move(playerMovement * Speed * Time.deltaTime * sprint);  
                 } else {
-                  
-                        isWalking = true;
-                        controller.Move(playerMovement * Speed * Time.deltaTime);
-                    
+                    isWalking = true;
+                    controller.Move(playerMovement * Speed * Time.deltaTime);
                 }
 
                 if(Input.GetButtonDown("Jump")){
                     velocity.y = Mathf.Sqrt(jumpHeight*-2*gravity); //ecuacion do tiro vertical para o salto
-                    
                     characterAnimator.setTriggerJump();
                 }
                 
@@ -95,16 +97,15 @@ namespace Characters.ThirdPersonCharacter {
 
         void checkCam(){
             if (Input.GetKeyDown(KeyCode.V)) {
-              
-           
-         // cambios entre cámara
-
-                if (currentCamera == firstPersonCamera) {
+                // cambios entre cámara
+                if (!thirdPersonCamFlag) {
                     currentCamera = thirdPersonCamera;
+                    thirdPersonCamFlag = true;
                     thirdPersonCamera.enabled = true;
                     firstPersonCamera.enabled = false;
                 } else {
                     currentCamera = firstPersonCamera;
+                    thirdPersonCamFlag = false;
                     thirdPersonCamera.enabled = false;
                     firstPersonCamera.enabled = true;
                 }
@@ -118,20 +119,8 @@ namespace Characters.ThirdPersonCharacter {
             //esa mascara colisiona ca layer ground, si o fai true si non false
             isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
             
-
             //poeñmos a variable global ao que estemos nete frame
             characterAnimator.setGrounded(isGrounded);
-
-            // cambios entre cámara
-            if (thirdPersonCamFlag) {
-                currentCamera = thirdPersonCamera;
-                thirdPersonCamera.enabled = true;
-                firstPersonCamera.enabled = false;
-            } else {
-                currentCamera = firstPersonCamera;
-                thirdPersonCamera.enabled = false;
-                firstPersonCamera.enabled = true;
-            }
             
             if (isGrounded && velocity.y < 0) { //mira si esta no suelo
                 velocity.y = -2f; //si esta no suelo aplicamos unha forza pa mantelo pegado
@@ -139,8 +128,6 @@ namespace Characters.ThirdPersonCharacter {
 
             PlayerMovement(); //chamamos ao movemento
 
-           
-            
             //aplicamos a gravedad
             velocity.y += gravity * Time.deltaTime; 
 
@@ -149,15 +136,9 @@ namespace Characters.ThirdPersonCharacter {
             // multiplicamos dos veces por deltatime por la ecuacion de la velocidad (1/2g * t^2)
             
             controller.Move(velocity * Time.deltaTime);
-            
         }
 
-        void Start() {
-            currentCamera = thirdPersonCamera;
-            characterAnimator = GetComponent<CharacterAnimator>(); //componente para animacions
-            //thirdPersonCamera = GetComponent<ThirdPersonCamera>();
-            //firstPersonCamera = GetComponent<FirstPersonCamera>();
-        }
+        
     }
 
 }

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &1907048593
+--- !u!114 &4678597627999293894
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9,10 +9,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 6942132666397269207}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9ef0c4051e20dbc8960f4a3d8b5635f, type: 3}
+  m_Script: {fileID: 11500000, guid: 03650d05875481e4fb09af959553087d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  maxHealth: 100
+  currentHealth: 0
+--- !u!114 &8458026380057767246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6942132666397269207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a06f88c4c7023e498887263d117e8bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldownDmg: 1
+  maxDmg: 20
 --- !u!1001 &6507171818082122103
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -93,7 +108,7 @@ PrefabInstance:
     - target: {fileID: 4186507808801891744, guid: 7cd6849c2fe92c3a58407ae688ef2683,
         type: 3}
       propertyPath: m_Name
-      value: Zombie
+      value: Zombie01
       objectReference: {fileID: 0}
     - target: {fileID: 4186507808801891745, guid: 7cd6849c2fe92c3a58407ae688ef2683,
         type: 3}
