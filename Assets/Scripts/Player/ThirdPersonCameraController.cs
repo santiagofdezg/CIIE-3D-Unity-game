@@ -23,7 +23,7 @@ namespace Characters.ThirdPersonCharacter {
 
             mouseY = Mathf.Clamp(mouseY, -35, 60); // limita os angulos de movimientos da camara
 
-            transform.LookAt(Target); //Hace que la camara siempre enfoque el objeto Target
+            // transform.LookAt(Target); //Hace que la camara siempre enfoque el objeto Target
 
             if (Input.GetKey(KeyCode.LeftAlt)){ //pulsando o shift solo rotamos a camara     
                 Target.rotation = Quaternion.Euler(mouseY, mouseX, 0); 
