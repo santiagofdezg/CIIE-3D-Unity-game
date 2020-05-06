@@ -28,18 +28,5 @@ public class Fusil : Weapon
         }
     }
 
-    public override void Shoot(){
-        RaycastHit hit;
-        flash.Play();
-        AudioManager.instance.Play("Shot", gameObject, true);
-        playerNoiseManager.isEnemyHearingShoot(shotSoundIntensity); 
-        if (Physics.Raycast(FirstPersonCam.transform.position , FirstPersonCam.transform.forward, out hit, range))
-        {
-            Debug.Log(hit.transform.name);
-            if (hit.transform.tag == "Enemy") {
-                EnemyHealthSystem target = hit.transform.GetComponent<EnemyHealthSystem>();
-                target.TakeDamage(damage);
-            }
-        }
-    }
+
 }
