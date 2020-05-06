@@ -122,9 +122,6 @@ namespace Characters.Enemy {
 			loseTimer = 0;
 		}
 
-		public void Kill() {
-			animator.SetBool("isDead", true);
-		}
 
 		public Vector3 RandomWanderPoint() {
 			// It calculates a random position within a sphere

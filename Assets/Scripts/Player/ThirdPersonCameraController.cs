@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿
 using UnityEngine;
 
 namespace Characters.ThirdPersonCharacter {
@@ -7,30 +6,28 @@ namespace Characters.ThirdPersonCharacter {
     public class ThirdPersonCameraController : MonoBehaviour
     {
 
-        float mouseSensitivity = 100f;
+        public float mouseSensitivity = 100f;
+        public float mouseX;
+        public float mouseY;
+        public float positiveClampAngle = 60;
+        public float negativeClampAngle = 35;
     
         public Transform Target, Player;
-        float mouseX,mouseY;
 
-        void Update() { //Late update se llama justo despues del Update
-            CamControl();
-        }
-
-
-        void CamControl(){          
+        void Update() {
             mouseX += Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
             mouseY -= Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 
-            mouseY = Mathf.Clamp(mouseY, -35, 60); // limita os angulos de movimientos da camara
+            mouseY = Mathf.Clamp(mouseY, -negativeClampAngle, positiveClampAngle); // limita os angulos de movimientos da camara
 
             // transform.LookAt(Target); //Hace que la camara siempre enfoque el objeto Target
 
-            if (Input.GetKey(KeyCode.LeftAlt)){ //pulsando o shift solo rotamos a camara     
-                Target.rotation = Quaternion.Euler(mouseY, mouseX, 0); 
-            } else {           
+            // if (Input.GetKey(KeyCode.LeftAlt)){ //pulsando o shift solo rotamos a camara     
+            //     Target.rotation = Quaternion.Euler(mouseY, mouseX, 0); 
+            // } else {           
                 Target.rotation = Quaternion.Euler(mouseY, mouseX, 0); 
                 Player.rotation = Quaternion.Euler(0, mouseX, 0);  //el jugador tambien rota con la camara
-            }
+            // }
         }
 
 

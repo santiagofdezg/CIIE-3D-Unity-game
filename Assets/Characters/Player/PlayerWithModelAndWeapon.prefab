@@ -15,7 +15,8 @@ MonoBehaviour:
   Salidabala: {fileID: 1169146178063383285}
   range: 100
   damage: 10
-  FirstPersonCam: {fileID: 1169146177969835548}
+  currentCamera: {fileID: 0}
+  thirdPersonCamFlag: 0
   flash: {fileID: 1169146178236201056}
   impactEffectEnemy: {fileID: 100002, guid: 5d0dd38fe971179d4afb0910fe485801, type: 3}
   impactEffectSurface: {fileID: 100002, guid: b81fecd5603b0fb859e47f7d6523793d, type: 3}
@@ -10132,6 +10133,7 @@ MonoBehaviour:
   maxCameraFOV: 95
   thirdPersonCamera: {fileID: 2427427815855948666}
   firstPersonCamera: {fileID: 1169146177969835548}
+  currentCamera: {fileID: 0}
   groundCheck: {fileID: 2427427816072261617}
   groundDistance: 0.4
   groundMask:
@@ -10306,7 +10308,8 @@ MonoBehaviour:
   Salidabala: {fileID: 1984574835739307764}
   range: 100
   damage: 10
-  FirstPersonCam: {fileID: 1169146177969835548}
+  currentCamera: {fileID: 0}
+  thirdPersonCamFlag: 0
   flash: {fileID: 3470623394978619828}
   impactEffectEnemy: {fileID: 100002, guid: 5d0dd38fe971179d4afb0910fe485801, type: 3}
   impactEffectSurface: {fileID: 100002, guid: b81fecd5603b0fb859e47f7d6523793d, type: 3}

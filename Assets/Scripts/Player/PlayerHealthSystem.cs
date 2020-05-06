@@ -17,9 +17,6 @@ public class PlayerHealthSystem : HealthSystem
 
 
     void Update() {
-        if (Input.GetKeyDown(KeyCode.Space))
-            TakeDamage(20);
-
         if(currentHealth != maxHealth && !isRegenHealth) 
             StartCoroutine(RegenHealthOverTime());
     }
