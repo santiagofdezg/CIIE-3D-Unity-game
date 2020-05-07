@@ -4,11 +4,13 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
-public class PauseMenu : MonoBehaviour
+public class PauseMenu : Subject
 {
 
     public static bool isPaused = false;
     public GameObject pauseMenuUI;
+
+
 
 
     public void Resume(){
@@ -20,6 +22,9 @@ public class PauseMenu : MonoBehaviour
         //tempo a velocidade normal outra vez
         Time.timeScale = 1f;
         isPaused = false;
+
+        //Notificamos observers
+        Notify(NotificationType.UnPaused);
 
 
     }
@@ -35,6 +40,9 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 0f;
         isPaused = true;
 
+        //Notificamos observers
+        Notify(NotificationType.Paused);
+
     }
 
     public void QuitGame(){
@@ -47,6 +55,7 @@ public class PauseMenu : MonoBehaviour
         SceneManager.LoadScene("MainMenu"); 
 
     }
+
 
     // Update is called once per frame
     void Update()

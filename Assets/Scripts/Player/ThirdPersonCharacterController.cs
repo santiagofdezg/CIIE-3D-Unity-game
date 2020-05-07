@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Characters.ThirdPersonCharacter {
     
-    public class ThirdPersonCharacterController : MonoBehaviour {
+    public class ThirdPersonCharacterController : Observer {
 
         public CharacterAnimator characterAnimator;
         public CharacterController controller;
@@ -35,6 +35,16 @@ namespace Characters.ThirdPersonCharacter {
         public LayerMask groundMask;
         bool isGrounded;
 
+    //Comprobar si o xogo esta pausado usando o observer
+        public override void OnNotify(NotificationType notificationType){
+            if (notificationType == NotificationType.Paused){
+                this.enabled = false;
+            } else if (notificationType == NotificationType.UnPaused){
+                this.enabled = true;
+            }
+
+
+        }
 
         void Start() {
             // Activar a cámara inicial
@@ -49,9 +59,18 @@ namespace Characters.ThirdPersonCharacter {
                 thirdPersonCamera.enabled = false;
                 firstPersonCamera.enabled = true;
             }
+
             characterAnimator = GetComponent<CharacterAnimator>(); //componente para animacions
             //thirdPersonCamera = GetComponent<ThirdPersonCamera>();
             //firstPersonCamera = GetComponent<FirstPersonCamera>();
+
+            //Añadir observer ao subject
+            //TODO: Esto e moi lento, ainda que solo se fai 1 vez, recomendable añadilos dendo o inspector?
+            //Crear un manager que notifique?
+            foreach (var obs in FindObjectsOfType<PauseMenu>()){
+                obs.RegisterObserver(this);
+            }
+
         }
 
 

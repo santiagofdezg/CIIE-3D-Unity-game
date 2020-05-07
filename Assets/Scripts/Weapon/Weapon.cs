@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Characters.ThirdPersonCharacter;
 
-public class Weapon : MonoBehaviour
+public class Weapon : Observer
 {
 
     public Transform Salidabala;
@@ -24,6 +24,15 @@ public class Weapon : MonoBehaviour
     // type of weapon.
     public float shotSoundIntensity = 20f;
 
+
+
+    public override void OnNotify(NotificationType notificationType){
+        if (notificationType == NotificationType.Paused){
+            this.enabled = false;
+        } else if (notificationType == NotificationType.UnPaused){
+            this.enabled = true;
+        }
+    }
     // Start is called before the first frame update
     public virtual void Start()
     {
