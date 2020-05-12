@@ -12,6 +12,7 @@ public class Fusil : Weapon
         damage = 25;
         shotSoundIntensity = 25f;
         shotSoundName = "Shot_fusil";
+        ammoReloadingSoundName = "Ammo_reloading_fusil";
         //Añadir observer ao subject
         //TODO: Esto e moi lento, ainda que solo se fai 1 vez, recomendable añadilos dendo o inspector?
         //Crear un manager que notifique?
@@ -20,21 +21,15 @@ public class Fusil : Weapon
         }       
     }
 
-
-    // Update is called once per frame
-    public override void Update()
-    {
-        updateCamera();
-
-        if (Input.GetButton("Fire1"))
-        {
-            if (Time.time - lastfired > 1 / FireRate)
-            {
+    public override void checkShootingButton() {
+        if (Input.GetButton("Fire1")) {
+            if (Time.time - lastfired > 1 / FireRate) {
                 lastfired = Time.time;
                 Shoot();
             }
         }
     }
+
 
 
 }

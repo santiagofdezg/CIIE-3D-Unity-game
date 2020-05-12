@@ -2294,8 +2294,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MainMixer: {fileID: 24300002, guid: a9635048612700d41aaa0e43d68c30d2, type: 2}
   sounds:
-  - clip: {fileID: 8300000, guid: 0630e5b25d32d6b43b4e51d98c967368, type: 3}
-    name: Shot
+  - clip: {fileID: 8300000, guid: 1022c373b93aac25ea7e45b459e9bc2a, type: 3}
+    name: Shot_pistol
+    volume: 1
+    pitch: 1.09
+    spatialBlend: 1
+    outputMixer: {fileID: 0}
+    loop: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 7ec8134718f20e3748fd56f9b85c4a16, type: 3}
+    name: Shot_fusil
+    volume: 1
+    pitch: 1.09
+    spatialBlend: 1
+    outputMixer: {fileID: 0}
+    loop: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 006c375696c5077e5a1ea8e475eb48cc, type: 3}
+    name: Ammo_reloading_pistol
+    volume: 1
+    pitch: 1.09
+    spatialBlend: 1
+    outputMixer: {fileID: 0}
+    loop: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 006c375696c5077e5a1ea8e475eb48cc, type: 3}
+    name: Ammo_reloading_fusil
     volume: 1
     pitch: 1.09
     spatialBlend: 1
@@ -2313,6 +2337,14 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 1006983341}
+    - target: {fileID: 1893674594, guid: d1f1da56f97dbf14ea4817777ffcf0bd, type: 3}
+      propertyPath: reloadTime
+      value: 2.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1893674594, guid: d1f1da56f97dbf14ea4817777ffcf0bd, type: 3}
+      propertyPath: maxAmmo
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2427427815855948664, guid: d1f1da56f97dbf14ea4817777ffcf0bd,
         type: 3}
       propertyPath: m_Enabled
@@ -2372,6 +2404,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Camera_base
+      objectReference: {fileID: 0}
+    - target: {fileID: 5810473852084581724, guid: d1f1da56f97dbf14ea4817777ffcf0bd,
+        type: 3}
+      propertyPath: reloadTime
+      value: 2.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5810473852084581724, guid: d1f1da56f97dbf14ea4817777ffcf0bd,
+        type: 3}
+      propertyPath: maxAmmo
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5948720378052231938, guid: d1f1da56f97dbf14ea4817777ffcf0bd,
         type: 3}
