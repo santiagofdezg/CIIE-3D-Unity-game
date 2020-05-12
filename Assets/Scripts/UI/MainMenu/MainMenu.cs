@@ -16,7 +16,6 @@ public class MainMenu : MonoBehaviour
 
     void Start(){
         AudioManager.instance.Play("Test", false);
-
     }
 
 }

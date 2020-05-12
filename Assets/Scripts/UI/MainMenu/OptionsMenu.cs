@@ -66,7 +66,7 @@ public class OptionsMenu : MonoBehaviour
       //Cargamos e actualizamos o volumen maestro
         value = PlayerPrefs.GetFloat("MasterVolume", volumeSlider.value);
         audioMixer.SetFloat("MasterVolume", value);
-        Debug.Log(value);
+        // Debug.Log(value);
         volumeSlider.value = value;
 
         
