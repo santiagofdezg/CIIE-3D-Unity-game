@@ -23,6 +23,10 @@ public class Weapon : Observer
     // distance, the zombie will hear the sound. It can be different for each
     // type of weapon.
     public float shotSoundIntensity = 20f;
+    [HideInInspector]
+    public string shotSoundName = "Shot_pistol";
+
+
 
 
 
@@ -53,16 +57,19 @@ public class Weapon : Observer
     {
         updateCamera();
 
+
+
         if (Input.GetButtonDown("Fire1")){
             Shoot();
         }
     }
 
 
+
     public virtual void Shoot(){
         RaycastHit hit;
         flash.Play();
-        AudioManager.instance.Play("Shot", gameObject, true);
+        AudioManager.instance.Play(shotSoundName, gameObject, true);
         playerNoiseManager.isEnemyHearingShoot(shotSoundIntensity); 
 
         // Ignore the Player layer, so we get the mask and then it is inverted

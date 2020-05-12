@@ -11,6 +11,7 @@ public class Fusil : Weapon
         base.Start();
         damage = 25;
         shotSoundIntensity = 25f;
+        shotSoundName = "Shot_fusil";
         //Añadir observer ao subject
         //TODO: Esto e moi lento, ainda que solo se fai 1 vez, recomendable añadilos dendo o inspector?
         //Crear un manager que notifique?

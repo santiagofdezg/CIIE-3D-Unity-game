@@ -12,16 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cbab83b8c4e72144b3f4ae015873e77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Salidabala: {fileID: 1169146178063383285}
   range: 100
   damage: 10
   currentCamera: {fileID: 0}
   thirdPersonCamFlag: 0
   flash: {fileID: 1169146178236201056}
+  Salidabala: {fileID: 1169146178063383285}
   impactEffectEnemy: {fileID: 100002, guid: 5d0dd38fe971179d4afb0910fe485801, type: 3}
   impactEffectSurface: {fileID: 100002, guid: b81fecd5603b0fb859e47f7d6523793d, type: 3}
   playerNoiseManager: {fileID: 0}
   shotSoundIntensity: 20
+  shotSoundName: Shot_pistol
+  maxAmmo: 15
+  reloadTime: 1
 --- !u!1 &1169146177969835545
 GameObject:
   m_ObjectHideFlags: 0
@@ -9921,6 +9924,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c898025b5cd47a4c8297684830f95b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mouseSensitivity: 100
+  mouseX: 0
+  mouseY: 0
+  positiveClampAngle: 60
+  negativeClampAngle: 35
   Target: {fileID: 2427427815887860781}
   Player: {fileID: 7265784433921798417}
 --- !u!1 &2427427815887860778
@@ -10305,16 +10313,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a126a7abb71b00147bd5228b3cd279a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Salidabala: {fileID: 1984574835739307764}
   range: 100
   damage: 10
   currentCamera: {fileID: 0}
   thirdPersonCamFlag: 0
   flash: {fileID: 3470623394978619828}
+  Salidabala: {fileID: 1984574835739307764}
   impactEffectEnemy: {fileID: 100002, guid: 5d0dd38fe971179d4afb0910fe485801, type: 3}
   impactEffectSurface: {fileID: 100002, guid: b81fecd5603b0fb859e47f7d6523793d, type: 3}
   playerNoiseManager: {fileID: 0}
   shotSoundIntensity: 20
+  shotSoundName: Shot_pistol
+  maxAmmo: 15
+  reloadTime: 1
 --- !u!1001 &1169146177497674215
 PrefabInstance:
   m_ObjectHideFlags: 0
