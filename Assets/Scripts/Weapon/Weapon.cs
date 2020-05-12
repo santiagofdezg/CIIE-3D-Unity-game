@@ -1,18 +1,26 @@
 ﻿using UnityEngine;
 using Characters.ThirdPersonCharacter;
+using System.Collections;
 
 public class Weapon : Observer
 {
 
-    public Transform Salidabala;
+    
     public float range = 100f;
     public int damage = 10;
     private ThirdPersonCharacterController tpcc;
+
+    // Cameras management
     [HideInInspector]
     public Camera currentCamera;
     [HideInInspector]
     public bool thirdPersonCamFlag;
+
+    // Shooting effect
     public ParticleSystem flash;
+    public Transform Salidabala;
+
+    // Bullet impact effects
     public GameObject impactEffectEnemy;
     public GameObject impactEffectSurface;
 
@@ -23,6 +31,16 @@ public class Weapon : Observer
     // distance, the zombie will hear the sound. It can be different for each
     // type of weapon.
     public float shotSoundIntensity = 20f;
+    [HideInInspector]
+    public string shotSoundName = "Shot_pistol";
+
+    // Ammo & reloading
+    public int maxAmmo = 10;
+    private int currentAmmo;
+    public float reloadTime = 2.2f;
+    private bool isReloading = false;
+    [HideInInspector]
+    public string ammoReloadingSoundName = "Ammo_reloading_pistol";
 
 
 
@@ -34,12 +52,17 @@ public class Weapon : Observer
         }
     }
     // Start is called before the first frame update
-    public virtual void Start()
-    {
+    public virtual void Start() {
         playerNoiseManager = GetComponentInParent<PlayerNoise>();
         tpcc = GetComponentInParent<ThirdPersonCharacterController>();
         currentCamera = tpcc.currentCamera;
         thirdPersonCamFlag = tpcc.IsThirdPersonCameraActive();
+        currentAmmo = maxAmmo;
+    }
+
+    // It's executed each time the weapon is enabled
+    void OnEnable() {
+        isReloading = false;
     }
 
     public void updateCamera() {
@@ -48,27 +71,48 @@ public class Weapon : Observer
         thirdPersonCamFlag = tpcc.IsThirdPersonCameraActive();
     }
 
+    public virtual void checkShootingButton() {
+        if (Input.GetButtonDown("Fire1"))
+            Shoot();
+    }
+
     // Update is called once per frame
-    public virtual void Update()
-    {
+    public virtual void Update() {
         updateCamera();
 
-        if (Input.GetButtonDown("Fire1")){
-            Shoot();
+        if (isReloading)
+            return;
+        
+        if (currentAmmo <=0) {
+            StartCoroutine(Reload());
+            return;
         }
+
+        checkShootingButton();
+    }
+
+
+    IEnumerator Reload() {
+        isReloading = true;
+        AudioManager.instance.Play(ammoReloadingSoundName, gameObject, true);
+        yield return new WaitForSeconds(reloadTime);
+        currentAmmo = maxAmmo;
+        isReloading = false;
     }
 
 
     public virtual void Shoot(){
+        currentAmmo--;
+
         RaycastHit hit;
         flash.Play();
-        AudioManager.instance.Play("Shot", gameObject, true);
+        AudioManager.instance.Play(shotSoundName, gameObject, true);
         playerNoiseManager.isEnemyHearingShoot(shotSoundIntensity); 
 
         // Ignore the Player layer, so we get the mask and then it is inverted
         int playerLayerMask = ~LayerMask.GetMask("Player");
         if (Physics.Raycast(currentCamera.transform.position , currentCamera.transform.forward, out hit, range, playerLayerMask)) {
-            Debug.Log(hit.transform.name);
+            // Debug.Log(hit.transform.name);
             GameObject impact;
             if (hit.transform.tag == "Enemy") {
                 EnemyHealthSystem target = hit.transform.GetComponent<EnemyHealthSystem>();
@@ -79,8 +123,7 @@ public class Weapon : Observer
             }
             Destroy(impact, 2.5f);
         }
-
-        
+ 
     }
 
     

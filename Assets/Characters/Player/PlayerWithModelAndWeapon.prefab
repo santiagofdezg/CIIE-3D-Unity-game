@@ -12,16 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cbab83b8c4e72144b3f4ae015873e77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Salidabala: {fileID: 1169146178063383285}
   range: 100
   damage: 10
   currentCamera: {fileID: 0}
   thirdPersonCamFlag: 0
   flash: {fileID: 1169146178236201056}
+  Salidabala: {fileID: 1169146178063383285}
   impactEffectEnemy: {fileID: 100002, guid: 5d0dd38fe971179d4afb0910fe485801, type: 3}
   impactEffectSurface: {fileID: 100002, guid: b81fecd5603b0fb859e47f7d6523793d, type: 3}
   playerNoiseManager: {fileID: 0}
   shotSoundIntensity: 20
+  shotSoundName: Shot_pistol
+  maxAmmo: 10
+  reloadTime: 2.2
+  ammoReloadingSoundName: Ammo_reloading_pistol
 --- !u!1 &1169146177969835545
 GameObject:
   m_ObjectHideFlags: 0
@@ -9837,6 +9841,7 @@ GameObject:
   - component: {fileID: 2427427815855948666}
   - component: {fileID: 2427427815855948667}
   - component: {fileID: 2427427815855948664}
+  - component: {fileID: 1329666905}
   m_Layer: 10
   m_Name: ThirdPerson_cam
   m_TagString: MainCamera
@@ -9851,13 +9856,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2427427815855948662}
-  m_LocalRotation: {x: 0.10450326, y: -0, z: -0, w: 0.9945246}
-  m_LocalPosition: {x: 0.01, y: 0.38, z: -2.85}
+  m_LocalRotation: {x: 0.021727553, y: -0.07109438, z: 0.022915412, w: 0.99696964}
+  m_LocalPosition: {x: 0.806, y: 0.008, z: -1.649}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2427427815887860781}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 11.997001, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 2.67, y: -8.101001, z: 2.444}
 --- !u!20 &2427427815855948666
 Camera:
   m_ObjectHideFlags: 0
@@ -9921,8 +9926,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c898025b5cd47a4c8297684830f95b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mouseSensitivity: 100
+  mouseX: 0
+  mouseY: 0
+  positiveClampAngle: 60
+  negativeClampAngle: 35
   Target: {fileID: 2427427815887860781}
   Player: {fileID: 7265784433921798417}
+--- !u!114 &1329666905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2427427815855948662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc2e6f87a885685cbb2115787c305635, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minDistance: 1
+  maxDistance: 1.8
+  smooth: 10
+  dollyDirAdjusted: {x: 0, y: 0, z: 0}
+  distance: 0
 --- !u!1 &2427427815887860778
 GameObject:
   m_ObjectHideFlags: 0
@@ -9933,7 +9960,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2427427815887860781}
   m_Layer: 10
-  m_Name: Target
+  m_Name: Camera_base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10305,16 +10332,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a126a7abb71b00147bd5228b3cd279a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Salidabala: {fileID: 1984574835739307764}
   range: 100
   damage: 10
   currentCamera: {fileID: 0}
   thirdPersonCamFlag: 0
   flash: {fileID: 3470623394978619828}
+  Salidabala: {fileID: 1984574835739307764}
   impactEffectEnemy: {fileID: 100002, guid: 5d0dd38fe971179d4afb0910fe485801, type: 3}
   impactEffectSurface: {fileID: 100002, guid: b81fecd5603b0fb859e47f7d6523793d, type: 3}
   playerNoiseManager: {fileID: 0}
   shotSoundIntensity: 20
+  shotSoundName: Shot_pistol
+  maxAmmo: 10
+  reloadTime: 2.2
+  ammoReloadingSoundName: Ammo_reloading_pistol
 --- !u!1001 &1169146177497674215
 PrefabInstance:
   m_ObjectHideFlags: 0
