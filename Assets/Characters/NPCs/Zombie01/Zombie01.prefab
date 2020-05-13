@@ -112,6 +112,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4186507808801891745, guid: 7cd6849c2fe92c3a58407ae688ef2683,
         type: 3}
+      propertyPath: waypoints.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4186507808801891745, guid: 7cd6849c2fe92c3a58407ae688ef2683,
+        type: 3}
       propertyPath: tpcc
       value: 
       objectReference: {fileID: 0}
@@ -148,7 +153,7 @@ PrefabInstance:
     - target: {fileID: 4186507808801891745, guid: 7cd6849c2fe92c3a58407ae688ef2683,
         type: 3}
       propertyPath: wanderType
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4186507808801891746, guid: 7cd6849c2fe92c3a58407ae688ef2683,
         type: 3}

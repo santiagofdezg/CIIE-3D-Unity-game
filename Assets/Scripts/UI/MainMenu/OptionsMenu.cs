@@ -50,7 +50,7 @@ public class OptionsMenu : MonoBehaviour
       
       //añadimos as opcions
       resolutionDropdown.AddOptions(options);
-      Debug.Log(currentRes);
+      // Debug.Log(currentRes);
       //Fijamos a resolucion actual como predeterminada no dropdown
       resolutionDropdown.value = currentRes;
 
@@ -96,7 +96,6 @@ public class OptionsMenu : MonoBehaviour
     void Awake(){
       getResolutions();
       loadPrefs();
-      Debug.Log("hola");
     }
 
 //Cambia o volumen de master

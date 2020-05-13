@@ -121,7 +121,7 @@ public class Weapon : Observer
             } else {
                 impact = Instantiate(impactEffectSurface, hit.point, Quaternion.LookRotation(hit.normal));
             }
-            Destroy(impact, 2.5f);
+            Destroy(impact, 1.5f);
         }
  
     }
