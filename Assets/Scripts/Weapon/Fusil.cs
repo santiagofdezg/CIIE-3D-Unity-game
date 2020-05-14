@@ -9,16 +9,8 @@ public class Fusil : Weapon
 
     public override void Start(){
         base.Start();
-        damage = 25;
-        shotSoundIntensity = 25f;
         shotSoundName = "Shot_fusil";
-        ammoReloadingSoundName = "Ammo_reloading_fusil";
-        //Añadir observer ao subject
-        //TODO: Esto e moi lento, ainda que solo se fai 1 vez, recomendable añadilos dendo o inspector?
-        //Crear un manager que notifique?
-        foreach (var obs in FindObjectsOfType<PauseMenu>()){
-            obs.RegisterObserver(this);
-        }       
+        ammoReloadingSoundName = "Ammo_reloading_fusil";    
     }
 
     public override void checkShootingButton() {
