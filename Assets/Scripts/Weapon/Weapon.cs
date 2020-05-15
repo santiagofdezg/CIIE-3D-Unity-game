@@ -1,14 +1,16 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using Characters.ThirdPersonCharacter;
 using System.Collections;
 
+
 public class Weapon : Observer
 {
-
+    private ThirdPersonCharacterController tpcc;
     
+    // Weapon damage
     public float range = 100f;
     public int damage = 10;
-    private ThirdPersonCharacterController tpcc;
 
     // Cameras management
     [HideInInspector]
@@ -41,7 +43,6 @@ public class Weapon : Observer
     private bool isReloading = false;
     [HideInInspector]
     public string ammoReloadingSoundName = "Ammo_reloading_pistol";
-
 
 
     public override void OnNotify(NotificationType notificationType){
@@ -131,7 +132,10 @@ public class Weapon : Observer
             }
             Destroy(impact, 1.5f);
         }
- 
+    }
+
+    public int GetCurrentAmmo() {
+        return currentAmmo;
     }
 
     
