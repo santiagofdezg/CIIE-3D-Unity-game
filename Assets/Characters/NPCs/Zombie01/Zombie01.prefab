@@ -155,6 +155,11 @@ PrefabInstance:
       propertyPath: wanderType
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4186507808801891745, guid: 7cd6849c2fe92c3a58407ae688ef2683,
+        type: 3}
+      propertyPath: chaseSpeed
+      value: 3.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4186507808801891746, guid: 7cd6849c2fe92c3a58407ae688ef2683,
         type: 3}
       propertyPath: m_Speed
