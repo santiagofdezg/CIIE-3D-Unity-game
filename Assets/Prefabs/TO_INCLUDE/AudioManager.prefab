@@ -77,7 +77,7 @@ MonoBehaviour:
     outputMixer: {fileID: 0}
     loop: 0
     source: {fileID: 0}
-  - clip: {fileID: 8300000, guid: 1022c373b93aac25ea7e45b459e9bc2a, type: 3}
+  - clip: {fileID: 8300000, guid: 39910e60e4131bb49a0b8dcae1a5e22f, type: 3}
     name: Shot_rifle
     volume: 1
     pitch: 1.09
