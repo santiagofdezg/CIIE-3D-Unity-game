@@ -4,15 +4,12 @@ using UnityEngine;
 public class WeaponManager : MonoBehaviour {
     
     [SerializeField]
-    private GameObject[] weapons;
+    private GameObject[] weapons = null;
     public int selectedWeapon = 0;
 
     
-
     void Start() {
         InitializeWeapons();
-
-        // SelectWeapon();
     }
     
     void InitializeWeapons() {
@@ -21,31 +18,6 @@ public class WeaponManager : MonoBehaviour {
         }
         weapons[selectedWeapon].SetActive(true);
     }
-
-
-    // void Update() {
-    //     int previousSelectedWeapon = selectedWeapon;
-
-    //     if (Input.GetAxis("Mouse ScrollWheel") > 0f || Input.GetButtonDown("Weapon Next")) {
-    //         if (selectedWeapon >= transform.childCount -1)
-    //             // After reaching the last weapon, return to the first one
-    //             selectedWeapon = 0;
-    //         else 
-    //             selectedWeapon++;
-    //     }
-    //     if (Input.GetAxis("Mouse ScrollWheel") < 0f || Input.GetButtonDown("Weapon Previous")) {
-    //         if(selectedWeapon <= 0)
-    //             // After reaching the first weapon, return to the last one
-    //             selectedWeapon = transform.childCount - 1;
-    //         else
-    //             selectedWeapon--;
-    //     }
-
-    //     if (previousSelectedWeapon != selectedWeapon) {
-    //         SelectWeapon();
-    //     }
-
-    // }
 
     void Update() {
         int newIndex = selectedWeapon;
@@ -73,16 +45,9 @@ public class WeaponManager : MonoBehaviour {
         selectedWeapon = newIndex;
     }
 
-    // void SelectWeapon() {
+    public GameObject GetCurrentWeapon() {
+        return weapons[selectedWeapon];
+    }
 
-    //     int i = 0;
-    //     foreach (Transform weapon in transform)
-    //     {
-    //         if (i == selectedWeapon)
-    //             weapon.gameObject.SetActive(true);
-    //         else
-    //             weapon.gameObject.SetActive(false);
-    //         i++;
-    //     }
-    // }
+
 }

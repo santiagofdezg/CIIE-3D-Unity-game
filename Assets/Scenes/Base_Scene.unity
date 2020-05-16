@@ -240,6 +240,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19856fa133ec829a5aba9468d8edd2d6, type: 3}
+--- !u!114 &119248143 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 827794610, guid: d1f1da56f97dbf14ea4817777ffcf0bd,
+    type: 3}
+  m_PrefabInstance: {fileID: 1034702444}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c5f90f5cf8c50502a6e145a5b340563, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &208720999
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -595,6 +607,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5320929041034197801, guid: 7d67cc8bd66efcafda4db4b2a8d8c56c,
+        type: 3}
+      propertyPath: weaponManager
+      value: 
+      objectReference: {fileID: 119248143}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d67cc8bd66efcafda4db4b2a8d8c56c, type: 3}
 --- !u!1001 &7965963837489477813
