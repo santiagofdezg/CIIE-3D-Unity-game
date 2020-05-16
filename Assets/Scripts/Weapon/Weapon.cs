@@ -34,7 +34,7 @@ public class Weapon : Observer
     // distance, the zombie will hear the sound. It can be different for each
     // type of weapon.
     public float shotSoundIntensity = 20f;
-    [HideInInspector]
+    
     public string shotSoundName = "Shot_pistol";
 
     // Ammo & reloading
@@ -42,8 +42,11 @@ public class Weapon : Observer
     private int currentAmmo;
     public float reloadTime = 2.2f;
     private bool isReloading = false;
-    [HideInInspector]
-    public string ammoReloadingSoundName = "Ammo_reloading_pistol";
+    
+    public string ammoReloadingSoundName = "Ammo_reloading";
+
+    public int reloadID = 0;
+    public int shootID = 0;
 
 
     public override void OnNotify(NotificationType notificationType){
@@ -104,7 +107,7 @@ public class Weapon : Observer
 
     IEnumerator Reload() {
         isReloading = true;
-        AudioManager.instance.Play(ammoReloadingSoundName, gameObject, true);
+        AudioManager.instance.Play(ammoReloadingSoundName, gameObject, true, reloadID);
         yield return new WaitForSeconds(reloadTime);
         currentAmmo = maxAmmo;
         isReloading = false;
@@ -116,7 +119,7 @@ public class Weapon : Observer
 
         RaycastHit hit;
         flash.Play();
-        AudioManager.instance.Play(shotSoundName, gameObject, true);
+        AudioManager.instance.Play(shotSoundName, gameObject, true, shootID);
         playerNoiseManager.isEnemyHearingShoot(shotSoundIntensity); 
 
         // Ignore the Player layer, so we get the mask and then it is inverted

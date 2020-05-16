@@ -10,7 +10,9 @@ public class Fusil : Weapon
     public override void Start(){
         base.Start();
         shotSoundName = "Shot_fusil";
-        ammoReloadingSoundName = "Ammo_reloading_fusil";    
+        reloadID = 2;
+        shootID = 2;
+
     }
 
     public override void checkShootingButton() {

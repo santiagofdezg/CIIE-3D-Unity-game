@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.Audio;
 
 
@@ -29,12 +30,13 @@ public class Sound
     public AudioMixerGroup outputMixer;
 
     public bool loop;
+    public bool playOnAwake;
     //parent object of the sound
     
 
     [HideInInspector] //ocultamolo no inspector para que non se poida modificar dese ahi
     //pero e publico para que se poida modificar via script
-    public AudioSource source;
+    public Dictionary<int, AudioSource> source;
 
 
 

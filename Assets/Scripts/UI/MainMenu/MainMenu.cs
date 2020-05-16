@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    int musicID = 0;
     public void PlayGame(){
        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); 
     }
@@ -15,7 +16,7 @@ public class MainMenu : MonoBehaviour
     }
 
     void Start(){
-        AudioManager.instance.Play("Test", false);
+        AudioManager.instance.Play("Test", false, musicID);
     }
 
 }
