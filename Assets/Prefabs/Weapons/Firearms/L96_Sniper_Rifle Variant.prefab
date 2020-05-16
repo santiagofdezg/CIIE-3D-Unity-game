@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponHUDImage: {fileID: 21300000, guid: 806b4cc76297592f588534ca4e4f9fb0, type: 3}
-  range: 110
+  range: 100
   damage: 25
   currentCamera: {fileID: 0}
   thirdPersonCamFlag: 0
