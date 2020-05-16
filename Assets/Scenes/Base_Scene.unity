@@ -108,7 +108,7 @@ NavMeshSettings:
     agentTypeID: 0
     agentRadius: 0.5
     agentHeight: 2
-    agentSlope: 45
+    agentSlope: 38.5
     agentClimb: 0.4
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
@@ -120,7 +120,7 @@ NavMeshSettings:
     accuratePlacement: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: d23b0f3270a91459b90dc5a897cba4db, type: 2}
 --- !u!1001 &105521232
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -614,6 +614,75 @@ PrefabInstance:
       objectReference: {fileID: 119248143}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d67cc8bd66efcafda4db4b2a8d8c56c, type: 3}
+--- !u!1001 &2239154532443122291
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2239154533183553136, guid: cf58561c6775a2fa0abb518b02bfaa00,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 19.34
+      objectReference: {fileID: 0}
+    - target: {fileID: 2239154533183553136, guid: cf58561c6775a2fa0abb518b02bfaa00,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 21.79
+      objectReference: {fileID: 0}
+    - target: {fileID: 2239154533183553136, guid: cf58561c6775a2fa0abb518b02bfaa00,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 22.76
+      objectReference: {fileID: 0}
+    - target: {fileID: 2239154533183553136, guid: cf58561c6775a2fa0abb518b02bfaa00,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2239154533183553136, guid: cf58561c6775a2fa0abb518b02bfaa00,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2239154533183553136, guid: cf58561c6775a2fa0abb518b02bfaa00,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2239154533183553136, guid: cf58561c6775a2fa0abb518b02bfaa00,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2239154533183553136, guid: cf58561c6775a2fa0abb518b02bfaa00,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2239154533183553136, guid: cf58561c6775a2fa0abb518b02bfaa00,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2239154533183553136, guid: cf58561c6775a2fa0abb518b02bfaa00,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2239154533183553136, guid: cf58561c6775a2fa0abb518b02bfaa00,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2239154533183553137, guid: cf58561c6775a2fa0abb518b02bfaa00,
+        type: 3}
+      propertyPath: m_Name
+      value: NavMeshSurface
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: cf58561c6775a2fa0abb518b02bfaa00, type: 3}
 --- !u!1001 &7965963837489477813
 PrefabInstance:
   m_ObjectHideFlags: 0
