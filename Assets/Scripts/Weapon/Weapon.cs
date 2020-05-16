@@ -49,10 +49,13 @@ public class Weapon : Observer
     public int shootID = 0;
 
 
+
     public override void OnNotify(NotificationType notificationType){
         if (notificationType == NotificationType.Paused){
+            AudioManager.instance.Pause(ammoReloadingSoundName, reloadID);
             this.enabled = false;
         } else if (notificationType == NotificationType.UnPaused){
+            AudioManager.instance.UnPause(ammoReloadingSoundName, reloadID);
             this.enabled = true;
         }
     }
@@ -65,18 +68,11 @@ public class Weapon : Observer
         thirdPersonCamFlag = tpcc.IsThirdPersonCameraActive();
         currentAmmo = maxAmmo;
 
-        //Añadir observer ao subject
-        //TODO: Esto e moi lento, ainda que solo se fai 1 vez, recomendable añadilos dendo o inspector?
-        //Crear un manager que notifique?
-        foreach (var obs in FindObjectsOfType<PauseMenu>()){
-            obs.RegisterObserver(this);
-        }    
+        //añadimos este observer ao subject pause
+       GameHandler.instance.RegisterObserverPause(this); 
     }
 
     // It's executed each time the weapon is enabled
-    void OnEnable() {
-        isReloading = false;
-    }
 
     public void updateCamera() {
         // Depending on the camera, the crosshair may change
@@ -93,24 +89,33 @@ public class Weapon : Observer
     public virtual void Update() {
         updateCamera();
 
-        if (isReloading)
-            return;
         
-        if (currentAmmo <=0) {
-            StartCoroutine(Reload());
-            return;
-        }
 
-        checkShootingButton();
+        if (!isReloading) { 
+        
+            if (currentAmmo <=0 ) {
+
+                StartCoroutine(Reload());
+                
+            } else {
+                checkShootingButton();
+            }
+
+            
+        }
     }
 
 
     IEnumerator Reload() {
+        
+        AudioManager.instance.Play(ammoReloadingSoundName, gameObject, false, reloadID);
         isReloading = true;
-        AudioManager.instance.Play(ammoReloadingSoundName, gameObject, true, reloadID);
         yield return new WaitForSeconds(reloadTime);
+        Debug.Log("hEY");
         currentAmmo = maxAmmo;
         isReloading = false;
+
+
     }
 
 

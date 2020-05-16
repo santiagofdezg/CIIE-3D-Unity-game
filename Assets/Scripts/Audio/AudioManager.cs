@@ -257,7 +257,7 @@ void createAudioSource(Sound s, GameObject parent, int audioID){
 
         AudioSource aux = getSourceByID(s, audioID);
         if (aux != null){
-            aux.UnPause();
+            aux.Pause();
         } else {
             return;
         }

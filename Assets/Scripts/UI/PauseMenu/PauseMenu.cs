@@ -10,9 +10,28 @@ public class PauseMenu : Subject
     public static bool isPaused = false;
     public GameObject pauseMenuUI;
     public GameObject optionsMenuUI;
+    
+    //Singleton
+    public static PauseMenu instance;
 
 
 
+
+    void Start() 
+    {
+        //Singleton
+        if (instance == null)
+            instance = this;
+        else{
+            Destroy(gameObject);
+        }
+
+
+
+
+         
+        
+    }
 
     public void Resume(){
         Cursor.visible = false; //elimina o cursor
