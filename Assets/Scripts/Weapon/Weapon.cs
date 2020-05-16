@@ -7,6 +7,7 @@ using System.Collections;
 public class Weapon : Observer
 {
     private ThirdPersonCharacterController tpcc;
+    public Sprite weaponHUDImage;
     
     // Weapon damage
     public float range = 100f;

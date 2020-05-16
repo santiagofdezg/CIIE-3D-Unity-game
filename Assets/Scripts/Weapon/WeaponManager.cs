@@ -8,7 +8,6 @@ public class WeaponManager : MonoBehaviour {
     public int selectedWeapon = 0;
 
     
-
     void Start() {
         InitializeWeapons();
 
@@ -71,6 +70,10 @@ public class WeaponManager : MonoBehaviour {
         weapons[selectedWeapon].SetActive(false);
         weapons[newIndex].SetActive(true);
         selectedWeapon = newIndex;
+    }
+
+    public GameObject GetCurrentWeapon() {
+        return weapons[selectedWeapon];
     }
 
     // void SelectWeapon() {
