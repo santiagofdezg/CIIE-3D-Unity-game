@@ -1,35 +1,30 @@
-﻿using System.Collections;
+﻿
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using System.IO;
 
-public class TerrainMenu : MonoBehaviour {
+public class TerrainTreeMenu : MonoBehaviour {
     
     [MenuItem ("Terrain/Add Folder Tree")]
-    static void AddFolderTrees()
-    {
+    static void AddFolderTrees() {
         string folder = EditorUtility.OpenFolderPanel("Select the folder containing the tree", "Assets/", "");
-        if(folder != "")
-        {
-            if(folder.IndexOf(Application.dataPath) == -1)
-            {
+        if(folder != "") {
+            if(folder.IndexOf(Application.dataPath) == -1) {
                 Debug.LogWarning("The folder must be in this project anywhere inside the Assets folder!");
                 return;
             }
+            
             string[] files = Directory.GetFiles(folder);
-            if(files.Length > 0)
-            {
+            if(files.Length > 0) {
                 TerrainData currentTerrainData = Selection.activeGameObject.GetComponent<Terrain>().terrainData;
                 List<TreePrototype> treePrototypesList = new List<TreePrototype>(currentTerrainData.treePrototypes);
-                for(int i = 0; i < files.Length; i++)
-                {
- 
+                
+                for(int i = 0; i < files.Length; i++) {
                     TreePrototype treePrototype = new TreePrototype();
                     string relativePath = files[i].Substring(files[i].IndexOf("Assets/"));
                     GameObject prefab = AssetDatabase.LoadAssetAtPath<GameObject>(relativePath);
-                    if(prefab != null)
-                    {
+                    if(prefab != null) {
                         treePrototype.prefab = prefab;
                         treePrototypesList.Add(treePrototype);
                     }
@@ -43,8 +38,7 @@ public class TerrainMenu : MonoBehaviour {
     }
  
     [MenuItem ("Terrain/Clear Tree Editor")]
-    static void ClearTreeEditor()
-    {
+    static void ClearTreeEditor() {
         TerrainData currentTerrainData = Selection.activeGameObject.GetComponent<Terrain>().terrainData;
         currentTerrainData.treePrototypes = null;
         Selection.activeGameObject.GetComponent<Terrain>().Flush();
@@ -53,10 +47,8 @@ public class TerrainMenu : MonoBehaviour {
     }
  
     [MenuItem ("Terrain/Add Folder Tree", true)]
-    static bool ValidateAddFolderTrees()
-    {
-        if(Selection.activeGameObject == null || Selection.activeGameObject.GetComponent<Terrain>() == null)
-        {
+    static bool ValidateAddFolderTrees() {
+        if(Selection.activeGameObject == null || Selection.activeGameObject.GetComponent<Terrain>() == null) {
             Debug.LogWarning("You must have a Terrain selected to perform this action!");
             return false;
         }
@@ -64,10 +56,8 @@ public class TerrainMenu : MonoBehaviour {
     }
  
     [MenuItem ("Terrain/Clear Tree Editor", true)]
-    static bool ValidateClearTreeEditor()
-    {
-        if(Selection.activeGameObject == null || Selection.activeGameObject.GetComponent<Terrain>() == null)
-        {
+    static bool ValidateClearTreeEditor() {
+        if(Selection.activeGameObject == null || Selection.activeGameObject.GetComponent<Terrain>() == null) {
             Debug.LogWarning("You must have a Terrain selected to perform this action!");
             return false;
         }
