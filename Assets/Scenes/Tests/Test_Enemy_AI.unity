@@ -2910,6 +2910,21 @@ PrefabInstance:
       propertyPath: sounds.Array.data[0].name
       value: Shot_pistol
       objectReference: {fileID: 0}
+    - target: {fileID: 7976952538341183648, guid: d3b66080d1a61db898fc820337cf83f0,
+        type: 3}
+      propertyPath: sounds.Array.data[3].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7976952538341183648, guid: d3b66080d1a61db898fc820337cf83f0,
+        type: 3}
+      propertyPath: sounds.Array.data[0].spatialBlend
+      value: 0.457
+      objectReference: {fileID: 0}
+    - target: {fileID: 7976952538341183648, guid: d3b66080d1a61db898fc820337cf83f0,
+        type: 3}
+      propertyPath: sounds.Array.data[1].spatialBlend
+      value: 0.361
+      objectReference: {fileID: 0}
     - target: {fileID: 7976952538341183654, guid: d3b66080d1a61db898fc820337cf83f0,
         type: 3}
       propertyPath: m_Name
