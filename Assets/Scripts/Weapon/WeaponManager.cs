@@ -28,6 +28,7 @@ public class WeaponManager : MonoBehaviour {
             else 
                 newIndex++;
             SwitchWeapons(newIndex);
+            
         }
         if (Input.GetAxis("Mouse ScrollWheel") < 0f || Input.GetButtonDown("Weapon Previous")) {
             if(selectedWeapon <= 0)
@@ -36,7 +37,15 @@ public class WeaponManager : MonoBehaviour {
             else
                 newIndex--;
             SwitchWeapons(newIndex);
+
         }
+    updateUI();
+
+    }
+
+    void updateUI(){
+        HUD.instance.weaponInfo.updateInfo(weapons[selectedWeapon].GetComponent<Weapon>());
+
     }
 
     void SwitchWeapons(int newIndex) {

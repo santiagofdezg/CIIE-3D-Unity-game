@@ -9,7 +9,7 @@ public class GameHandler : MonoBehaviour
 
     public static GameHandler instance;
 
-    void Start() {
+    void Awake() {
         //Singleton
         if (instance == null)
             instance = this;

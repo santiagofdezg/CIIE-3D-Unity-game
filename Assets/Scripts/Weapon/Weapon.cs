@@ -52,6 +52,7 @@ public class Weapon : Observer
 
     public override void OnNotify(NotificationType notificationType){
         if (notificationType == NotificationType.Paused){
+            
             AudioManager.instance.Pause(ammoReloadingSoundName, reloadID);
             this.enabled = false;
         } else if (notificationType == NotificationType.UnPaused){
@@ -124,7 +125,7 @@ public class Weapon : Observer
 
         RaycastHit hit;
         flash.Play();
-        AudioManager.instance.Play(shotSoundName, gameObject, true, shootID);
+        AudioManager.instance.Play(shotSoundName, gameObject.transform.position, true, currentAmmo);
         playerNoiseManager.isEnemyHearingShoot(shotSoundIntensity); 
 
         // Ignore the Player layer, so we get the mask and then it is inverted

@@ -140,7 +140,7 @@ void createAudioSource(Sound s, GameObject parent, int audioID){
     private AudioSource getSourceByID(Sound s, int audioID){
 
         AudioSource aux;
-        if (s.source.TryGetValue(audioID,out aux)){
+        if (s.source !=null && s.source.TryGetValue(audioID,out aux)){
             return aux;
         } else {
             return null;
@@ -171,6 +171,8 @@ void createAudioSource(Sound s, GameObject parent, int audioID){
 
     }
 
+
+
     public void Play(string name, GameObject gObj, bool oneShot, int audioID){
         Sound s = searchSound(name);
 
@@ -182,6 +184,7 @@ void createAudioSource(Sound s, GameObject parent, int audioID){
             //reproducimolo
             if (oneShot){
                 aux.PlayOneShot(s.clip);
+               
             } else {
                 aux.Play();
             }
@@ -206,7 +209,10 @@ void createAudioSource(Sound s, GameObject parent, int audioID){
             }
         } else {
             return;
-        }    
+        }   
+
+        Destroy(aux.transform.gameObject,s.clip.length); 
+        s.source.Remove(audioID);
     }
 
 
@@ -249,7 +255,6 @@ void createAudioSource(Sound s, GameObject parent, int audioID){
     public void Pause(string name, int audioID){
 
         Sound s = searchSound(name);
-
         if (s==null){
             Debug.LogWarning("Audio: "+name+" non existe!");
             return;

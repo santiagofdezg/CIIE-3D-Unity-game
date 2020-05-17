@@ -1,18 +1,23 @@
 using UnityEngine;
 using System.Collections;
+using EZCameraShake;
 
 public class PlayerHealthSystem : HealthSystem
 {
 
-    public HealthBar healthBar;
+  
     bool isRegenHealth;
     public int healPerTime = 2;
     public float regenerationDelay = .5f;
 
+    public float mgnShk=4f, rghShk=4f, fInShk=.1f, fOutShk=1f;
+
+
+
 
     void Start(){
         currentHealth = maxHealth;  
-        healthBar.SetMaxHealth(maxHealth);
+        HUD.instance.healthBar.SetMaxHealth(maxHealth);
 
  
         //Añadir observer ao subject
@@ -28,11 +33,14 @@ public class PlayerHealthSystem : HealthSystem
     
     public override void TakeDamage(int damage){
         if (currentHealth > 0){
+            CameraShaker.Instance.ShakeOnce(mgnShk,rghShk,fInShk,fOutShk);
             currentHealth -= damage;
+
             if (currentHealth<=0) //nunca baixamos a vida de 0
                 currentHealth = 0;
 
-            healthBar.SetHealth(currentHealth);
+            HUD.instance.healthBar.SetHealth(currentHealth);
+            HUD.instance.hitOverlay.flashScreen();
             Debug.Log("New health: " + currentHealth);
         } else {
             //morriche
@@ -46,7 +54,7 @@ public class PlayerHealthSystem : HealthSystem
         isRegenHealth = true;
         while (currentHealth < maxHealth) {
             Heal(healPerTime);
-            healthBar.SetHealth(currentHealth);
+            HUD.instance.healthBar.SetHealth(currentHealth);
             yield return new WaitForSeconds (regenerationDelay);
         }
         isRegenHealth = false;

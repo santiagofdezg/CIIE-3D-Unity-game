@@ -6,6 +6,13 @@ public class HUD : MonoBehaviour
 {
     public static HUD instance;
     // Start is called before the first frame update
+    [HideInInspector]
+    public HealthBar healthBar;
+    [HideInInspector]
+    public HitOverlay hitOverlay;
+    [HideInInspector]
+    public WeaponInfo weaponInfo;
+
     void Start()
     {
         //Singleton
@@ -15,15 +22,13 @@ public class HUD : MonoBehaviour
             Destroy(gameObject);
         }
 
-
+    healthBar = gameObject.GetComponentInChildren<HealthBar>();
+    hitOverlay = gameObject.GetComponentInChildren<HitOverlay>();
+    weaponInfo = gameObject.GetComponentInChildren<WeaponInfo>();
 
          
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+  
 }
