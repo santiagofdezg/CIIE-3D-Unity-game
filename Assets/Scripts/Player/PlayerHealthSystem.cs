@@ -1,26 +1,27 @@
 using UnityEngine;
 using System.Collections;
+using EZCameraShake;
 
 public class PlayerHealthSystem : HealthSystem
 {
 
-    public HealthBar healthBar;
+  
     bool isRegenHealth;
     public int healPerTime = 2;
     public float regenerationDelay = .5f;
 
+    public float mgnShk=4f, rghShk=4f, fInShk=.1f, fOutShk=1f;
+
+
+
 
     void Start(){
         currentHealth = maxHealth;  
-        healthBar.SetMaxHealth(maxHealth);
+        HUD.instance.healthBar.SetMaxHealth(maxHealth);
 
  
         //Añadir observer ao subject
-        //TODO: Esto e moi lento, ainda que solo se fai 1 vez, recomendable añadilos dendo o inspector?
-        //Crear un manager que notifique?
-        foreach (var obs in FindObjectsOfType<PauseMenu>()){
-            obs.RegisterObserver(this);
-        }       
+         GameHandler.instance.RegisterObserverPause(this);   
     }
 
 
@@ -32,11 +33,14 @@ public class PlayerHealthSystem : HealthSystem
     
     public override void TakeDamage(int damage){
         if (currentHealth > 0){
+            CameraShaker.Instance.ShakeOnce(mgnShk,rghShk,fInShk,fOutShk);
             currentHealth -= damage;
+
             if (currentHealth<=0) //nunca baixamos a vida de 0
                 currentHealth = 0;
 
-            healthBar.SetHealth(currentHealth);
+            HUD.instance.healthBar.SetHealth(currentHealth);
+            HUD.instance.hitOverlay.flashScreen();
             Debug.Log("New health: " + currentHealth);
         } else {
             //morriche
@@ -46,10 +50,11 @@ public class PlayerHealthSystem : HealthSystem
 
     // Corrutina para regenerar vida
     private IEnumerator RegenHealthOverTime() {
+   
         isRegenHealth = true;
         while (currentHealth < maxHealth) {
             Heal(healPerTime);
-            healthBar.SetHealth(currentHealth);
+            HUD.instance.healthBar.SetHealth(currentHealth);
             yield return new WaitForSeconds (regenerationDelay);
         }
         isRegenHealth = false;

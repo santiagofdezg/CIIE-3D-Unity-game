@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System;
 using UnityEngine.Audio;
+using System.Collections.Generic;
 
 //AudioManager para que sexa mais facil usar audios no xogo
 
@@ -22,7 +23,7 @@ public class AudioManager : MonoBehaviour
 
 
 
-void createAudioSource(Sound s, GameObject parent){
+void createAudioSource(Sound s, GameObject parent, int audioID){
     //A todos os audios no manager, a?adimoslle un audio source no propio obxecto
     //A cada sound a?adimoslle unha referencia a ese audio source
     
@@ -38,15 +39,22 @@ void createAudioSource(Sound s, GameObject parent){
 
             }
 
-        
+            AudioSource aux = parent.AddComponent<AudioSource>();
             
-            s.source = parent.AddComponent<AudioSource>();
-            s.source.spatialBlend = s.spatialBlend;
-            s.source.clip = s.clip;
-            s.source.volume = s.volume;
-            s.source.pitch = s.pitch;
-            s.source.outputAudioMixerGroup = s.outputMixer;
+            aux.spatialBlend = s.spatialBlend;
+            aux.clip = s.clip;
+            aux.volume = s.volume;
+            aux.pitch = s.pitch;
+            aux.outputAudioMixerGroup = s.outputMixer;
+            aux.playOnAwake = s.playOnAwake;
+            aux.loop = s.loop;
 
+            //añadimolo ao diccionario de audios
+            try {
+                s.source.Add(audioID, aux);
+            } catch {
+                Debug.LogError("The audioID "+ audioID + " already exists!");
+            }
         
 
     
@@ -83,11 +91,29 @@ void createAudioSource(Sound s, GameObject parent){
 
     private Sound searchSound(string name){
         Sound s = Array.Find(sounds, sound => sound.name == name);
+        if (s==null)
+             Debug.LogError("Audio: "+name+" non existe!");;
         return s;
     }
 
 //comprobamos si o audio e validor pa reproducir
-    bool checkIfValid(Sound s, GameObject gObj){
+    bool checkIfValid(Sound s, GameObject gObj, int audioID){
+
+        if (s==null){
+            Debug.LogWarning("Son non válida!");
+            return false;
+        }
+        
+        if (s.source == null)
+            s.source = new Dictionary<int, AudioSource>();
+
+        if (!s.source.ContainsKey(audioID))
+            createAudioSource(s, gObj, audioID);
+
+        return true;
+    }
+
+    bool checkIfValid(Sound s, Vector3 position, int audioID){
 
         if (s==null){
             Debug.LogWarning("Audio: "+name+" non existe!");
@@ -95,22 +121,12 @@ void createAudioSource(Sound s, GameObject parent){
         }
         
         if (s.source == null)
-            createAudioSource(s, gObj);
+            s.source = new Dictionary<int, AudioSource>();
 
-        return true;
-    }
-
-    bool checkIfValid(Sound s, Vector3 position){
-
-        if (s==null){
-            Debug.LogWarning("Audio: "+name+" non existe!");
-            return false;
-        }
-        
-        if (s.source == null){
+        if (!s.source.ContainsKey(audioID)){
             GameObject gObj = new GameObject("Sound");
             gObj.transform.position = position;
-            createAudioSource(s, gObj);
+            createAudioSource(s, gObj, audioID);
         }
         return true;
     }
@@ -121,55 +137,87 @@ void createAudioSource(Sound s, GameObject parent){
 //Recomendase usar oneshot para sons que se van reproducir varias veces como pasos ou disparos
 //Si hai outra chamada a oneshot o audio previo non se acaba de golpe, sin oneshot si
 
+    private AudioSource getSourceByID(Sound s, int audioID){
 
-    public void Play (string name, bool oneShot){
+        AudioSource aux;
+        if (s.source !=null && s.source.TryGetValue(audioID,out aux)){
+            return aux;
+        } else {
+            return null;
+        }  
+
+    }
+
+    public void Play (string name, bool oneShot, int audioID){
         //buscamos o audio no array
         Sound s = searchSound(name);
 
 
         //creamos audiosource
-        if( !(checkIfValid(s, gameObject)) )
-            return;
-        //reproducimolo
-        if (oneShot){
-            s.source.PlayOneShot(s.clip);
-        } else {
-            s.source.Play();
-        }
+        if( !(checkIfValid(s, gameObject, audioID)) )
+            return; //si non e valido, salimos
         
+        AudioSource aux = getSourceByID(s, audioID);
+        if (aux != null){
+            //reproducimolo
+            if (oneShot){
+                aux.PlayOneShot(s.clip);
+            } else {
+                aux.Play();
+            }
+        } else {
+            return;
+        }    
+
     }
 
-    public void Play(string name, GameObject gObj, bool oneShot){
+
+
+    public void Play(string name, GameObject gObj, bool oneShot, int audioID){
         Sound s = searchSound(name);
 
-        if( !(checkIfValid(s, gObj)) )
+        if( !(checkIfValid(s, gObj, audioID)) )
             return;
 
-        //reproducimolo
-        if (oneShot){
-            s.source.PlayOneShot(s.clip);
+        AudioSource aux = getSourceByID(s, audioID);
+        if (aux != null){
+            //reproducimolo
+            if (oneShot){
+                aux.PlayOneShot(s.clip);
+               
+            } else {
+                aux.Play();
+            }
         } else {
-            s.source.Play();
-        }
+            return;
+        }    
     }
 
-    public void Play(string name, Vector3 position, bool oneShot){
+    public void Play(string name, Vector3 position, bool oneShot, int audioID){
         Sound s = searchSound(name);
 
-        if( !(checkIfValid(s,position)) )
+        if( !(checkIfValid(s,position,audioID)) )
             return;
             
-        //reproducimolo
-        if (oneShot){
-            s.source.PlayOneShot(s.clip);
+       AudioSource aux = getSourceByID(s, audioID);
+        if (aux != null){
+            //reproducimolo
+            if (oneShot){
+                aux.PlayOneShot(s.clip);
+            } else {
+                aux.Play();
+            }
         } else {
-            s.source.Play();
-        }
+            return;
+        }   
+
+        Destroy(aux.transform.gameObject,s.clip.length); 
+        s.source.Remove(audioID);
     }
 
 
 //Os audios de OneShot non se poden parar
-    public void Stop (string name){
+    public void Stop (string name, int audioID){
         Sound s = searchSound(name);
 
         if (s==null){
@@ -177,11 +225,16 @@ void createAudioSource(Sound s, GameObject parent){
             return;
         }
 
-        s.source.Stop();
+        AudioSource aux = getSourceByID(s, audioID);
+        if (aux != null){
+            aux.Stop();
+        } else {
+            return;
+        }
 
     }
 
-    public void UnPause(string name){
+    public void UnPause(string name, int audioID){
         Sound s = searchSound(name);
 
         if (s==null){
@@ -189,21 +242,30 @@ void createAudioSource(Sound s, GameObject parent){
             return;
         }
 
-        s.source.Pause();
+        AudioSource aux = getSourceByID(s, audioID);
+        if (aux != null){
+            aux.UnPause();
+        } else {
+            return;
+        }
 
 
     }
 
-    public void Pause(string name){
+    public void Pause(string name, int audioID){
 
         Sound s = searchSound(name);
-
         if (s==null){
             Debug.LogWarning("Audio: "+name+" non existe!");
             return;
         }
 
-        s.source.UnPause();
+        AudioSource aux = getSourceByID(s, audioID);
+        if (aux != null){
+            aux.Pause();
+        } else {
+            return;
+        }
 
 
     }

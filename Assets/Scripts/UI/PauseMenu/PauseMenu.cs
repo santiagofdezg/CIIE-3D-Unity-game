@@ -9,9 +9,29 @@ public class PauseMenu : Subject
 
     public static bool isPaused = false;
     public GameObject pauseMenuUI;
+    public GameObject optionsMenuUI;
+    
+    //Singleton
+    public static PauseMenu instance;
 
 
 
+
+    void Start() 
+    {
+        //Singleton
+        if (instance == null)
+            instance = this;
+        else{
+            Destroy(gameObject);
+        }
+
+
+
+
+         
+        
+    }
 
     public void Resume(){
         Cursor.visible = false; //elimina o cursor
@@ -19,6 +39,8 @@ public class PauseMenu : Subject
 
         //desactiva o menu de pause
         pauseMenuUI.SetActive(false);
+        optionsMenuUI.SetActive(false);
+
         //tempo a velocidade normal outra vez
         Time.timeScale = 1f;
         isPaused = false;
@@ -36,6 +58,7 @@ public class PauseMenu : Subject
 
         //activa o menu de pause
         pauseMenuUI.SetActive(true);
+ 
         //cambia o tempo a 0, polo que pause o xogo
         Time.timeScale = 0f;
         isPaused = true;
