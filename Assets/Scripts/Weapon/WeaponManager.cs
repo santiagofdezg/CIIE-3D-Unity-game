@@ -49,6 +49,7 @@ public class WeaponManager : MonoBehaviour {
     }
 
     void SwitchWeapons(int newIndex) {
+        weapons[selectedWeapon].GetComponent<Weapon>().isReloading = false;
         weapons[selectedWeapon].SetActive(false);
         weapons[newIndex].SetActive(true);
         selectedWeapon = newIndex;

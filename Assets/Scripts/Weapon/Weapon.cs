@@ -41,7 +41,8 @@ public class Weapon : Observer
     public int maxAmmo = 10;
     private int currentAmmo;
     public float reloadTime = 2.2f;
-    private bool isReloading = false;
+    [HideInInspector]
+    public bool isReloading = false;
     
     public string ammoReloadingSoundName = "Ammo_reloading";
 
@@ -122,11 +123,12 @@ public class Weapon : Observer
 
     public virtual void Shoot(){
         currentAmmo--;
-
         RaycastHit hit;
         flash.Play();
         AudioManager.instance.Play(shotSoundName, gameObject.transform.position, true, currentAmmo);
         playerNoiseManager.isEnemyHearingShoot(shotSoundIntensity); 
+
+        Debug.Log(shotSoundName);
 
         // Ignore the Player layer, so we get the mask and then it is inverted
         int playerLayerMask = ~LayerMask.GetMask("Player");

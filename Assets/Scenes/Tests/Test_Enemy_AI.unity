@@ -2657,6 +2657,11 @@ PrefabInstance:
       propertyPath: ammoReloadingSoundName
       value: Ammo_reloading
       objectReference: {fileID: 0}
+    - target: {fileID: 6799870898831586838, guid: d1f1da56f97dbf14ea4817777ffcf0bd,
+        type: 3}
+      propertyPath: shotSoundName
+      value: Shot_rifle
+      objectReference: {fileID: 0}
     - target: {fileID: 7265784433921798417, guid: d1f1da56f97dbf14ea4817777ffcf0bd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2726,6 +2731,11 @@ PrefabInstance:
         type: 3}
       propertyPath: ammoReloadingSoundName
       value: Ammo_reloading
+      objectReference: {fileID: 0}
+    - target: {fileID: 9166952777742605263, guid: d1f1da56f97dbf14ea4817777ffcf0bd,
+        type: 3}
+      propertyPath: shotSoundName
+      value: Shot_fusil
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d1f1da56f97dbf14ea4817777ffcf0bd, type: 3}
@@ -2873,7 +2883,7 @@ PrefabInstance:
     - target: {fileID: 7976952538341183648, guid: d3b66080d1a61db898fc820337cf83f0,
         type: 3}
       propertyPath: sounds.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7976952538341183648, guid: d3b66080d1a61db898fc820337cf83f0,
         type: 3}
@@ -2894,11 +2904,11 @@ PrefabInstance:
         type: 3}
       propertyPath: sounds.Array.data[4].clip
       value: 
-      objectReference: {fileID: 8300000, guid: 006c375696c5077e5a1ea8e475eb48cc, type: 3}
+      objectReference: {fileID: 8300000, guid: ca6017cdbaacd8149a81c234b3e29200, type: 3}
     - target: {fileID: 7976952538341183648, guid: d3b66080d1a61db898fc820337cf83f0,
         type: 3}
       propertyPath: sounds.Array.data[4].name
-      value: Ammo_reloading_rifle
+      value: Test
       objectReference: {fileID: 0}
     - target: {fileID: 7976952538341183648, guid: d3b66080d1a61db898fc820337cf83f0,
         type: 3}
@@ -2924,6 +2934,16 @@ PrefabInstance:
         type: 3}
       propertyPath: sounds.Array.data[1].spatialBlend
       value: 0.361
+      objectReference: {fileID: 0}
+    - target: {fileID: 7976952538341183648, guid: d3b66080d1a61db898fc820337cf83f0,
+        type: 3}
+      propertyPath: sounds.Array.data[4].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7976952538341183648, guid: d3b66080d1a61db898fc820337cf83f0,
+        type: 3}
+      propertyPath: sounds.Array.data[4].volume
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7976952538341183654, guid: d3b66080d1a61db898fc820337cf83f0,
         type: 3}
