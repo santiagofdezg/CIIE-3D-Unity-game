@@ -11,20 +11,17 @@ using UnityEngine.Audio;
 
 
 [System.Serializable] //para que aparezca no inspector de unity
-public class Sound 
-{
-//Fonte de audio de cada clase Sound
+public class Sound  {
+    //Fonte de audio de cada clase Sound
     public AudioClip clip;
 
-    
-
-//Si fora necesario podense añadir mais parametros
+        //Si fora necesario podense añadir mais parametros
     public string name;
     [Range(0f,1f)]
     public float volume =0;
     [Range(.3f,3f)]
     public float pitch = 1f;
-   [Range(0f,1f)]
+    [Range(0f,1f)]
     public float spatialBlend = 0f;
 
     public AudioMixerGroup outputMixer;
@@ -33,12 +30,9 @@ public class Sound
     public bool playOnAwake;
     //parent object of the sound
     
-
     [HideInInspector] //ocultamolo no inspector para que non se poida modificar dese ahi
     //pero e publico para que se poida modificar via script
     public Dictionary<int, AudioSource> source;
-
-
 
 
 }

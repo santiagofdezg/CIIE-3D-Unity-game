@@ -3,8 +3,7 @@ using UnityEngine;
 
 namespace Characters.ThirdPersonCharacter {
 
-    public class ThirdPersonCameraController : MonoBehaviour
-    {
+    public class ThirdPersonCameraController : MonoBehaviour {
 
         public float mouseSensitivity = 100f;
         public float mouseX;
@@ -13,6 +12,7 @@ namespace Characters.ThirdPersonCharacter {
         public float negativeClampAngle = 35;
     
         public Transform Target, Player;
+
 
         void Update() {
             mouseX += Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
@@ -32,11 +32,9 @@ namespace Characters.ThirdPersonCharacter {
 
 
         // Start is called before the first frame update
-        void Start()
-        {
+        void Start() {
             Cursor.visible = false; //elimina o cursor
             Cursor.lockState = CursorLockMode.Locked; //centra o cursor
-
         }
 
     }

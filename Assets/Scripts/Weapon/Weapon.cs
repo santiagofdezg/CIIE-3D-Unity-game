@@ -50,10 +50,8 @@ public class Weapon : Observer
     public int shootID = 0;
 
 
-
     public override void OnNotify(NotificationType notificationType){
         if (notificationType == NotificationType.Paused){
-            
             AudioManager.instance.Pause(ammoReloadingSoundName, reloadID);
             this.enabled = false;
         } else if (notificationType == NotificationType.UnPaused){
@@ -61,7 +59,8 @@ public class Weapon : Observer
             this.enabled = true;
         }
     }
-    
+
+
     // Start is called before the first frame update
     public virtual void Start() {
         playerNoiseManager = GetComponentInParent<PlayerNoise>();
@@ -71,10 +70,9 @@ public class Weapon : Observer
         currentAmmo = maxAmmo;
 
         //añadimos este observer ao subject pause
-       GameHandler.instance.RegisterObserverPause(this); 
+        GameHandler.instance.RegisterObserverPause(this); 
     }
 
-    // It's executed each time the weapon is enabled
 
     public void updateCamera() {
         // Depending on the camera, the crosshair may change
@@ -82,42 +80,34 @@ public class Weapon : Observer
         thirdPersonCamFlag = tpcc.IsThirdPersonCameraActive();
     }
 
+
     public virtual void checkShootingButton() {
         if (Input.GetButtonDown("Fire1"))
             Shoot();
     }
 
+
     // Update is called once per frame
     public virtual void Update() {
         updateCamera();
 
-        
-
-        if (!isReloading) { 
-        
+        if (!isReloading) {       
             if (currentAmmo <=0 ) {
-
-                StartCoroutine(Reload());
-                
+                StartCoroutine(Reload());  
             } else {
                 checkShootingButton();
             }
-
-            
         }
     }
 
 
     IEnumerator Reload() {
-        
         AudioManager.instance.Play(ammoReloadingSoundName, gameObject, false, reloadID);
         isReloading = true;
         yield return new WaitForSeconds(reloadTime);
-        Debug.Log("hEY");
+        // Debug.Log("hEY");
         currentAmmo = maxAmmo;
         isReloading = false;
-
-
     }
 
 
@@ -128,7 +118,7 @@ public class Weapon : Observer
         AudioManager.instance.Play(shotSoundName, gameObject.transform.position, true, currentAmmo);
         playerNoiseManager.isEnemyHearingShoot(shotSoundIntensity); 
 
-        Debug.Log(shotSoundName);
+        // Debug.Log(shotSoundName);
 
         // Ignore the Player layer, so we get the mask and then it is inverted
         int playerLayerMask = ~LayerMask.GetMask("Player");

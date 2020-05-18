@@ -15,25 +15,16 @@ public class PauseMenu : Subject
     public static PauseMenu instance;
 
 
-
-
-    void Start() 
-    {
+    void Start() {
         //Singleton
         if (instance == null)
             instance = this;
-        else{
+        else
             Destroy(gameObject);
-        }
-
-
-
-
-         
-        
     }
 
-    public void Resume(){
+
+    public void Resume() {
         Cursor.visible = false; //elimina o cursor
         Cursor.lockState = CursorLockMode.Locked; //centra o cursor
 
@@ -47,14 +38,11 @@ public class PauseMenu : Subject
 
         //Notificamos observers
         Notify(NotificationType.UnPaused);
-
-
     }
 
-    void Pause(){
+    void Pause() {
         Cursor.visible = true; //activa o cursor o cursor
         Cursor.lockState = CursorLockMode.None; //libera o cursor
-
 
         //activa o menu de pause
         pauseMenuUI.SetActive(true);
@@ -65,25 +53,22 @@ public class PauseMenu : Subject
 
         //Notificamos observers
         Notify(NotificationType.Paused);
-
     }
 
-    public void QuitGame(){
-        Debug.Log("Quit");
+    public void QuitGame() {
+        // Debug.Log("Quit");
         Application.Quit();
     }
 
-    public void LoadMenu(){
+    public void LoadMenu() {
         Time.timeScale = 1f; //volve a poñer o tempo a normal no menu
-        SceneManager.LoadScene("MainMenu"); 
-
+        SceneManager.LoadScene("MainMenu");
     }
 
 
     // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape)){
+    void Update() {
+        if (Input.GetKeyDown(KeyCode.Escape)) {
             if (isPaused){
                 Resume();
             } else {

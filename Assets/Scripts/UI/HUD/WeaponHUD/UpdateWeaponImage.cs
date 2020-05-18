@@ -7,6 +7,7 @@ public class UpdateWeaponImage : MonoBehaviour {
     private WeaponInfo weaponInfo;
     private Image weaponImage;
 
+
     void Start() {
         weaponInfo = GetComponentInParent<WeaponInfo>();
         weaponImage = GetComponent<Image>();

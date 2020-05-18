@@ -1,12 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿
 using UnityEngine;
 
-public class GameHandler : MonoBehaviour
-{
+public class GameHandler : MonoBehaviour {
+    
     private Subject PauseMenuObserver; 
-
-
     public static GameHandler instance;
 
     void Awake() {
@@ -19,8 +16,6 @@ public class GameHandler : MonoBehaviour
 
         //Obter subject pause
         PauseMenuObserver = FindObjectOfType<PauseMenu>();
-
-
     }
 
     public void RegisterObserverPause(Observer obs) {

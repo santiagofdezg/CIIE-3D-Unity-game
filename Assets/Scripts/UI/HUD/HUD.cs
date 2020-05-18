@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HUD : MonoBehaviour
-{
+public class HUD : MonoBehaviour {
+    
     public static HUD instance;
     // Start is called before the first frame update
     [HideInInspector]
@@ -13,8 +13,7 @@ public class HUD : MonoBehaviour
     [HideInInspector]
     public WeaponInfo weaponInfo;
 
-    void Start()
-    {
+    void Start() {
         //Singleton
         if (instance == null)
             instance = this;
@@ -22,12 +21,9 @@ public class HUD : MonoBehaviour
             Destroy(gameObject);
         }
 
-    healthBar = gameObject.GetComponentInChildren<HealthBar>();
-    hitOverlay = gameObject.GetComponentInChildren<HitOverlay>();
-    weaponInfo = gameObject.GetComponentInChildren<WeaponInfo>();
-
-         
-        
+        healthBar = gameObject.GetComponentInChildren<HealthBar>();
+        hitOverlay = gameObject.GetComponentInChildren<HitOverlay>();
+        weaponInfo = gameObject.GetComponentInChildren<WeaponInfo>();
     }
 
   

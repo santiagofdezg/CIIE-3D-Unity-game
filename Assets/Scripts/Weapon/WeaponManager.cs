@@ -39,13 +39,12 @@ public class WeaponManager : MonoBehaviour {
             SwitchWeapons(newIndex);
 
         }
-    updateUI();
-
+        
+        updateUI();
     }
 
     void updateUI(){
         HUD.instance.weaponInfo.updateInfo(weapons[selectedWeapon].GetComponent<Weapon>());
-
     }
 
     void SwitchWeapons(int newIndex) {

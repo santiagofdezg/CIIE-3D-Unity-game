@@ -2,11 +2,11 @@ using UnityEngine;
 using UnityEngine.AI;
 using Characters.Enemy;
 
-public class EnemyHealthSystem : HealthSystem
-{
+public class EnemyHealthSystem : HealthSystem {
 
     private Animator animator;
     private AIEnemy aiEnemy;
+
 
     void Start(){
         currentHealth = maxHealth;
@@ -21,17 +21,15 @@ public class EnemyHealthSystem : HealthSystem
         }       
     }
 
-    
     public override void TakeDamage(int damage){
         if (currentHealth > 0){
             currentHealth -= damage;
             aiEnemy.OnAware();
-            Debug.Log("New enemy health: " + currentHealth);
+            // Debug.Log("New enemy health: " + currentHealth);
         } else {
             Die();
         }
     }
-
 
     void Die() {
         AIEnemy aiEnemy = GetComponent<AIEnemy>();

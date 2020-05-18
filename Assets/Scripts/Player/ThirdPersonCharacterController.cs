@@ -35,15 +35,14 @@ namespace Characters.ThirdPersonCharacter {
         public LayerMask groundMask;
         bool isGrounded;
 
-    //Comprobar si o xogo esta pausado usando o observer
-        public override void OnNotify(NotificationType notificationType){
+
+        //Comprobar si o xogo esta pausado usando o observer
+        public override void OnNotify(NotificationType notificationType) {
             if (notificationType == NotificationType.Paused){
                 this.enabled = false;
             } else if (notificationType == NotificationType.UnPaused){
                 this.enabled = true;
             }
-
-
         }
 
         void Start() {
@@ -66,7 +65,6 @@ namespace Characters.ThirdPersonCharacter {
 
             //Añadir observer ao subject
             GameHandler.instance.RegisterObserverPause(this); 
-
         }
 
 
