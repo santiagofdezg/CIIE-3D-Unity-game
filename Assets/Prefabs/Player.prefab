@@ -389,7 +389,7 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 2
   m_Height: 1.9
-  m_Radius: 0.4
+  m_Radius: 0.25
   m_SlopeLimit: 45
   m_StepOffset: 0.7
   m_SkinWidth: 0.08
@@ -483,9 +483,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 0
-  healthBar: {fileID: 0}
   healPerTime: 2
   regenerationDelay: 0.5
+  mgnShk: 4
+  rghShk: 4
+  fInShk: 0.1
+  fOutShk: 1
 --- !u!1001 &1169146177497674215
 PrefabInstance:
   m_ObjectHideFlags: 0

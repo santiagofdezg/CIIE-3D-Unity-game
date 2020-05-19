@@ -10,9 +10,9 @@ public class DamageSystem : MonoBehaviour {
 
     // Esta funcion chamase continuamente mentras dous colliders colisionen
     void OnTriggerStay(Collider hit){
-        if (hit.gameObject.tag == "Player"){
+        if (hit.gameObject.tag == "Damage_Collider"){
             if(untilNextDmg <= 0){
-                hit.gameObject.GetComponent<PlayerHealthSystem>().TakeDamage(maxDmg);
+                hit.gameObject.GetComponentInParent<PlayerHealthSystem>().TakeDamage(maxDmg);
                 untilNextDmg = cooldownDmg;
             } else {
                 untilNextDmg -= Time.deltaTime;
