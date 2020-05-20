@@ -6,7 +6,7 @@ using Characters.Enemy;
 
 public class GenerateEnemies : MonoBehaviour {
 
-    public GameObject enemy;
+    public GameObject[] enemies;
     public ThirdPersonCharacterController player;
     public int enemyCount = 5;
 
@@ -14,8 +14,15 @@ public class GenerateEnemies : MonoBehaviour {
 
     void Start() {
         spawnArea = GetComponent<SphereCollider>();
-        enemy.GetComponent<AIEnemy>().tpcc = player;
-        StartCoroutine(EnemyDrop());
+        if (enemies == null || enemies.Length == 0) {
+            Debug.LogWarning("Add some enemies to the component.");
+        } else {
+            foreach (var enemy in enemies) {
+                enemy.GetComponent<AIEnemy>().tpcc = player;
+            }
+            StartCoroutine(EnemyDrop());
+        }
+        
     }
 
     Vector3 GetSpawnPosition() {
@@ -30,7 +37,8 @@ public class GenerateEnemies : MonoBehaviour {
         for (int i = 0; i < enemyCount; i++) {
             Vector3 spawnPosition = GetSpawnPosition();
             // Debug.Log(spawnPosition);
-            Instantiate(enemy, spawnPosition, Quaternion.identity);
+            int indexEnemy = Random.Range(0,enemies.Length);
+            Instantiate(enemies[indexEnemy], spawnPosition, Quaternion.identity);
             yield return new WaitForSeconds(0.1f);
         }
 
