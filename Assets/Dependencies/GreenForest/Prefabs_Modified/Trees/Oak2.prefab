@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 33357689942045608}
   - component: {fileID: 23022665176233292}
   - component: {fileID: 1550133558053889634}
+  - component: {fileID: 5344554703240380588}
   m_Layer: 0
   m_Name: Oak2
   m_TagString: Untagged
@@ -90,8 +91,22 @@ MeshCollider:
   m_GameObject: {fileID: 1969506690038558}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 21a056b9a5bc9884785d87b6eb16fe73, type: 3}
+--- !u!136 &5344554703240380588
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1969506690038558}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 5
+  m_Height: 37.1
+  m_Direction: 1
+  m_Center: {x: 0.3, y: 13.3, z: -0.0087070465}

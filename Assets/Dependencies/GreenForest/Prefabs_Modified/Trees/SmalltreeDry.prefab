@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 33444049280215880}
   - component: {fileID: 23543373797792450}
   - component: {fileID: 5252181839419132269}
+  - component: {fileID: 3671083713862228386}
   m_Layer: 0
   m_Name: SmalltreeDry
   m_TagString: Untagged
@@ -90,8 +91,22 @@ MeshCollider:
   m_GameObject: {fileID: 1269626473268306}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 54f40d3ae5ebdfd42b3aa9a7fd232430, type: 3}
+--- !u!136 &3671083713862228386
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1269626473268306}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 1.84
+  m_Height: 17.104492
+  m_Direction: 1
+  m_Center: {x: -0.61724925, y: 7.9770145, z: 0.46674728}

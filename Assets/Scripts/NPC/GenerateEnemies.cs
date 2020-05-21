@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using Characters.ThirdPersonCharacter;
 using Characters.Enemy;
 
@@ -15,7 +16,7 @@ public class GenerateEnemies : MonoBehaviour {
     void Start() {
         spawnArea = GetComponent<SphereCollider>();
         if (enemies == null || enemies.Length == 0) {
-            Debug.LogWarning("Add some enemies to the component.");
+            Debug.LogWarning("Add some enemies to the spawner");
         } else {
             foreach (var enemy in enemies) {
                 enemy.GetComponent<AIEnemy>().tpcc = player;
@@ -32,6 +33,7 @@ public class GenerateEnemies : MonoBehaviour {
    
         return spawnPosition;
     }
+
 
     IEnumerator EnemyDrop() {
         for (int i = 0; i < enemyCount; i++) {
