@@ -21,4 +21,7 @@ public class GameHandler : MonoBehaviour {
     public void RegisterObserverPause(Observer obs) {
         PauseMenuObserver.RegisterObserver(obs);
     }
+    public void UnregisterObserverPause(Observer obs) {
+        PauseMenuObserver.UnregisterObserver(obs);
+    }
 }

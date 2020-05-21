@@ -49,6 +49,9 @@ public class Weapon : Observer
     public int reloadID = 0;
     public int shootID = 0;
 
+    public float fireRate = 0.1f; //segundos
+    private float nextShot = 0f;
+
 
     public override void OnNotify(NotificationType notificationType){
         if (notificationType == NotificationType.Paused){
@@ -80,10 +83,19 @@ public class Weapon : Observer
         thirdPersonCamFlag = tpcc.IsThirdPersonCameraActive();
     }
 
+    private bool checkRecoil(){
+        if(Time.time >= nextShot ){
+             nextShot = Time.time + fireRate;
+             return true;
+        }
+        return false;   
+    }
+
 
     public virtual void checkShootingButton() {
         if (Input.GetButtonDown("Fire1"))
-            Shoot();
+            if(checkRecoil())
+                Shoot();
     }
 
 
@@ -138,6 +150,10 @@ public class Weapon : Observer
 
     public int GetCurrentAmmo() {
         return currentAmmo;
+    }
+
+    public void OnPickup(){
+        gameObject.SetActive(false);
     }
 
     

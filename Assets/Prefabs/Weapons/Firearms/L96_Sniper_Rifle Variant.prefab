@@ -1,5 +1,19 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!64 &8305319753537622843
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2997998092018955504}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -3070788483783853443, guid: 3bd38977c78e799909054dcc977b767c, type: 3}
 --- !u!114 &4645163806838995279
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7,7 +21,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2997998092018955504}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e471910bb16904bf0b2da037f5187505, type: 3}
   m_Name: 
@@ -26,7 +40,11 @@ MonoBehaviour:
   shotSoundName: Shot_pistol
   maxAmmo: 4
   reloadTime: 2.2
-  ammoReloadingSoundName: Ammo_reloading_pistol
+  isReloading: 0
+  ammoReloadingSoundName: Ammo_reloading
+  reloadID: 0
+  shootID: 0
+  fireRate: 0.1
 --- !u!1001 &2176302134027581143
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -12,10 +12,13 @@ public class CharacterAnimator : MonoBehaviour {
     float verticalSpeed = 0;
     // float locomationSmooth = 0.1f;
 
+    private TerrainDetector terrainDetector;
+
 
     // Start is called before the first frame update
     void Start() {
         animator = GetComponentInChildren<Animator>();    
+        terrainDetector = new TerrainDetector();
     }
 
     // Update is called once per frame
@@ -53,6 +56,55 @@ public class CharacterAnimator : MonoBehaviour {
 
     public void setVerticalSpeed(float speed) {
         verticalSpeed = speed;
+    }
+
+    private void StepJ(){
+            Debug.Log("ole");
+            soundOnTerrain();
+    }
+
+    private void StepV(){
+        float hor = animator.GetFloat("horizontal");
+        float ver = animator.GetFloat("vertical");
+
+        if(ver>= 0.5f || ver<=-0.5f )
+            soundOnTerrain();
+    }
+
+    
+    private void StepH(){
+        float hor = animator.GetFloat("horizontal");
+        float ver = animator.GetFloat("vertical");
+
+        if( hor >= 0.5f || hor<=-0.5f )
+            soundOnTerrain();
+    }
+
+    private void StepTurn(){
+        float hor = animator.GetFloat("lookHorizontal");
+
+        
+        if( hor >= 0.1f ||hor<=-0.1f ){
+            soundOnTerrain();
+        }
+
+            
+    }
+
+    private void soundOnTerrain(){
+        int indexTerrain = terrainDetector.GetActiveTerrainTextureIdx(transform.position);
+
+        if (indexTerrain==0){
+            AudioManager.instance.Play("step_grass", true, 0);
+
+        } else if (indexTerrain==1 || indexTerrain == 2){
+            AudioManager.instance.Play("step_dirt", true, 0);
+        } else {
+            AudioManager.instance.Play("step_cemento", true, 0);
+        }
+
+
+
     }
 
 }

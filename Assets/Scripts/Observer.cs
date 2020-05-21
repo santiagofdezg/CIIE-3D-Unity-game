@@ -14,6 +14,10 @@ public class Subject : MonoBehaviour {
         _observers.Add(observer);
     }
 
+
+    public void UnregisterObserver(Observer observer) {
+        _observers.Remove(observer);
+    }
     public void Notify(NotificationType notificationType) {
         foreach(var observer in _observers)
             observer.OnNotify(notificationType);

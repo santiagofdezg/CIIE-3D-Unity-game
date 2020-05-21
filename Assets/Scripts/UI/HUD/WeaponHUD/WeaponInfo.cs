@@ -14,10 +14,13 @@ public class WeaponInfo : MonoBehaviour {
 
 
     void Start() {
-        weapon = weaponManager.GetCurrentWeapon().GetComponent<Weapon>();
-        currentAmmo = weapon.GetCurrentAmmo();
-        maxAmmo = weapon.maxAmmo;
-        weaponImage = weapon.weaponHUDImage;
+        GameObject weaponObject = weaponManager.GetCurrentWeapon();
+        if (weapon != null){
+            weapon = weaponObject.GetComponent<Weapon>();
+            currentAmmo = weapon.GetCurrentAmmo();
+            maxAmmo = weapon.maxAmmo;
+            weaponImage = weapon.weaponHUDImage;
+        }
     }
 
     public void updateInfo(Weapon newWeapon){

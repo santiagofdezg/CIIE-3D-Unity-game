@@ -388,6 +388,16 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 3687310626940513587, guid: 7d67cc8bd66efcafda4db4b2a8d8c56c,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3687310626940513587, guid: 7d67cc8bd66efcafda4db4b2a8d8c56c,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5320929041034197801, guid: 7d67cc8bd66efcafda4db4b2a8d8c56c,
         type: 3}
       propertyPath: weaponManager
@@ -1753,17 +1763,17 @@ PrefabInstance:
     - target: {fileID: 7976952538341183648, guid: d3b66080d1a61db898fc820337cf83f0,
         type: 3}
       propertyPath: sounds.Array.size
-      value: 6
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7976952538341183648, guid: d3b66080d1a61db898fc820337cf83f0,
         type: 3}
       propertyPath: sounds.Array.data[6].clip
       value: 
-      objectReference: {fileID: 8300000, guid: 00ff98a55a60a52ccb1b64d77a1763fd, type: 3}
+      objectReference: {fileID: 8300000, guid: 01ce6eaaedc06244c82f8f399b83e4ab, type: 3}
     - target: {fileID: 7976952538341183648, guid: d3b66080d1a61db898fc820337cf83f0,
         type: 3}
       propertyPath: sounds.Array.data[6].name
-      value: Walking
+      value: step_dirt
       objectReference: {fileID: 0}
     - target: {fileID: 7976952538341183648, guid: d3b66080d1a61db898fc820337cf83f0,
         type: 3}
@@ -1778,17 +1788,17 @@ PrefabInstance:
     - target: {fileID: 7976952538341183648, guid: d3b66080d1a61db898fc820337cf83f0,
         type: 3}
       propertyPath: sounds.Array.data[6].spatialBlend
-      value: 1
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 7976952538341183648, guid: d3b66080d1a61db898fc820337cf83f0,
         type: 3}
       propertyPath: sounds.Array.data[7].clip
       value: 
-      objectReference: {fileID: 8300000, guid: 594253a8d41d1c69e9cf5409e2d6bb97, type: 3}
+      objectReference: {fileID: 8300000, guid: fb1bd99ea58149a45af0665d4abb14cf, type: 3}
     - target: {fileID: 7976952538341183648, guid: d3b66080d1a61db898fc820337cf83f0,
         type: 3}
       propertyPath: sounds.Array.data[7].name
-      value: Running
+      value: step_cemento
       objectReference: {fileID: 0}
     - target: {fileID: 7976952538341183648, guid: d3b66080d1a61db898fc820337cf83f0,
         type: 3}
@@ -1803,17 +1813,42 @@ PrefabInstance:
     - target: {fileID: 7976952538341183648, guid: d3b66080d1a61db898fc820337cf83f0,
         type: 3}
       propertyPath: sounds.Array.data[7].spatialBlend
-      value: 1
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 7976952538341183648, guid: d3b66080d1a61db898fc820337cf83f0,
         type: 3}
       propertyPath: sounds.Array.data[6].loop
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7976952538341183648, guid: d3b66080d1a61db898fc820337cf83f0,
         type: 3}
       propertyPath: sounds.Array.data[7].loop
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7976952538341183648, guid: d3b66080d1a61db898fc820337cf83f0,
+        type: 3}
+      propertyPath: sounds.Array.data[8].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: f7d73a3fe38aee343a7641ad711ff695, type: 3}
+    - target: {fileID: 7976952538341183648, guid: d3b66080d1a61db898fc820337cf83f0,
+        type: 3}
+      propertyPath: sounds.Array.data[8].name
+      value: step_grass
+      objectReference: {fileID: 0}
+    - target: {fileID: 7976952538341183648, guid: d3b66080d1a61db898fc820337cf83f0,
+        type: 3}
+      propertyPath: sounds.Array.data[8].volume
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7976952538341183648, guid: d3b66080d1a61db898fc820337cf83f0,
+        type: 3}
+      propertyPath: sounds.Array.data[8].pitch
+      value: 1.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 7976952538341183648, guid: d3b66080d1a61db898fc820337cf83f0,
+        type: 3}
+      propertyPath: sounds.Array.data[8].spatialBlend
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 7976952538341183654, guid: d3b66080d1a61db898fc820337cf83f0,
         type: 3}

@@ -11,6 +11,8 @@ namespace Characters.ThirdPersonCharacter {
         [Range(0,1)]
         public float airControl = 0.5f;
         
+        WeaponManager weaponManager = null;
+
         private bool isWalking = true; // true=> walking; false=>running
         public float Speed = 10f;
         public float sprint = 1.5f;
@@ -45,6 +47,11 @@ namespace Characters.ThirdPersonCharacter {
             }
         }
 
+         void OnDestroy() {
+            GameHandler.instance.UnregisterObserverPause(this); 
+
+        }
+
         void Start() {
             // Activar a cámara inicial
             if (thirdPersonCamFlag) {
@@ -59,6 +66,7 @@ namespace Characters.ThirdPersonCharacter {
                 firstPersonCamera.enabled = true;
             }
 
+            weaponManager = gameObject.GetComponentInChildren<WeaponManager>();
             characterAnimator = GetComponent<CharacterAnimator>(); //componente para animacions
             //thirdPersonCamera = GetComponent<ThirdPersonCamera>();
             //firstPersonCamera = GetComponent<FirstPersonCamera>();
@@ -165,6 +173,14 @@ namespace Characters.ThirdPersonCharacter {
             
             controller.Move(velocity * Time.deltaTime);
         }
+
+             private void OnControllerColliderHit(ControllerColliderHit hit) {
+               
+                if (hit.collider.GetComponent<Weapon>() != null) 
+                    weaponManager.AddWeapon(hit.collider.gameObject);
+                
+               
+            }
 
         
     }

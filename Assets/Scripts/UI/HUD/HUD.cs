@@ -13,7 +13,7 @@ public class HUD : MonoBehaviour {
     [HideInInspector]
     public WeaponInfo weaponInfo;
 
-    void Start() {
+    void Awake() {
         //Singleton
         if (instance == null)
             instance = this;
@@ -25,6 +25,8 @@ public class HUD : MonoBehaviour {
         hitOverlay = gameObject.GetComponentInChildren<HitOverlay>();
         weaponInfo = gameObject.GetComponentInChildren<WeaponInfo>();
     }
+
+
 
   
 }
