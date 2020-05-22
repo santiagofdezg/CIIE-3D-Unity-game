@@ -12,6 +12,11 @@ public class HUD : MonoBehaviour {
     public HitOverlay hitOverlay;
     [HideInInspector]
     public WeaponInfo weaponInfo;
+    [HideInInspector]
+    public PickupPanel pickupPanel;
+
+
+
 
     void Awake() {
         //Singleton
@@ -24,7 +29,12 @@ public class HUD : MonoBehaviour {
         healthBar = gameObject.GetComponentInChildren<HealthBar>();
         hitOverlay = gameObject.GetComponentInChildren<HitOverlay>();
         weaponInfo = gameObject.GetComponentInChildren<WeaponInfo>();
+        pickupPanel = gameObject.GetComponentInChildren<PickupPanel>();
+        pickupPanel.CloseMessagePanel();
+
     }
+
+
 
 
 

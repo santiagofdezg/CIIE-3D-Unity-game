@@ -37,6 +37,7 @@ namespace Characters.ThirdPersonCharacter {
         public LayerMask groundMask;
         bool isGrounded;
 
+        private GameObject toPickup = null;
 
         //Comprobar si o xogo esta pausado usando o observer
         public override void OnNotify(NotificationType notificationType) {
@@ -86,6 +87,13 @@ namespace Characters.ThirdPersonCharacter {
         }
 
 
+        void pickupObject(){
+            if (Input.GetButtonDown("Pickup") && toPickup != null){
+                weaponManager.AddWeapon(toPickup);
+                HUD.instance.pickupPanel.CloseMessagePanel();
+
+            }
+        }
         void PlayerMovement() {
 
             //Collemos o movimiento
@@ -163,6 +171,7 @@ namespace Characters.ThirdPersonCharacter {
             }
 
             PlayerMovement(); //chamamos ao movemento
+            pickupObject();
 
             //aplicamos a gravedad
             velocity.y += gravity * Time.deltaTime; 
@@ -174,14 +183,31 @@ namespace Characters.ThirdPersonCharacter {
             controller.Move(velocity * Time.deltaTime);
         }
 
-             private void OnControllerColliderHit(ControllerColliderHit hit) {
-               
-                if (hit.collider.GetComponent<Weapon>() != null) 
-                    weaponManager.AddWeapon(hit.collider.gameObject);
-                
-               
+
+            private void OnTriggerEnter(Collider other){
+                 if (other.GetComponent<Weapon>() != null){
+                    HUD.instance.pickupPanel.OpenPanel("'F' para recoller");
+                    toPickup = other.gameObject;
+
+                 }
             }
 
+            private void OnTriggerExit(Collider other){
+
+                if (other.GetComponent<Weapon>() != null){
+                    HUD.instance.pickupPanel.CloseMessagePanel();
+                    toPickup = null;
+                }
+            }
+/*
+             private void OnControllerColliderHit(ControllerColliderHit hit) {
+               
+                if (hit.collider.GetComponent<Weapon>() != null){
+                    weaponManager.AddWeapon(hit.collider.gameObject);
+                }
+               
+            }
+*/
         
     }
 

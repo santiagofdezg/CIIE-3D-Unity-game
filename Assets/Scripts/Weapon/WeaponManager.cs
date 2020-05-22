@@ -84,11 +84,19 @@ public class WeaponManager : MonoBehaviour {
 
     public void AddWeapon(GameObject weaponInit){
             weaponInit.SetActive(false);
-            GameObject weapon = Instantiate(weaponInit, gameObject.transform, false);
+            GameObject weapon = Instantiate(weaponInit, gameObject.transform.position, gameObject.transform.rotation);
+            weapon.transform.parent = gameObject.transform;
             weapon.GetComponent<Weapon>().enabled = true;
+            weapon.GetComponent<Rigidbody>().detectCollisions = false;
             Debug.Log(weapons.Count -1);
+            weapon.SetActive(true);
+
+            if (weapons.Count > 0)
+                weapon.SetActive(false);
+            
+                      
             weapons.Add(weapon);
-            weapon.SetActive(false);
+
 
     }
 
