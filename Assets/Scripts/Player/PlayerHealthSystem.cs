@@ -18,10 +18,24 @@ public class PlayerHealthSystem : HealthSystem {
         GameHandler.instance.RegisterObserverPause(this);   
     }
 
+    void Die(){
+     
+        GameHandler.instance.playerDeath();
+        this.enabled = false;
+    }
 
     void Update() {
-        if(currentHealth != maxHealth && !isRegenHealth) 
-            StartCoroutine(RegenHealthOverTime());
+        if(currentHealth<=0){
+
+            Die();
+        } else {
+            if(currentHealth != maxHealth && !isRegenHealth) 
+                StartCoroutine(RegenHealthOverTime());
+        }
+
+        
+
+
     }
 
     
@@ -36,16 +50,13 @@ public class PlayerHealthSystem : HealthSystem {
             HUD.instance.healthBar.SetHealth(currentHealth);
             HUD.instance.hitOverlay.flashScreen();
             // Debug.Log("New health: " + currentHealth);
-        } else {
-            //morriche
-            Debug.Log("Player Died!");
-        }
+        } 
     }
 
     // Corrutina para regenerar vida
     private IEnumerator RegenHealthOverTime() {
         isRegenHealth = true;
-        while (currentHealth < maxHealth) {
+        while (currentHealth < maxHealth && currentHealth != 0) {
             Heal(healPerTime);
             HUD.instance.healthBar.SetHealth(currentHealth);
             yield return new WaitForSeconds (regenerationDelay);

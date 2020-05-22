@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 
 public class CharacterAnimator : MonoBehaviour {
 
@@ -15,30 +15,42 @@ public class CharacterAnimator : MonoBehaviour {
     private TerrainDetector terrainDetector;
 
 
+    public void playerDeath(){
+        animator.SetTrigger("isDead");
+    }
+
     // Start is called before the first frame update
     void Start() {
         animator = GetComponentInChildren<Animator>();    
         terrainDetector = new TerrainDetector();
+
     }
 
-    // Update is called once per frame
-    void Update() {    //collemos inputs
-        float ver = Input.GetAxis("Vertical");
-        float hor = Input.GetAxis("Horizontal");
-
-        float mouseX = Input.GetAxis("Mouse X");
-        float mouseY = Input.GetAxis("Mouse Y");
-
-        //Si lle damos ao shift estamos sprintando, as animacions ejecutanse ao 100
-        //si non ao 80 para dar sensacion de non correr
-        if (Input.GetKey(KeyCode.LeftShift)){
+    public void walkAnimation(float hor, float ver, bool isRunning){
+        if(isRunning){
             animator.SetFloat("vertical", ver, 0.1f, Time.deltaTime);
             animator.SetFloat("horizontal", hor, 0.1f, Time.deltaTime);
         } else {
             animator.SetFloat("vertical", ver * 0.8f, 0.1f, Time.deltaTime);
-            animator.SetFloat("horizontal", hor * 0.8f, 0.1f, Time.deltaTime);
-        } 
-        
+            animator.SetFloat("horizontal", hor * 0.8f, 0.1f, Time.deltaTime);  
+        }
+    }
+
+    public void updateAnimator(float mouseX){
+        //variables de animator
+        animator.SetFloat("lookHorizontal", mouseX, 0.1f, Time.deltaTime);
+        animator.SetBool("isGrounded", isGrounded);
+        animator.SetFloat("verticalSpeed", verticalSpeed); 
+    }
+
+
+
+    // Update is called once per frame
+    void Update() {    //collemos inputs
+        float mouseX = Input.GetAxis("Mouse X");
+        float mouseY = Input.GetAxis("Mouse Y");
+
+
         //variables de animator
         animator.SetFloat("lookHorizontal", mouseX, 0.1f, Time.deltaTime);
         animator.SetBool("isGrounded", isGrounded);
@@ -106,5 +118,11 @@ public class CharacterAnimator : MonoBehaviour {
 
 
     }
+
+    private void Death(){
+        AudioManager.instance.StopAll();
+        SceneManager.LoadScene(1);
+    }
+
 
 }

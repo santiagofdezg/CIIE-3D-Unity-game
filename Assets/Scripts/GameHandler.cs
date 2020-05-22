@@ -1,10 +1,15 @@
 ﻿
 using UnityEngine;
+using System;
+using UnityEngine.SceneManagement;
 
 public class GameHandler : MonoBehaviour {
     
     private Subject PauseMenuObserver; 
     public static GameHandler instance;
+
+//Usamos patrón observador pero utilizando eventos, mellor que herencia
+    public event Action onPlayerDied;
 
     void Awake() {
         //Singleton
@@ -16,6 +21,9 @@ public class GameHandler : MonoBehaviour {
 
         //Obter subject pause
         PauseMenuObserver = FindObjectOfType<PauseMenu>();
+
+        //gardamos a escena actual
+        PlayerPrefs.SetString("lastScene",  SceneManager.GetActiveScene().name); 
     }
 
     public void RegisterObserverPause(Observer obs) {
@@ -24,4 +32,15 @@ public class GameHandler : MonoBehaviour {
     public void UnregisterObserverPause(Observer obs) {
         PauseMenuObserver.UnregisterObserver(obs);
     }
+
+    public void playerDeath(){
+        if(onPlayerDied != null){
+            onPlayerDied();
+        }
+
+        
+    }
+
+
+
 }

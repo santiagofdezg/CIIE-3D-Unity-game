@@ -49,8 +49,15 @@ namespace Characters.ThirdPersonCharacter {
         }
 
          void OnDestroy() {
+             //Desuscribir observers
             GameHandler.instance.UnregisterObserverPause(this); 
+            GameHandler.instance.onPlayerDied -= Die;
 
+        }
+
+        private void Die(){
+            characterAnimator.playerDeath();
+            this.enabled = false;
         }
 
         void Start() {
@@ -74,6 +81,9 @@ namespace Characters.ThirdPersonCharacter {
 
             //Añadir observer ao subject
             GameHandler.instance.RegisterObserverPause(this); 
+            //Observer pero usando eventos
+            GameHandler.instance.onPlayerDied += Die;
+
         }
 
 
@@ -111,10 +121,12 @@ namespace Characters.ThirdPersonCharacter {
                 //SOLO NOS MOVEMOS SI ESTAMOS EN EL SUELO
                 if (Input.GetKey(KeyCode.LeftShift)){ //Shft pos sprint
                     isWalking = false;
-                    controller.Move(playerMovement * Speed * Time.deltaTime * sprint);  
+                    controller.Move(playerMovement * Speed * Time.deltaTime * sprint); 
+                     characterAnimator.walkAnimation(hor,ver,true);
                 } else {
                     isWalking = true;
                     controller.Move(playerMovement * Speed * Time.deltaTime);
+                    characterAnimator.walkAnimation(hor,ver,false);
                 }
 
                 if(Input.GetButtonDown("Jump")){
@@ -132,6 +144,10 @@ namespace Characters.ThirdPersonCharacter {
             } else {
                 currentCamera.fieldOfView = Mathf.Lerp(currentCamera.fieldOfView, maxCameraFOV, tCam);
             }
+
+
+
+            
 
         }  
 
@@ -199,15 +215,9 @@ namespace Characters.ThirdPersonCharacter {
                     toPickup = null;
                 }
             }
-/*
-             private void OnControllerColliderHit(ControllerColliderHit hit) {
-               
-                if (hit.collider.GetComponent<Weapon>() != null){
-                    weaponManager.AddWeapon(hit.collider.gameObject);
-                }
-               
-            }
-*/
+
+       
+
         
     }
 

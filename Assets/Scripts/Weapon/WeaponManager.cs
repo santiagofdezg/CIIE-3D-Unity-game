@@ -10,9 +10,18 @@ public class WeaponManager : MonoBehaviour {
 
     private const int NUM_WEAPONS = 3;
 
-    
+    void OnDestroy() {
+        //desuscribir observer
+        GameHandler.instance.onPlayerDied -= Disable;
+
+    }
     void Start() {
         InitializeWeapons();
+        GameHandler.instance.onPlayerDied += Disable;
+    }
+
+    private void Disable(){
+        gameObject.SetActive(false);
     }
     
     void InitializeWeapons() {

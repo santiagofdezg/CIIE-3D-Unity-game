@@ -20,4 +20,10 @@ public class MainMenu : MonoBehaviour {
         AudioManager.instance.Play("Test", false, musicID);
     }
 
+    public void PlayClickAudio(){
+        AudioManager.instance.Play("Click", true, musicID);
+
+
+    }
+
 }
