@@ -136,7 +136,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tpcc: {fileID: 0}
   fieldOfView: 120
-  viewDistance: 10
+  viewDistance: 13
   wanderRadius: 10
   wanderSpeed: 0.5
   wanderAngularSpeed: 50
@@ -173,7 +173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03650d05875481e4fb09af959553087d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 90
   currentHealth: 0
 --- !u!114 &5091859343979995110
 MonoBehaviour:

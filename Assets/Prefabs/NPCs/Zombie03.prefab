@@ -136,13 +136,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tpcc: {fileID: 0}
   fieldOfView: 120
-  viewDistance: 10
+  viewDistance: 20
   wanderRadius: 10
   wanderSpeed: 0.5
   wanderAngularSpeed: 50
-  chaseSpeed: 4.5
-  chaseAngularSpeed: 140
-  loseThreshold: 5
+  chaseSpeed: 5
+  chaseAngularSpeed: 150
+  loseThreshold: 8
   wanderType: 0
   waypoints: []
 --- !u!54 &764955503235207970
@@ -173,7 +173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03650d05875481e4fb09af959553087d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 120
   currentHealth: 0
 --- !u!114 &5536577723766964391
 MonoBehaviour:
