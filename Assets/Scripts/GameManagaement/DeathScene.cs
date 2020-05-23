@@ -11,14 +11,14 @@ public class DeathScene : MonoBehaviour
 
     public void RetryGame() {
        AudioManager.instance.Stop("Theme", musicID);
-       SceneManager.LoadScene(PlayerPrefs.GetString("lastScene")); 
+       GameLoader.instance.LoadLastScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void GoMenu() {
         //AudioManager.instance.Stop("Theme", musicID);
         AudioManager.instance.StopAll();
-        //menu scene é a primeira
-        SceneManager.LoadScene(0); 
+        GameLoader.instance.LoadMenu(SceneManager.GetActiveScene().buildIndex);
+            
     }
 
 

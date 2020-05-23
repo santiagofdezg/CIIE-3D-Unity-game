@@ -22,8 +22,6 @@ public class GameHandler : MonoBehaviour {
         //Obter subject pause
         PauseMenuObserver = FindObjectOfType<PauseMenu>();
 
-        //gardamos a escena actual
-        PlayerPrefs.SetString("lastScene",  SceneManager.GetActiveScene().name); 
     }
 
     public void RegisterObserverPause(Observer obs) {

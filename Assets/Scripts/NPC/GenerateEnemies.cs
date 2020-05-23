@@ -40,7 +40,8 @@ public class GenerateEnemies : MonoBehaviour {
             Vector3 spawnPosition = GetSpawnPosition();
             // Debug.Log(spawnPosition);
             int indexEnemy = Random.Range(0,enemies.Length);
-            Instantiate(enemies[indexEnemy], spawnPosition, Quaternion.identity);
+            GameObject e = Instantiate(enemies[indexEnemy], spawnPosition, Quaternion.identity);
+            e.transform.parent = spawnArea.transform;
             yield return new WaitForSeconds(0.1f);
         }
 

@@ -8,7 +8,8 @@ public class MainMenu : MonoBehaviour {
     int musicID = 0;
 
     public void PlayGame() {
-       SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); 
+       //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); 
+       GameLoader.instance.LoadGame();
     }
 
     public void QuitGame() {

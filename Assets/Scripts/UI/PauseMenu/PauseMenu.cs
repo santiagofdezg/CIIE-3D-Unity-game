@@ -62,7 +62,8 @@ public class PauseMenu : Subject
 
     public void LoadMenu() {
         Time.timeScale = 1f; //volve a poñer o tempo a normal no menu
-        SceneManager.LoadScene("MainMenu");
+
+        GameLoader.instance.LoadMenu(SceneManager.GetActiveScene().buildIndex);
     }
 
 

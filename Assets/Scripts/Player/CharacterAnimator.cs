@@ -121,7 +121,7 @@ public class CharacterAnimator : MonoBehaviour {
 
     private void Death(){
         AudioManager.instance.StopAll();
-        SceneManager.LoadScene(1);
+        GameLoader.instance.LoadDeathMenu(SceneManager.GetActiveScene().buildIndex);
     }
 
 
