@@ -352,6 +352,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: PauseMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 2324051801260330520, guid: 64ab1104fc8748743b898e9f07da2b36,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2324051801260330520, guid: 64ab1104fc8748743b898e9f07da2b36,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2324051801260330520, guid: 64ab1104fc8748743b898e9f07da2b36,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6310928470329083350, guid: 64ab1104fc8748743b898e9f07da2b36,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6408789710621633232, guid: 64ab1104fc8748743b898e9f07da2b36,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6408789710621633232, guid: 64ab1104fc8748743b898e9f07da2b36,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64ab1104fc8748743b898e9f07da2b36, type: 3}
 --- !u!224 &6525438376430469790 stripped
