@@ -17,8 +17,15 @@ public class HealthSystem : Observer {
         }
     }
 
-    public void Heal(int healAmount) {
-        currentHealth += healAmount;
+    public bool Heal(int healAmount) {
+        if (currentHealth < maxHealth){
+            currentHealth = currentHealth + healAmount;
+
+            return true;
+
+        } else {
+            return false;
+        }
     }
 
     public override void OnNotify(NotificationType notificationType) {
