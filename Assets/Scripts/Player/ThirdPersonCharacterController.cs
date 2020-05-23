@@ -101,7 +101,7 @@ namespace Characters.ThirdPersonCharacter {
             if (Input.GetButtonDown("Pickup") && toPickup != null){
                 weaponManager.AddWeapon(toPickup);
                 HUD.instance.pickupPanel.CloseMessagePanel();
-
+                toPickup = null;
             }
         }
         void PlayerMovement() {
