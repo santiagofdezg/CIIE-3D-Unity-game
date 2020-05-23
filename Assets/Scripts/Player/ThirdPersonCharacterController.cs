@@ -63,14 +63,16 @@ namespace Characters.ThirdPersonCharacter {
             this.enabled = false;
         }
 
-        
-
-        void Start() {
+        void Awake() {
             //Singleton
             if (instance == null)
                 instance = this;
             else
                 Destroy(gameObject);
+        }
+        
+
+        void Start() {
 
             // Activar a cámara inicial
             if (thirdPersonCamFlag) {

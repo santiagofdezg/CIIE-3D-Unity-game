@@ -463,6 +463,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boss01
       objectReference: {fileID: 0}
+    - target: {fileID: 2346777349668931407, guid: d6712d00521c92976ad114d2eeb69e40,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2346777349668931441, guid: d6712d00521c92976ad114d2eeb69e40,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1367,7 +1372,7 @@ PrefabInstance:
     - target: {fileID: 2053162029671404694, guid: 85b06509800ae17d6bc20acd75a56296,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2053162029671404694, guid: 85b06509800ae17d6bc20acd75a56296,
         type: 3}
@@ -2941,7 +2946,7 @@ Transform:
   - {fileID: 2053416736}
   - {fileID: 231494075}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1558587829
 PrefabInstance:
