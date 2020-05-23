@@ -22,7 +22,9 @@ public class SpawnerActivator : MonoBehaviour {
         // If the player is in the range of the activator then the spawners are activated
         if (Vector3.Distance(player.transform.position, transform.position) < detectionArea.radius){
             foreach (var spawner in enemySpawners) {
-                StartCoroutine(spawner.EnemyDrop());
+                // Check if another activator has already activated the spawner
+                if (spawner.enabled)
+                    StartCoroutine(spawner.EnemyDrop());
             }
             enabled = false;
         }

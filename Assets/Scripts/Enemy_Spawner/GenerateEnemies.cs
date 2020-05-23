@@ -43,6 +43,6 @@ public class GenerateEnemies : MonoBehaviour {
             Instantiate(enemies[indexEnemy], spawnPosition, Quaternion.identity);
             yield return new WaitForSeconds(0.05f);
         }
-
+        enabled = false;
     }
 }
