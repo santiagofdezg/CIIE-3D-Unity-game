@@ -104,7 +104,7 @@ public class Weapon : Observer
         updateCamera();
 
         if (!isReloading) {       
-            if (currentAmmo <=0 ) {
+            if (currentAmmo <=0 || Input.GetButtonDown("Reload Weapon")) {
                 StartCoroutine(Reload());  
             } else {
                 checkShootingButton();
