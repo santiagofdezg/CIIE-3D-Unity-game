@@ -9,6 +9,8 @@ public class EndScene : MonoBehaviour
     void Start()
     {
         AudioManager.instance.Play(endTheme, false, gameObject.GetInstanceID());
+        Cursor.visible = true; //activa o cursor o cursor
+        Cursor.lockState = CursorLockMode.None; //libera o cursor
     }
 
 
