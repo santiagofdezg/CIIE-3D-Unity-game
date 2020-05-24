@@ -35,6 +35,7 @@ public class PlayerHealthSystem : HealthSystem {
 
     void Update() {
         if(currentHealth<=0){
+            AudioManager.instance.Play(death_sound, gameObject, true, gameObject.GetInstanceID());
             Die();
         } else {
             if(currentHealth != maxHealth && !isRegenHealth) 
@@ -51,7 +52,7 @@ public class PlayerHealthSystem : HealthSystem {
 
 
         if (currentHealth > 0){
-            AudioManager.instance.Play(death_sound, gameObject, true, gameObject.GetInstanceID());
+            AudioManager.instance.Play(hurt_sound, gameObject, true, gameObject.GetInstanceID());
             CameraShaker.Instance.ShakeOnce(mgnShk,rghShk,fInShk,fOutShk);
             currentHealth -= damage;
 

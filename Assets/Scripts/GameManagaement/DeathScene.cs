@@ -6,11 +6,13 @@ using UnityEngine.SceneManagement;
 public class DeathScene : MonoBehaviour
 {
 
+    public string deathTheme = "DeathTheme";
+    public string clickSound = "Click";
     
     int musicID = 0;
 
     public void RetryGame() {
-       AudioManager.instance.Stop("Theme", musicID);
+       AudioManager.instance.Stop(deathTheme, musicID);
        GameLoader.instance.LoadLastScene(SceneManager.GetActiveScene().buildIndex);
     }
 
@@ -30,13 +32,14 @@ public class DeathScene : MonoBehaviour
   
 
     void Start(){
+        musicID = gameObject.GetInstanceID();
         Cursor.visible = true; //activa o cursor o cursor
         Cursor.lockState = CursorLockMode.None; //libera o cursor
-        AudioManager.instance.Play("Theme", false, musicID);
+        AudioManager.instance.Play(deathTheme, false, musicID);
     }
 
     public void PlayClickAudio(){
-        AudioManager.instance.Play("Click", true, musicID);
+        AudioManager.instance.Play(clickSound, true, musicID);
 
 
     }

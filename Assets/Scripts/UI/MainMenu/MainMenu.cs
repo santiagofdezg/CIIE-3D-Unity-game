@@ -9,6 +9,7 @@ public class MainMenu : MonoBehaviour {
 
     public void PlayGame() {
        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); 
+       AudioManager.instance.StopAll();
        GameLoader.instance.LoadGame();
     }
 
@@ -18,7 +19,7 @@ public class MainMenu : MonoBehaviour {
     }
 
     void Start(){
-        AudioManager.instance.Play("Test", false, musicID);
+        AudioManager.instance.Play("Menu", false, musicID);
     }
 
     public void PlayClickAudio(){

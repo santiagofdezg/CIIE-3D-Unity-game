@@ -124,6 +124,7 @@ public class AudioManager : MonoBehaviour {
 
     private AudioSource getSourceByID(Sound s, int audioID){
         AudioSource aux;
+        Debug.Log(s.name);
         if (s.source !=null && s.source.TryGetValue(audioID,out aux)){
             return aux;
         } else {
@@ -221,10 +222,12 @@ public class AudioManager : MonoBehaviour {
                     foreach(var aux in s.source){
                         
                         aux.Value.Stop();
+                        s.source=null;
                     }
                 }
             } 
         }
+
     
     }   
 

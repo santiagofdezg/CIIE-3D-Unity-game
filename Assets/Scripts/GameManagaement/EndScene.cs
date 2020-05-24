@@ -5,9 +5,10 @@ using UnityEngine;
 public class EndScene : MonoBehaviour
 {
     // Start is called before the first frame update
+    public string endTheme = "EndTheme";
     void Start()
     {
-        AudioManager.instance.Play("EndTheme", false, 0);
+        AudioManager.instance.Play(endTheme, false, gameObject.GetInstanceID());
     }
 
 
