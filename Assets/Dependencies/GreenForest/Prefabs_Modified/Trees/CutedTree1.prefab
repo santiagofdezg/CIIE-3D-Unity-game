@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 33783964432762334}
   - component: {fileID: 23608178893324474}
   - component: {fileID: 1124214533212627871}
+  - component: {fileID: 9208982179693427198}
   m_Layer: 0
   m_Name: CutedTree1
   m_TagString: Untagged
@@ -89,8 +90,22 @@ MeshCollider:
   m_GameObject: {fileID: 1668259477846182}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 4b4fe8cd0b22ac1439ec34aa55a65066, type: 3}
+--- !u!136 &9208982179693427198
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1668259477846182}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 1.3
+  m_Height: 13.98
+  m_Direction: 2
+  m_Center: {x: -0.57, y: 1.47, z: -0.17}

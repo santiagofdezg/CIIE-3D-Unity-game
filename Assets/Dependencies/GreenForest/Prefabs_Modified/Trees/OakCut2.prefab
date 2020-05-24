@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 33992210015137268}
   - component: {fileID: 23047090423545308}
   - component: {fileID: 2053988005599141927}
+  - component: {fileID: 8795372783809775922}
   m_Layer: 0
   m_Name: OakCut2
   m_TagString: Untagged
@@ -89,8 +90,22 @@ MeshCollider:
   m_GameObject: {fileID: 1360174760183796}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: fc1f85db785f4f04ab11bffa6553c158, type: 3}
+--- !u!136 &8795372783809775922
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1360174760183796}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.6552232
+  m_Height: 0.8955542
+  m_Direction: 1
+  m_Center: {x: 0.005396992, y: 0.18462966, z: -0.15980108}
