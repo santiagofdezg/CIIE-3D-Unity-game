@@ -6,6 +6,9 @@ namespace Characters.ThirdPersonCharacter {
     
     public class ThirdPersonCharacterController : Observer {
 
+        //Singleton
+        public static ThirdPersonCharacterController instance;
+
         public CharacterAnimator characterAnimator;
         public CharacterController controller;
         [Range(0,1)]
@@ -60,7 +63,17 @@ namespace Characters.ThirdPersonCharacter {
             this.enabled = false;
         }
 
+        void Awake() {
+            //Singleton
+            if (instance == null)
+                instance = this;
+            else
+                Destroy(gameObject);
+        }
+        
+
         void Start() {
+
             // Activar a cámara inicial
             if (thirdPersonCamFlag) {
                 currentCamera = thirdPersonCamera;

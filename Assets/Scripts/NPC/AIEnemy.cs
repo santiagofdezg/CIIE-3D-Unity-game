@@ -7,7 +7,7 @@ namespace Characters.Enemy {
 
 	public class AIEnemy : MonoBehaviour {
 		
-		public ThirdPersonCharacterController tpcc; // The Player controller
+		private ThirdPersonCharacterController player; // The Player controller
 
 		public float fieldOfView = 120f; // Field of view for the enemy
 		public float viewDistance = 10f;
@@ -46,6 +46,8 @@ namespace Characters.Enemy {
 		//-- METHODS
 
 		public void Start() {
+			player = ThirdPersonCharacterController.instance;
+
 			agent = GetComponent<NavMeshAgent>();
 			wanderPoint = RandomWanderPoint();
 			animator = GetComponentInChildren<Animator>(); // The animator is in the enemy model which is a child of the enemy object
@@ -58,7 +60,7 @@ namespace Characters.Enemy {
 		public void Update() {
 			if (isAware) {
 				// This function makes the enemy chases the player
-				agent.SetDestination(tpcc.transform.position);
+				agent.SetDestination(player.transform.position);
 				// The variable Aware of the animator can provoke changes in the animations
 				animator.SetBool("Aware", true);
 				agent.speed = chaseSpeed;
@@ -91,11 +93,11 @@ namespace Characters.Enemy {
 		
 		public void SearchForPlayer() {
 			// Check if the player is within the enemy viewing angle
-			if (Vector3.Angle(Vector3.forward, transform.InverseTransformPoint(tpcc.transform.position)) < (fieldOfView/2)){
-				if (Vector3.Distance(tpcc.transform.position, transform.position) < viewDistance) {
+			if (Vector3.Angle(Vector3.forward, transform.InverseTransformPoint(player.transform.position)) < (fieldOfView/2)){
+				if (Vector3.Distance(player.transform.position, transform.position) < viewDistance) {
 					// Variable to save all the info about the raycast
 					RaycastHit hit;
-					if (Physics.Linecast(transform.position, tpcc.transform.position, out hit, -1)){
+					if (Physics.Linecast(transform.position, player.transform.position, out hit, -1)){
 						if (hit.transform.CompareTag("Player")){
 							// The detection is done through the outer sphere
 							// collider of the player

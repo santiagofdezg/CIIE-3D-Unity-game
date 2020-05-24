@@ -8,7 +8,6 @@ using Characters.Enemy;
 public class GenerateEnemies : MonoBehaviour {
 
     public GameObject[] enemies;
-    public ThirdPersonCharacterController player;
     public int enemyCount = 5;
 
     private SphereCollider spawnArea;
@@ -18,9 +17,6 @@ public class GenerateEnemies : MonoBehaviour {
         if (enemies == null || enemies.Length == 0) {
             Debug.LogWarning("Add some enemies to the spawner");
         } else {
-            foreach (var enemy in enemies) {
-                enemy.GetComponent<AIEnemy>().tpcc = player;
-            }
             StartCoroutine(EnemyDrop());
         }
         
