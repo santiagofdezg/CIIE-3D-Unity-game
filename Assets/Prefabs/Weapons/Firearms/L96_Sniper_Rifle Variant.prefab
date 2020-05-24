@@ -52,7 +52,7 @@ MonoBehaviour:
   impactEffectEnemy: {fileID: 100002, guid: 5d0dd38fe971179d4afb0910fe485801, type: 3}
   impactEffectSurface: {fileID: 100002, guid: b81fecd5603b0fb859e47f7d6523793d, type: 3}
   playerNoiseManager: {fileID: 0}
-  shotSoundIntensity: 30
+  shotSoundIntensity: 35
   shotSoundName: Shot_pistol
   maxAmmo: 4
   reloadTime: 2.2

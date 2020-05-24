@@ -44,7 +44,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponHUDImage: {fileID: 21300000, guid: 56774d2505861db0f9a94edb3d70e797, type: 3}
   range: 60
-  damage: 10
+  damage: 15
   currentCamera: {fileID: 0}
   thirdPersonCamFlag: 0
   flash: {fileID: 8534651488190605017}
@@ -52,7 +52,7 @@ MonoBehaviour:
   impactEffectEnemy: {fileID: 100002, guid: 5d0dd38fe971179d4afb0910fe485801, type: 3}
   impactEffectSurface: {fileID: 100002, guid: b81fecd5603b0fb859e47f7d6523793d, type: 3}
   playerNoiseManager: {fileID: 0}
-  shotSoundIntensity: 20
+  shotSoundIntensity: 25
   shotSoundName: Shot_pistol
   maxAmmo: 10
   reloadTime: 2.2
