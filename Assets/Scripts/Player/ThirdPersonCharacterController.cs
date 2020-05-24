@@ -220,16 +220,16 @@ namespace Characters.ThirdPersonCharacter {
 
 
             private void OnTriggerEnter(Collider other){
-                 if (other.GetComponent<Weapon>() != null){
+                 if (other.CompareTag("Weapon")){
                     HUD.instance.pickupPanel.OpenPanel("'F' para recoller");
                     toPickup = other.gameObject;
 
-                 }
+                 } 
             }
 
             private void OnTriggerExit(Collider other){
 
-                if (other.GetComponent<Weapon>() != null){
+                if (other.CompareTag("Weapon")){
                     HUD.instance.pickupPanel.CloseMessagePanel();
                     toPickup = null;
                 }

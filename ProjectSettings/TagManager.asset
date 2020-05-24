@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Damage_Collider
+  - Weapon
   layers:
   - Default
   - TransparentFX

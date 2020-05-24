@@ -1,12 +1,95 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!54 &4700791243240110745
+--- !u!1 &3158416524528568806
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2130108893511629813}
+  - component: {fileID: 6977391387056931267}
+  - component: {fileID: 3740280262130269498}
+  - component: {fileID: 2133763650730802733}
+  - component: {fileID: 5200406171999403692}
+  - component: {fileID: 865470854112653800}
+  m_Layer: 0
+  m_Name: AK-47 Variant
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2130108893511629813
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3158416524528568806}
+  m_LocalRotation: {x: 0.000000015503316, y: 0.70485824, z: -0.00000001540518, w: 0.7093482}
+  m_LocalPosition: {x: -264.8908, y: -4.805048, z: -155.10196}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 6064229177784271631}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 89.636, z: 0}
+--- !u!33 &6977391387056931267
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3158416524528568806}
+  m_Mesh: {fileID: 6365735379491465409, guid: 51e524cb738392adf8ba920f0e1f8700, type: 3}
+--- !u!23 &3740280262130269498
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3158416524528568806}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: eb4d8f8fe041cd14abf24f3dc1f49260, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!54 &2133763650730802733
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8607721523569691986}
+  m_GameObject: {fileID: 3158416524528568806}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -16,13 +99,13 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!64 &-7742888586585753064
+--- !u!64 &5200406171999403692
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8607721523569691986}
+  m_GameObject: {fileID: 3158416524528568806}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
@@ -30,13 +113,13 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 6365735379491465409, guid: 51e524cb738392adf8ba920f0e1f8700, type: 3}
---- !u!114 &5810473852084581724
+--- !u!114 &865470854112653800
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8607721523569691986}
+  m_GameObject: {fileID: 3158416524528568806}
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a126a7abb71b00147bd5228b3cd279a0, type: 3}
@@ -47,8 +130,8 @@ MonoBehaviour:
   damage: 25
   currentCamera: {fileID: 0}
   thirdPersonCamFlag: 0
-  flash: {fileID: 614827421543154990}
-  Salidabala: {fileID: 614827421731964859}
+  flash: {fileID: 6064229177473302938}
+  Salidabala: {fileID: 6064229177784271631}
   impactEffectEnemy: {fileID: 100002, guid: 5d0dd38fe971179d4afb0910fe485801, type: 3}
   impactEffectSurface: {fileID: 100002, guid: b81fecd5603b0fb859e47f7d6523793d, type: 3}
   playerNoiseManager: {fileID: 0}
@@ -61,98 +144,12 @@ MonoBehaviour:
   reloadID: 0
   shootID: 0
   fireRate: 0.15
---- !u!1001 &312199767617983579
+--- !u!1001 &7635266292279861917
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: -4216859302048453862, guid: 51e524cb738392adf8ba920f0e1f8700,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.211
-      objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 51e524cb738392adf8ba920f0e1f8700,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.206
-      objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 51e524cb738392adf8ba920f0e1f8700,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.359
-      objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 51e524cb738392adf8ba920f0e1f8700,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.000000015503316
-      objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 51e524cb738392adf8ba920f0e1f8700,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.70485824
-      objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 51e524cb738392adf8ba920f0e1f8700,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.00000001540518
-      objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 51e524cb738392adf8ba920f0e1f8700,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7093482
-      objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 51e524cb738392adf8ba920f0e1f8700,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 51e524cb738392adf8ba920f0e1f8700,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 51e524cb738392adf8ba920f0e1f8700,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 89.636
-      objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 51e524cb738392adf8ba920f0e1f8700,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 51e524cb738392adf8ba920f0e1f8700,
-        type: 3}
-      propertyPath: m_Name
-      value: AK-47 Variant
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 51e524cb738392adf8ba920f0e1f8700,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 51e524cb738392adf8ba920f0e1f8700, type: 3}
---- !u!1 &8607721523569691986 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 51e524cb738392adf8ba920f0e1f8700,
-    type: 3}
-  m_PrefabInstance: {fileID: 312199767617983579}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &4697145312036126529 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 51e524cb738392adf8ba920f0e1f8700,
-    type: 3}
-  m_PrefabInstance: {fileID: 312199767617983579}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &3843220005680195113
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 4697145312036126529}
+    m_TransformParent: {fileID: 2130108893511629813}
     m_Modifications:
     - target: {fileID: 4457880232925258130, guid: fb20c941220977aaf9997ca9cac22561,
         type: 3}
@@ -216,15 +213,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb20c941220977aaf9997ca9cac22561, type: 3}
---- !u!4 &614827421731964859 stripped
+--- !u!4 &6064229177784271631 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4457880232925258130, guid: fb20c941220977aaf9997ca9cac22561,
     type: 3}
-  m_PrefabInstance: {fileID: 3843220005680195113}
+  m_PrefabInstance: {fileID: 7635266292279861917}
   m_PrefabAsset: {fileID: 0}
---- !u!198 &614827421543154990 stripped
+--- !u!198 &6064229177473302938 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 4457880232728322823, guid: fb20c941220977aaf9997ca9cac22561,
     type: 3}
-  m_PrefabInstance: {fileID: 3843220005680195113}
+  m_PrefabInstance: {fileID: 7635266292279861917}
   m_PrefabAsset: {fileID: 0}
