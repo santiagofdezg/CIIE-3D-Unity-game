@@ -7,6 +7,7 @@ using Characters.Enemy;
 
 public class GenerateEnemies : MonoBehaviour {
 
+    public bool activateByPresence = false;
     public GameObject[] enemies;
     public int enemyCount = 5;
 
@@ -14,13 +15,16 @@ public class GenerateEnemies : MonoBehaviour {
 
     void Start() {
         spawnArea = GetComponent<SphereCollider>();
+
         if (enemies == null || enemies.Length == 0) {
             Debug.LogWarning("Add some enemies to the spawner");
         } else {
-            StartCoroutine(EnemyDrop());
+            if (!activateByPresence){
+                StartCoroutine(EnemyDrop());
+            }
         }
-        
     }
+
 
     Vector3 GetSpawnPosition() {
         Vector3 spawnPosition = new Vector3(Random.insideUnitSphere.x * spawnArea.radius + transform.position.x, 
@@ -31,7 +35,7 @@ public class GenerateEnemies : MonoBehaviour {
     }
 
 
-    IEnumerator EnemyDrop() {
+    public IEnumerator EnemyDrop() {
         for (int i = 0; i < enemyCount; i++) {
             Vector3 spawnPosition = GetSpawnPosition();
             // Debug.Log(spawnPosition);
@@ -40,6 +44,6 @@ public class GenerateEnemies : MonoBehaviour {
             e.transform.parent = spawnArea.transform;
             yield return new WaitForSeconds(0.1f);
         }
-
+        enabled = false;
     }
 }
