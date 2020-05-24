@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 using Characters.Enemy;
+using System;
 
 public class EnemyHealthSystem : HealthSystem {
 
@@ -8,7 +9,11 @@ public class EnemyHealthSystem : HealthSystem {
     private AIEnemy aiEnemy;
 
 
+  
+
+
     void Start(){
+
         currentHealth = maxHealth;
         animator = GetComponentInChildren<Animator>();
         aiEnemy = GetComponent<AIEnemy>();
@@ -18,10 +23,21 @@ public class EnemyHealthSystem : HealthSystem {
         //Crear un manager que notifique?
         foreach (var obs in FindObjectsOfType<PauseMenu>()){
             obs.RegisterObserver(this);
-        }       
+        } 
+
+        if (String.IsNullOrEmpty(death_sound))
+            death_sound = "zombie_death";
+
+        if (String.IsNullOrEmpty(hurt_sound))
+            hurt_sound = "zombie_hurt";
+   
     }
 
     public override void TakeDamage(int damage){
+
+        Debug.Log(hurt_sound);
+        AudioManager.instance.Play(hurt_sound, gameObject, true, gameObject.GetInstanceID());
+
         if (currentHealth > 0){
             currentHealth -= damage;
             aiEnemy.OnAware();
@@ -33,12 +49,18 @@ public class EnemyHealthSystem : HealthSystem {
 
     void Die() {
         AIEnemy aiEnemy = GetComponent<AIEnemy>();
+        
+        AudioManager.instance.Stop(aiEnemy.idleSound, aiEnemy.zombieID);
+        AudioManager.instance.Play(death_sound, aiEnemy.gameObject, true, aiEnemy.zombieID);
+
         animator.SetBool("isDead", true);
         aiEnemy.enabled = false;
         GetComponent<NavMeshAgent>().enabled = false;
         GetComponent<CapsuleCollider>().enabled = false;
         GetComponent<DamageSystem>().enabled = false;
         enabled = false;
+
+
     }
 
 }

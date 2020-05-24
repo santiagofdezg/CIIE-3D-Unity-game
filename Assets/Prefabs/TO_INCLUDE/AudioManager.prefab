@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7976952538341183654
+--- !u!1 &6169518987449950236
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,8 +8,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7976952538341183655}
-  - component: {fileID: 7976952538341183648}
+  - component: {fileID: 6169518987449950237}
+  - component: {fileID: 6169518987449950234}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -17,13 +17,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7976952538341183655
+--- !u!4 &6169518987449950237
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7976952538341183654}
+  m_GameObject: {fileID: 6169518987449950236}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -31,13 +31,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7976952538341183648
+--- !u!114 &6169518987449950234
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7976952538341183654}
+  m_GameObject: {fileID: 6169518987449950236}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f5b3186c7ec2e6344ad969f45d61bf96, type: 3}
@@ -47,49 +47,105 @@ MonoBehaviour:
   sounds:
   - clip: {fileID: 8300000, guid: 1022c373b93aac25ea7e45b459e9bc2a, type: 3}
     name: Shot_pistol
-    volume: 1
-    pitch: 1.09
-    spatialBlend: 1
+    volume: 0.2
+    pitch: 1
+    spatialBlend: 0.8
     outputMixer: {fileID: 0}
     loop: 0
-    source: {fileID: 0}
+    playOnAwake: 0
   - clip: {fileID: 8300000, guid: 7ec8134718f20e3748fd56f9b85c4a16, type: 3}
     name: Shot_fusil
-    volume: 1
-    pitch: 1.09
-    spatialBlend: 1
+    volume: 0.2
+    pitch: 1
+    spatialBlend: 0.8
     outputMixer: {fileID: 0}
     loop: 0
-    source: {fileID: 0}
-  - clip: {fileID: 8300000, guid: 006c375696c5077e5a1ea8e475eb48cc, type: 3}
-    name: Ammo_reloading_pistol
-    volume: 1
-    pitch: 1.09
-    spatialBlend: 1
-    outputMixer: {fileID: 0}
-    loop: 0
-    source: {fileID: 0}
-  - clip: {fileID: 8300000, guid: 006c375696c5077e5a1ea8e475eb48cc, type: 3}
-    name: Ammo_reloading_fusil
-    volume: 1
-    pitch: 1.09
-    spatialBlend: 1
-    outputMixer: {fileID: 0}
-    loop: 0
-    source: {fileID: 0}
+    playOnAwake: 0
   - clip: {fileID: 8300000, guid: 39910e60e4131bb49a0b8dcae1a5e22f, type: 3}
     name: Shot_rifle
-    volume: 1
-    pitch: 1.09
-    spatialBlend: 1
+    volume: 0.2
+    pitch: 1
+    spatialBlend: 0.8
     outputMixer: {fileID: 0}
     loop: 0
-    source: {fileID: 0}
+    playOnAwake: 0
   - clip: {fileID: 8300000, guid: 006c375696c5077e5a1ea8e475eb48cc, type: 3}
-    name: Ammo_reloading_rifle
+    name: Ammo_reloading
     volume: 1
-    pitch: 1.09
+    pitch: 1
+    spatialBlend: 0.8
+    outputMixer: {fileID: 0}
+    loop: 0
+    playOnAwake: 0
+  - clip: {fileID: 8300000, guid: 01ce6eaaedc06244c82f8f399b83e4ab, type: 3}
+    name: step_dirt
+    volume: 1
+    pitch: 1
+    spatialBlend: 0.2
+    outputMixer: {fileID: 0}
+    loop: 0
+    playOnAwake: 0
+  - clip: {fileID: 8300000, guid: fb1bd99ea58149a45af0665d4abb14cf, type: 3}
+    name: step_cemento
+    volume: 1
+    pitch: 1
+    spatialBlend: 0.2
+    outputMixer: {fileID: 0}
+    loop: 0
+    playOnAwake: 0
+  - clip: {fileID: 8300000, guid: 4575530e4d85e1c46aa705db66376018, type: 3}
+    name: step_grass
+    volume: 0.15
+    pitch: 1
+    spatialBlend: 0.2
+    outputMixer: {fileID: 0}
+    loop: 0
+    playOnAwake: 0
+  - clip: {fileID: 8300000, guid: 10d4576bfb17cdd4695a906d46ba74c3, type: 3}
+    name: zombie_idle
+    volume: 1
+    pitch: 1
+    spatialBlend: 1
+    outputMixer: {fileID: 0}
+    loop: 1
+    playOnAwake: 0
+  - clip: {fileID: 8300000, guid: 04c377b9d137dc54d9054a7ba22631a4, type: 3}
+    name: zombie_death
+    volume: 0.7
+    pitch: 1
     spatialBlend: 1
     outputMixer: {fileID: 0}
     loop: 0
-    source: {fileID: 0}
+    playOnAwake: 0
+  - clip: {fileID: 8300000, guid: b78ac6c62770550438aa9bcf02f5ee51, type: 3}
+    name: tareixa_hurt
+    volume: 0.6
+    pitch: 1
+    spatialBlend: 0
+    outputMixer: {fileID: 0}
+    loop: 0
+    playOnAwake: 0
+  - clip: {fileID: 8300000, guid: 21bd93bd901be0142b049bfdf235781c, type: 3}
+    name: zombie_hurt
+    volume: 0.8
+    pitch: 1
+    spatialBlend: 1
+    outputMixer: {fileID: 0}
+    loop: 0
+    playOnAwake: 0
+  - clip: {fileID: 8300000, guid: d3aca3238ad45e6419f2282252db8163, type: 3}
+    name: pickup
+    volume: 1
+    pitch: 1
+    spatialBlend: 0
+    outputMixer: {fileID: 0}
+    loop: 0
+    playOnAwake: 0
+  - clip: {fileID: 8300000, guid: 5833f073922f62744bd5afb0fd13803a, type: 3}
+    name: tareixa_death
+    volume: 0.6
+    pitch: 1
+    spatialBlend: 0
+    outputMixer: {fileID: 0}
+    loop: 0
+    playOnAwake: 0

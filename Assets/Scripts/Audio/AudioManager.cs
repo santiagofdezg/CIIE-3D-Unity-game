@@ -228,6 +228,36 @@ public class AudioManager : MonoBehaviour {
     
     }   
 
+    public void PauseAll(){
+        if(sounds != null){
+            foreach(Sound s in sounds){
+                if(s != null && s.source != null){
+                    foreach(var aux in s.source){
+                        
+                        aux.Value.Pause();
+                    }
+                }
+            } 
+        }
+
+    }
+
+    
+    public void UnPauseAll(){
+        if(sounds != null){
+            foreach(Sound s in sounds){
+                if(s != null && s.source != null){
+                    foreach(var aux in s.source){
+                        
+                        aux.Value.UnPause();
+                    }
+                }
+            } 
+        }
+
+    }
+    
+
     public void UnPause(string name, int audioID){
         Sound s = searchSound(name);
 

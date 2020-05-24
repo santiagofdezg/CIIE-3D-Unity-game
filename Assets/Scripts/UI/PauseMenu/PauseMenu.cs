@@ -36,6 +36,8 @@ public class PauseMenu : Subject
         Time.timeScale = 1f;
         isPaused = false;
 
+        AudioManager.instance.UnPauseAll();
+
         //Notificamos observers
         Notify(NotificationType.UnPaused);
     }
@@ -50,6 +52,8 @@ public class PauseMenu : Subject
         //cambia o tempo a 0, polo que pause o xogo
         Time.timeScale = 0f;
         isPaused = true;
+
+        AudioManager.instance.PauseAll();
 
         //Notificamos observers
         Notify(NotificationType.Paused);

@@ -7,6 +7,9 @@ public class HealthSystem : Observer {
     public int maxHealth = 100;
     public int currentHealth;
 
+    public string hurt_sound = "";
+    public string death_sound = "";
+
 
     public virtual void TakeDamage(int damage) {
         if (currentHealth > 0){

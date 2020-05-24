@@ -42,17 +42,28 @@ namespace Characters.Enemy {
 		//-- ANIMATIONS
 		private Animator animator;
 
+		// Sounds
+		public string idleSound = "zombie_idle";
+		public int zombieID = 0;
+
 
 		//-- METHODS
 
+
+		public void Awake(){
+			agent = GetComponent<NavMeshAgent>();
+			zombieID = gameObject.GetInstanceID();
+		}
 		public void Start() {
 			player = ThirdPersonCharacterController.instance;
 
-			agent = GetComponent<NavMeshAgent>();
+		
 			wanderPoint = RandomWanderPoint();
 			animator = GetComponentInChildren<Animator>(); // The animator is in the enemy model which is a child of the enemy object
 			
 			animator.SetBool("isDead", false);
+
+			AudioManager.instance.Play(idleSound, gameObject, false, zombieID);
 			// Just for debugging with Enemy object
 			// zombieRenderer = GetComponent<Renderer>();
 		}

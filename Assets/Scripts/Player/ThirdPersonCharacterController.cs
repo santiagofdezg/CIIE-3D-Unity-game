@@ -41,6 +41,9 @@ namespace Characters.ThirdPersonCharacter {
         bool isGrounded;
 
         private GameObject toPickup = null;
+        private int playerID;
+
+        public string pickupSound = "pickup";
 
         //Comprobar si o xogo esta pausado usando o observer
         public override void OnNotify(NotificationType notificationType) {
@@ -69,6 +72,8 @@ namespace Characters.ThirdPersonCharacter {
                 instance = this;
             else
                 Destroy(gameObject);
+
+            playerID = gameObject.GetInstanceID();
         }
         
 
@@ -112,6 +117,7 @@ namespace Characters.ThirdPersonCharacter {
 
         void pickupObject(){
             if (Input.GetButtonDown("Pickup") && toPickup != null){
+                AudioManager.instance.Play(pickupSound, gameObject, true, playerID);
                 weaponManager.AddWeapon(toPickup);
                 HUD.instance.pickupPanel.CloseMessagePanel();
                 toPickup = null;

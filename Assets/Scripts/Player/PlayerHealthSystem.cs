@@ -9,6 +9,9 @@ public class PlayerHealthSystem : HealthSystem {
     public float regenerationDelay = .5f;
     public float mgnShk=4f, rghShk=4f, fInShk=.1f, fOutShk=1f;
 
+    
+
+
 
     void Start() {
         currentHealth = maxHealth;  
@@ -16,6 +19,12 @@ public class PlayerHealthSystem : HealthSystem {
 
         //Añadir observer ao subject
         GameHandler.instance.RegisterObserverPause(this);   
+
+        if (death_sound == null)
+            death_sound = "tareixa_death";
+
+        if (hurt_sound == null)
+            hurt_sound = "tareixa_hurt";
     }
 
     void Die(){
@@ -26,7 +35,6 @@ public class PlayerHealthSystem : HealthSystem {
 
     void Update() {
         if(currentHealth<=0){
-
             Die();
         } else {
             if(currentHealth != maxHealth && !isRegenHealth) 
@@ -40,7 +48,10 @@ public class PlayerHealthSystem : HealthSystem {
 
     
     public override void TakeDamage(int damage) {
+
+
         if (currentHealth > 0){
+            AudioManager.instance.Play(death_sound, gameObject, true, gameObject.GetInstanceID());
             CameraShaker.Instance.ShakeOnce(mgnShk,rghShk,fInShk,fOutShk);
             currentHealth -= damage;
 
