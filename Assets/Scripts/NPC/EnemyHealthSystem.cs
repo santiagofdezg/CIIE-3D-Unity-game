@@ -60,7 +60,7 @@ public class EnemyHealthSystem : HealthSystem {
         GetComponent<DamageSystem>().enabled = false;
         enabled = false;
 
-
+        GameHandler.instance.bossDeath();
     }
 
 }

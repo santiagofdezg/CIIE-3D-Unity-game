@@ -6,19 +6,22 @@ using Characters.Enemy;
 public class BossDeath : MonoBehaviour {
     
     
-    // void OnDestroy() {
-    //     GameHandler.instance.onBossDied -= Disable;
+    void OnDestroy() {
+        GameHandler.instance.onBossDied -= EnableEndGame;
 
-    // }
-    // void Start() {
-    //     GameHandler.instance.onBossDied += Disable;
-    // }
-
-    // Update is called once per frame
-    void Update() {
-        if(!GetComponent<AIEnemy>().enabled){
-            GetComponent<Narrate.NarrationCountElement>().Increment(1f);
-            enabled = false;
-        }
     }
+    void Start() {
+        GameHandler.instance.onBossDied += EnableEndGame;
+    }
+
+    void EnableEndGame(){
+        // Activate the text dialogs
+        StartCoroutine(ShowDialog());
+    }
+
+    IEnumerator ShowDialog(){
+        yield return new WaitForSeconds(4f);
+        GetComponent<Narrate.NarrationCountElement>().Increment(1f);
+    }
+
 }

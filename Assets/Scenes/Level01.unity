@@ -822,7 +822,7 @@ PrefabInstance:
     - target: {fileID: 12299896307550814, guid: d6712d00521c92976ad114d2eeb69e40,
         type: 3}
       propertyPath: maxHealth
-      value: 300
+      value: 700
       objectReference: {fileID: 0}
     - target: {fileID: 2346777349668931406, guid: d6712d00521c92976ad114d2eeb69e40,
         type: 3}
@@ -859,6 +859,31 @@ PrefabInstance:
       propertyPath: waypoints.Array.data[3]
       value: 
       objectReference: {fileID: 231494075}
+    - target: {fileID: 2346777349668931406, guid: d6712d00521c92976ad114d2eeb69e40,
+        type: 3}
+      propertyPath: chaseSpeed
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346777349668931406, guid: d6712d00521c92976ad114d2eeb69e40,
+        type: 3}
+      propertyPath: loseThreshold
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346777349668931406, guid: d6712d00521c92976ad114d2eeb69e40,
+        type: 3}
+      propertyPath: chaseAngularSpeed
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346777349668931406, guid: d6712d00521c92976ad114d2eeb69e40,
+        type: 3}
+      propertyPath: viewDistance
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346777349668931406, guid: d6712d00521c92976ad114d2eeb69e40,
+        type: 3}
+      propertyPath: fieldOfView
+      value: 135
+      objectReference: {fileID: 0}
     - target: {fileID: 2346777349668931407, guid: d6712d00521c92976ad114d2eeb69e40,
         type: 3}
       propertyPath: m_Name
@@ -923,6 +948,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3866049320859236054, guid: d6712d00521c92976ad114d2eeb69e40,
+        type: 3}
+      propertyPath: maxDmg
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6712d00521c92976ad114d2eeb69e40, type: 3}
