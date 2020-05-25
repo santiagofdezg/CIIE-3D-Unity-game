@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 12299896307550814}
   - component: {fileID: 3866049320859236054}
   m_Layer: 9
-  m_Name: Boss
+  m_Name: Boss01
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -134,17 +134,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f4555740e5df8066a85232b42ba5f42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tpcc: {fileID: 0}
   fieldOfView: 120
   viewDistance: 50
   wanderRadius: 10
   wanderSpeed: 1
   wanderAngularSpeed: 50
-  chaseSpeed: 4
+  chaseSpeed: 7
   chaseAngularSpeed: 140
   loseThreshold: 10
   wanderType: 0
   waypoints: []
+  idleSound: zombie_idle
+  zombieID: 0
 --- !u!54 &2346777349668931440
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -173,8 +174,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03650d05875481e4fb09af959553087d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 200
+  maxHealth: 700
   currentHealth: 0
+  hurt_sound: 
+  death_sound: 
 --- !u!114 &3866049320859236054
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,7 +191,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldownDmg: 1
-  maxDmg: 20
+  maxDmg: 25
 --- !u!1001 &8947318890514723490
 PrefabInstance:
   m_ObjectHideFlags: 0
