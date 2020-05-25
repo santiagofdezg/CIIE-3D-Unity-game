@@ -8,8 +8,9 @@ public class GameHandler : MonoBehaviour {
     private Subject PauseMenuObserver; 
     public static GameHandler instance;
 
-//Usamos patrón observador pero utilizando eventos, mellor que herencia
+    //Usamos patrón observador pero utilizando eventos, mellor que herencia
     public event Action onPlayerDied;
+    public event Action onBossDied;
 
     void Awake() {
         //Singleton
@@ -34,9 +35,13 @@ public class GameHandler : MonoBehaviour {
     public void playerDeath(){
         if(onPlayerDied != null){
             onPlayerDied();
-        }
+        }        
+    }
 
-        
+    public void bossDeath(){
+        if(onBossDied != null){
+            onBossDied();
+        }
     }
 
 
