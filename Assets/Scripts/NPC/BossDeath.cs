@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Characters.Enemy;
 
 public class BossDeath : MonoBehaviour {
     
