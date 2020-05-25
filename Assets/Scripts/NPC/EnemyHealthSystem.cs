@@ -35,7 +35,7 @@ public class EnemyHealthSystem : HealthSystem {
 
     public override void TakeDamage(int damage){
 
-        Debug.Log(hurt_sound);
+        // Debug.Log(hurt_sound);
         AudioManager.instance.Play(hurt_sound, gameObject, true, gameObject.GetInstanceID());
 
         if (currentHealth > 0){
@@ -60,7 +60,7 @@ public class EnemyHealthSystem : HealthSystem {
         GetComponent<DamageSystem>().enabled = false;
         enabled = false;
 
-
+        GameHandler.instance.bossDeath();
     }
 
 }
