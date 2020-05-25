@@ -12,7 +12,7 @@ public class DeathScene : MonoBehaviour
     int musicID = 0;
 
     public void RetryGame() {
-       AudioManager.instance.Stop(deathTheme, musicID);
+       AudioManager.instance.StopAll();
        GameLoader.instance.LoadLastScene(SceneManager.GetActiveScene().buildIndex);
     }
 
