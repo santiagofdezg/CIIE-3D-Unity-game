@@ -97,7 +97,7 @@ public class WeaponManager : MonoBehaviour {
             weapon.transform.parent = gameObject.transform;
             weapon.GetComponent<Weapon>().enabled = true;
             weapon.GetComponent<Rigidbody>().detectCollisions = false;
-            Debug.Log(weapons.Count -1);
+            // Debug.Log(weapons.Count -1);
             weapon.SetActive(true);
 
             if (weapons.Count > 0)
@@ -109,8 +109,8 @@ public class WeaponManager : MonoBehaviour {
 
     }
 
-     private void OnControllerColliderHit(ControllerColliderHit hit) {
-        Debug.Log("add");
+    private void OnControllerColliderHit(ControllerColliderHit hit) {
+        // Debug.Log("add");
     }
 
 

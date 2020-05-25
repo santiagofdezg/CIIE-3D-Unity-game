@@ -25,7 +25,7 @@ public class KillAllEnemies : MonoBehaviour {
 
     void LoadCurrentEnemies() {
         enemies = gameObject.GetComponentsInChildren<EnemyHealthSystem>();
-        Debug.Log(enemies.Length);
+        // Debug.Log(enemies.Length);
     }
 
     void StartKilling() {
