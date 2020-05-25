@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class HealthSystem : Observer {
     
@@ -22,7 +23,7 @@ public class HealthSystem : Observer {
 
     public bool Heal(int healAmount) {
         if (currentHealth < maxHealth){
-            currentHealth = currentHealth + healAmount;
+            currentHealth = Math.Min(currentHealth + healAmount, maxHealth);
 
             return true;
 
