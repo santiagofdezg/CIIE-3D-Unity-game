@@ -3306,7 +3306,7 @@ MonoBehaviour:
   ResetCooldown: 0
   delayPlayingBy: 0
   is2D: 0
-  triggeredBy: {fileID: 0}
+  triggeredBy: {fileID: 370304189}
   proximity: 10
   timeInProximityToTrigger: 0
   timeMustBeConsecutive: 0
@@ -4012,9 +4012,13 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 33
       objectReference: {fileID: 0}
+    - target: {fileID: 22430306, guid: 2ac2e515cfc05514a83b8ef083430da7, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 22452388, guid: 2ac2e515cfc05514a83b8ef083430da7, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 2.1075134
+      value: 2.107544
       objectReference: {fileID: 0}
     - target: {fileID: 22452388, guid: 2ac2e515cfc05514a83b8ef083430da7, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -4027,6 +4031,10 @@ PrefabInstance:
     - target: {fileID: 22452388, guid: 2ac2e515cfc05514a83b8ef083430da7, type: 3}
       propertyPath: m_SizeDelta.y
       value: 7.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 22472792, guid: 2ac2e515cfc05514a83b8ef083430da7, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.0021972656
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ac2e515cfc05514a83b8ef083430da7, type: 3}
@@ -9716,7 +9724,7 @@ MonoBehaviour:
   ResetCooldown: 0
   delayPlayingBy: 0
   is2D: 0
-  triggeredBy: {fileID: 0}
+  triggeredBy: {fileID: 370304189}
   proximity: 57.9
   timeInProximityToTrigger: 0
   timeMustBeConsecutive: 0
