@@ -11,6 +11,7 @@ public class GameHandler : MonoBehaviour {
     //Usamos patrón observador pero utilizando eventos, mellor que herencia
     public event Action onPlayerDied;
     public event Action onBossDied;
+    public event Action onSpawnerActivated;
 
     void Awake() {
         //Singleton
@@ -41,6 +42,12 @@ public class GameHandler : MonoBehaviour {
     public void bossDeath(){
         if(onBossDied != null){
             onBossDied();
+        }
+    }
+
+    public void spawnerActivated() {
+        if(onSpawnerActivated != null) {
+            onSpawnerActivated();
         }
     }
 

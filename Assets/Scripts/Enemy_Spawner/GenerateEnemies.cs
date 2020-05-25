@@ -45,5 +45,7 @@ public class GenerateEnemies : MonoBehaviour {
             yield return new WaitForSeconds(0.1f);
         }
         enabled = false;
+
+        GameHandler.instance.spawnerActivated();
     }
 }

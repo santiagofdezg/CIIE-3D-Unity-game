@@ -9,9 +9,6 @@ public class EnemyHealthSystem : HealthSystem {
     private AIEnemy aiEnemy;
 
 
-  
-
-
     void Start(){
 
         currentHealth = maxHealth;
@@ -43,11 +40,11 @@ public class EnemyHealthSystem : HealthSystem {
             aiEnemy.OnAware();
             // Debug.Log("New enemy health: " + currentHealth);
         } else {
-            Die();
+            Kill();
         }
     }
 
-    void Die() {
+    public void Kill() {
         AIEnemy aiEnemy = GetComponent<AIEnemy>();
         
         AudioManager.instance.Stop(aiEnemy.idleSound, aiEnemy.zombieID);
@@ -60,7 +57,9 @@ public class EnemyHealthSystem : HealthSystem {
         GetComponent<DamageSystem>().enabled = false;
         enabled = false;
 
-        GameHandler.instance.bossDeath();
+        // Check if it is the Boss
+        if (GetComponent<BossDeath>() != null)
+            GameHandler.instance.bossDeath();
     }
 
 }
