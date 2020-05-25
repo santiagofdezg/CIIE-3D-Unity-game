@@ -71,7 +71,7 @@ public class CharacterAnimator : MonoBehaviour {
     }
 
     private void StepJ(){
-            Debug.Log("ole");
+            // Debug.Log("ole");
             soundOnTerrain();
     }
 
@@ -105,7 +105,7 @@ public class CharacterAnimator : MonoBehaviour {
 
     private void soundOnTerrain(){
         int indexTerrain = terrainDetector.GetActiveTerrainTextureIdx(transform.position);
-        Debug.Log(indexTerrain);
+        // Debug.Log(indexTerrain);
         if (indexTerrain==0){
             AudioManager.instance.Play("step_grass", true, 0);
 
